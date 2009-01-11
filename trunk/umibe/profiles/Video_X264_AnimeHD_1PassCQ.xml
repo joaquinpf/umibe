@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Profile>
+	<Name>AnimeHDCQ</Name>
+	<EncoderName>X264</EncoderName>
+	<EncoderRoute>./resources/x264.exe</EncoderRoute>
+	<!-- 1Pass/2Pass -->
+	<EncoderPassNumber>1</EncoderPassNumber>
+	<!-- each setting as used in command line -->
+	<PassOptions1>
+		<PassOption1>--crf 20.5</PassOption1>
+		<PassOption1>--ref 16</PassOption1>
+		<PassOption1>--mixed-refs</PassOption1>
+		<PassOption1>--bframes 16</PassOption1>
+		<PassOption1>--b-pyramid</PassOption1>
+		<PassOption1>--weightb</PassOption1>
+		<PassOption1>--deblock -2:-1</PassOption1>
+		<PassOption1>--subme 8</PassOption1>
+		<PassOption1>--trellis 2</PassOption1>
+		<PassOption1>--psy-rd 0.6:0</PassOption1>
+		<PassOption1>--partitions p8x8,b8x8,i4x4,i8x8</PassOption1>
+		<PassOption1>--8x8dct</PassOption1>
+		<PassOption1>--b-bias 40</PassOption1>
+		<PassOption1>--me umh</PassOption1>
+		<PassOption1>--threads auto</PassOption1>
+		<PassOption1>--thread-input</PassOption1>
+		<PassOption1>--aq-strength 0.5</PassOption1>
+		<PassOption1>--progress</PassOption1>
+		<PassOption1>--no-psnr</PassOption1>
+		<PassOption1>--no-ssim</PassOption1>
+		<PassOption1>--output REPLACEOUTPUT</PassOption1>
+		<PassOption1>REPLACEINPUT</PassOption1>
+	</PassOptions1>	
+</Profile>

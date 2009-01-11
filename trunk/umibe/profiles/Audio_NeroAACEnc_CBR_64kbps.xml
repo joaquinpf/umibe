@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Profile>
+	<Name>NeroAACEnc 64kbps</Name>
+	<EncoderName>NeroAACEnc</EncoderName>
+	<EncoderRoute>./resources/neroaacenc.exe</EncoderRoute>
+	<!-- 1Pass/2Pass -->
+	<EncoderPassNumber>1</EncoderPassNumber>
+	<!-- each setting as used in command line -->
+	<PassOption1s>
+		<PassOption1>-ignorelength</PassOption1>
+		<PassOption1>-he</PassOption1>
+		<PassOption1>-cbr 64000</PassOption1>
+		<PassOption1>-if REPLACEINPUT</PassOption1>
+		<PassOption1>-of REPLACEOUTPUT</PassOption1>
+	</PassOption1s>	
+</Profile>

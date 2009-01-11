@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+  <DoneDirectory>./done/</DoneDirectory>
+  <TempDirectory>./temp/</TempDirectory>
+  <MoveToAfterDone> </MoveToAfterDone>
+  <DefaultAudioProfile>profiles/Audio_NeroAACEnc_CBR_64kbps.xml</DefaultAudioProfile>
+  <DefaultVideoProfile>profile/Video_X264_AnimeSD_2Pass.xml</DefaultVideoProfile>
+  <DefaultAviSynthProfile>profiles/AviSynth_Default.xml</DefaultAviSynthProfile>
+  <DefaultPriority>3</DefaultPriority>
+</Config>
+
