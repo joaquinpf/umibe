@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Stats>
-  <transcoded>7</transcoded>
-  <originalSize>0.43292529229074717</originalSize>
-  <encodedSize>0.3114695204421878</encodedSize>
-  <gbSaved>0.12145577184855938</gbSaved>
-  <compRatio>1.389944324812684</compRatio>
+  <transcoded>8</transcoded>
+  <originalSize>0.43352457508444786</originalSize>
+  <encodedSize>0.31156250834465027</encodedSize>
+  <gbSaved>0.12196206673979759</gbSaved>
+  <compRatio>1.391452962000432</compRatio>
   <remoteJobsDone>0</remoteJobsDone>
-  <localJobsDone>7</localJobsDone>
-  <elapsedTime>6.1869665794074535</elapsedTime>
+  <localJobsDone>8</localJobsDone>
+  <elapsedTime>6.3523332439363</elapsedTime>
 </Stats>
 

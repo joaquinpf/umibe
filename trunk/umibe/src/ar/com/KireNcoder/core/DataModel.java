@@ -27,30 +27,24 @@ import ar.com.KireNcoder.queue.DistributedQueue;
 import ar.com.KireNcoder.queue.GenericQueue;
 import ar.com.KireNcoder.queue.LocalQueue;
 import ar.com.KireNcoder.util.FileUtils;
+import ar.com.umibe.stats.StatGenerator;
+import ar.com.umibe.stats.SingleFileStat;
 
 public class DataModel implements Observer {
 
 	public final static DataModel INSTANCE = new DataModel();
 	private GenericQueue queue;
 
-	private String tempDir = "./temp/";
-	private String doneDir = "./done/";
-	private String moveAfterDone = " ";
-	private String vProfile = "profiles/Video_X264_AnimeHD_1PassCQ.xml";
-	private String aProfile = "profiles/Audio_NeroAACEnc_CBR_64kbps.xml";
-	private String aviSynthProfile = "profiles/AviSynth_Default.xml";
-	private int priority = 3;
-	private ArrayList<MediaFolderWatcher> watchedFolders;
+	private ArrayList<MediaFolderWatcher> watchedFolders = null;
 	private ArrayList<Worker> workers;
-	private String hostname;
 	private StatGenerator stats = new StatGenerator();
 	private UserIterface ui = null;
-	private String profilesDir = "./profiles/";
+	private Settings settings = new Settings();
 
 	private DataModel() {
 		try {
 			InetAddress addr = InetAddress.getLocalHost();
-			hostname = addr.getHostName();
+			settings.hostname = addr.getHostName();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +56,7 @@ public class DataModel implements Observer {
 		saveConfig();
 	}
 	
-	public Stats updateStats(VideoFile oldFile, String newFile, double elapsedTimeMin){
+	public SingleFileStat updateStats(VideoFile oldFile, String newFile, double elapsedTimeMin){
 		return this.stats.updateStats(oldFile, newFile, elapsedTimeMin);
 	}
 	
@@ -160,73 +154,13 @@ public class DataModel implements Observer {
 	}
 	
 	public void saveConfig() {
-		Element root = new Element("Config");
-		Element el = new Element("DoneDirectory");
-		el.setText(this.doneDir);
-		root.addContent(el);
-		el = new Element("TempDirectory");
-		el.setText(this.tempDir);
-		root.addContent(el);
-		el = new Element("MoveToAfterDone");
-		el.setText(this.moveAfterDone);
-		root.addContent(el);
-		el = new Element("DefaultAudioProfile");
-		el.setText(this.aProfile);
-		root.addContent(el);
-		el = new Element("DefaultVideoProfile");
-		el.setText(this.vProfile);
-		root.addContent(el);
-		el = new Element("DefaultAviSynthProfile");
-		el.setText(this.aviSynthProfile);
-		root.addContent(el);
-		el = new Element("DefaultPriority");
-		el.setText(Integer.toString(this.priority));
-		root.addContent(el);
-
-		Document doc = new Document(root);
-		// serialize it onto System.out
-		try {
-			XMLOutputter serializer = new XMLOutputter();
-			Format f = serializer.getFormat();
-			f.setIndent("  ");
-			serializer.setFormat(f);
-			FileWriter fileWriter = new FileWriter("./config/config.xml");
-			serializer.output(doc, fileWriter);
-			fileWriter.flush();
-			fileWriter.close();
-		} catch (IOException e) {
-			System.err.println(e);
-		}
+		Easy.save(settings, "./config/config.xml");
 	}
 
 	public void loadConfig() {
 		File f = new File("./config/config.xml");
 		if (f.exists()) {
-			XMLConfigLoader xml = new XMLConfigLoader("config/config.xml");
-			String s = xml.getNodeText("DoneDirectory");
-			if (s != null) {
-				this.doneDir = s;
-			}
-			s = xml.getNodeText("DefaultAudioProfile");
-			if (s != null) {
-				this.aProfile = s;
-			}
-			s = xml.getNodeText("DefaultVideoProfile");
-			if (s != null) {
-				this.vProfile = s;
-			}
-			s = xml.getNodeText("DefaultAviSynthProfile");
-			if (s != null) {
-				this.aviSynthProfile = s;
-			}
-			s = xml.getNodeText("DefaultPriority");
-			if (s != null) {
-				this.priority = Integer.parseInt(s);
-			}
-			s = xml.getNodeText("MoveToAfterDone");
-			if (s != null) {
-				this.moveAfterDone = s;
-			}
+			settings = (Settings)Easy.load("./config/config.xml");
 		}
 	}
 
@@ -242,62 +176,15 @@ public class DataModel implements Observer {
 		if (f.exists()) {
 			this.queue.put((ArrayList<VideoFile>)Easy.load("./config/jobs.xml"));
 		}
-		
-		/*File f = new File("./config/jobs.xml");
-		if (f.exists()) {
-			Document dom = openDocument("config/jobs.xml");
-			Element docEle = dom.getRootElement();
-
-			List<Element> jobs = docEle.getChildren("Job");
-
-			Iterator<Element> i = jobs.iterator();
-			while (i.hasNext()) {
-				Element e = i.next();
-				this.queue.put(new VideoFile(e.getAttributeValue("routeToFile"), 
-						e.getAttributeValue("vProfile"), e.getAttributeValue("aProfile"), 
-						e.getAttributeValue("aviSynthProfile"), e.getAttributeValue("doneFolder"),
-						e.getAttributeValue("moveAfterDone"), Integer.parseInt(e.getAttributeValue("priority")),
-						this.hostname));
-			}
-		}*/
 	}
 
 	public synchronized void saveQueue() {
 		ArrayList<VideoFile> a = this.queue.getEnqueuedElements();
 		Easy.save(a,"./config/jobs.xml");
-		/*Element root = new Element("Jobs");
-		for (int i = 0; i < a.size(); i++) {
-			if(a.get(i).getOwnerHost().equals(this.hostname)){
-				Element el = new Element("Job");
-				el.setAttribute("id", String.valueOf(i));
-				el.setAttribute("routeToFile", a.get(i).getRoute());
-				el.setAttribute("aProfile", a.get(i).getAProfile());
-				el.setAttribute("vProfile", a.get(i).getVProfile());
-				el.setAttribute("aviSynthProfile", a.get(i).getAviSynthProfile());
-				el.setAttribute("priority", Integer
-						.toString(a.get(i).getPriority()));
-				el.setAttribute("doneFolder", a.get(i).getOutputFolder());
-				el.setAttribute("moveAfterDone", a.get(i).getMoveAfterDone());
-				root.addContent(el);
-			}
-		}
-		Document doc = new Document(root);
-		// serialize it onto System.out
-		try {
-			XMLOutputter serializer = new XMLOutputter();
-			Format f = serializer.getFormat();
-			f.setIndent("  ");
-			serializer.setFormat(f);
-			FileWriter fileWriter = new FileWriter("./config/jobs.xml");
-			serializer.output(doc, fileWriter);
-			fileWriter.flush();
-			fileWriter.close();
-		} catch (IOException e) {
-			System.err.println(e);
-		}*/
 	}
 
 	public void loadWatchedFolders() {
+		
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();
 		File f = new File("./config/folders.xml");
 		if (f.exists()) {
@@ -318,7 +205,7 @@ public class DataModel implements Observer {
 	}
 
 	public String[] loadProfiles(String type){
-		return FileUtils.filterFiles(profilesDir, type);
+		return FileUtils.filterFiles(settings.profilesDir, type);
 	}
 	
 	public void saveWatchedFolders() {
@@ -365,71 +252,71 @@ public class DataModel implements Observer {
 	}
 
 	public String getVProfile() {
-		return this.vProfile;
+		return settings.vProfile;
 	}
 
 	public void setVProfile(String s) {
-		this.vProfile = s;
+		settings.vProfile = s;
 		saveConfig();
 	}
 
 	public String getAProfile() {
-		return this.aProfile;
+		return settings.aProfile;
 	}
 
 	public void setAProfile(String s) {
-		this.aProfile = s;
+		settings.aProfile = s;
 		saveConfig();
 	}
 
 	public String getAviSynthProfile() {
-		return this.aviSynthProfile;
+		return settings.aviSynthProfile;
 	}
 
 	public void setAviSynthProfile(String s) {
-		this.aviSynthProfile = s;
+		settings.aviSynthProfile = s;
 		saveConfig();
 	}
 
 	public String getTempDir() {
-		return this.tempDir;
+		return settings.tempDir;
 	}
 
 	public void setTempDir(String s) {
-		this.tempDir = s;
+		settings.tempDir = s;
 		saveConfig();
 	}
 
 	public String getMoveAfterDone() {
-		return this.moveAfterDone;
+		return settings.moveAfterDone;
 	}
 
 	public void setMoveAfterDone(String s) {
-		this.moveAfterDone = s;
+		settings.moveAfterDone = s;
 		saveConfig();
 	}
 
 	
 	public String getDoneDir() {
-		return this.doneDir;
+		return settings.doneDir;
 	}
 
 	public void setDoneDir(String s) {
-		this.doneDir = s;
+		settings.doneDir = s;
 		saveConfig();
 	}
 
 	public int getPriority() {
-		return this.priority;
+		return settings.priority;
 	}
 
 	public void setPriority(int priority) {
-		this.priority = priority;
+		settings.priority = priority;
 		saveConfig();
 	}
 	
 	public String getHostname(){
-		return this.hostname;
+		return settings.hostname;
 	}
 
 	@Override
@@ -451,6 +338,4 @@ public class DataModel implements Observer {
 	public void setUi(UserIterface ui) {
 		this.ui = ui;
 	}
-
-
 }

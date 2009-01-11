@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import ar.com.KireNcoder.core.DataModel;
 import ar.com.KireNcoder.core.VideoFile;
-import ar.com.KireNcoder.core.XMLConfigLoader;
 import ar.com.KireNcoder.util.FileUtils;
 
 public class MediaFolderWatcher extends BaseListener implements IFileListener {

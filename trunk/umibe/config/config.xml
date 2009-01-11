@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Config>
-  <DoneDirectory>./done/</DoneDirectory>
-  <TempDirectory>./temp/</TempDirectory>
-  <MoveToAfterDone> </MoveToAfterDone>
-  <DefaultAudioProfile>profiles/Audio_NeroAACEnc_CBR_64kbps.xml</DefaultAudioProfile>
-  <DefaultVideoProfile>profile/Video_X264_AnimeSD_2Pass.xml</DefaultVideoProfile>
-  <DefaultAviSynthProfile>profiles/AviSynth_Default.xml</DefaultAviSynthProfile>
-  <DefaultPriority>3</DefaultPriority>
-</Config>
-
+<object type="ar.com.KireNcoder.core.Settings" id="0">
+  <field name="tempDir" type="string" value="./temp/" />
+  <field name="doneDir" type="string" value="./done/" />
+  <field name="moveAfterDone" type="string" value=" " />
+  <field name="vProfile" type="string" value="profiles/Video_X264_AnimeHD_1PassCQ.xml" />
+  <field name="aProfile" type="string" value="profiles/Audio_NeroAACEnc_CBR_64kbps.xml" />
+  <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Default.xml" />
+  <field name="priority" type="int" value="3" />
+  <field name="hostname" type="string" value="zanarkand-d" />
+  <field name="profilesDir" type="string" value="./profiles/" />
+</object>

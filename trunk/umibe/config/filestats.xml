@@ -1,0 +1,35 @@
+<object type="list" elementType="Object" length="3" id="0">
+  <object type="ar.com.umibe.stats.SingleFileStat" id="1">
+    <field name="originalSize" type="double" value="4.413602873682976E-4" />
+    <field name="encodedSize" type="double" value="7.14985653758049E-5" />
+    <field name="gbSaved" type="double" value="3.698617219924927E-4" />
+    <field name="compRatio" type="double" value="6.172995011137018" />
+    <field name="elapsedTime" type="double" value="0.08436666429042816" />
+    <field name="routeToOwner" type="string" value="E:\Umibe SVN\umibe\[pinokkio] Hayden Panettiere_ButtSlap3_BIO3.wmv.mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.stats.SingleFileStat" id="2">
+    <field name="originalSize" type="double" value="5.99282793700695E-4" />
+    <field name="encodedSize" type="double" value="9.298790246248245E-5" />
+    <field name="gbSaved" type="double" value="5.062948912382126E-4" />
+    <field name="compRatio" type="double" value="6.444739345986279" />
+    <field name="elapsedTime" type="double" value="0.09296666830778122" />
+    <field name="routeToOwner" type="string" value="E:\Umibe SVN\umibe\[pinokkio] Hayden Panettiere_ButtSlap2_BIO3.wmv.mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.stats.SingleFileStat" id="3">
+    <field name="originalSize" type="double" value="5.99282793700695E-4" />
+    <field name="encodedSize" type="double" value="9.298790246248245E-5" />
+    <field name="gbSaved" type="double" value="5.062948912382126E-4" />
+    <field name="compRatio" type="double" value="6.444739345986279" />
+    <field name="elapsedTime" type="double" value="0.09610000252723694" />
+    <field name="routeToOwner" type="string" value="E:\Umibe SVN\umibe\[pinokkio] Hayden Panettiere_ButtSlap2_BIO3.wmv.mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+</object>

@@ -1,4 +1,4 @@
-package ar.com.KireNcoder.core;
+package ar.com.umibe.stats;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.Date;
 
 import ar.com.KireNcoder.util.FileUtils;
 
-public class Stats {
+public class SingleFileStat {
 	private double originalSize = 0;
 	private double encodedSize = 0;
 	private double gbSaved = 0;

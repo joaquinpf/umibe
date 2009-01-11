@@ -30,12 +30,13 @@ import org.jdom.output.XMLOutputter;
 import org.jvnet.substance.SubstanceLookAndFeel;
 
 import ar.com.KireNcoder.core.DataModel;
-import ar.com.KireNcoder.core.StatGenerator;
-import ar.com.KireNcoder.core.Stats;
 import ar.com.KireNcoder.core.VideoFile;
 import ar.com.KireNcoder.core.XMLConfigLoader;
 import ar.com.KireNcoder.util.FileUtils;
 import ar.com.KireNcoder.util.StreamGobbler;
+import ar.com.umibe.stats.GlobalStats;
+import ar.com.umibe.stats.StatGenerator;
+import ar.com.umibe.stats.SingleFileStat;
 
 /**
  * 
@@ -377,7 +378,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
         jTabbedPane1.addTab(resourceMap.getString("jPanel7.TabConstraints.tabTitle"), jPanel8); // NOI18N
         DecimalFormat formatter = new DecimalFormat("###.##");
-        StatGenerator s = DataModel.INSTANCE.getStats();
+        GlobalStats s = DataModel.INSTANCE.getStats().getGlobalStats();
         this.transcoded.setText(Integer.toString(s.getTranscoded()));
         this.compRatio.setText(formatter.format(s.getCompRatio()));
         this.encodedSize.setText(formatter.format(s.getEncodedSize()));
@@ -942,7 +943,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 	public void update(Observable o, Object arg) {
 		if(o instanceof StatGenerator){
 			DecimalFormat formatter = new DecimalFormat("###.##");
-			StatGenerator s = DataModel.INSTANCE.getStats();
+			GlobalStats s = DataModel.INSTANCE.getStats().getGlobalStats();
 			this.transcoded.setText(Integer.toString(s.getTranscoded()));
 			this.compRatio.setText(formatter.format(s.getCompRatio()));
 			this.encodedSize.setText(formatter.format(s.getEncodedSize()));
@@ -951,15 +952,15 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 			this.remoteJobsDone.setText(Integer.toString(s.getRemoteJobsDone()));
 			this.originalSize.setText(formatter.format(s.getOriginalSize()));
 			this.timeElapsed.setText(formatter.format(s.getElapsedTime()));
-			if(arg instanceof Stats){
+			if(arg instanceof SingleFileStat){
 				DefaultListModel d = (DefaultListModel) this.jList1.getModel();
-				ArrayList<String> a = ((Stats)arg).toStringArray();
+				ArrayList<String> a = ((SingleFileStat)arg).toStringArray();
 				for(int i=0; i<a.size(); i++){
 					d.addElement(a.get(i));
 				}
                 //Update Systray
                 if(systray != null) {
-                	systray.showMessage("Finished: " + FileUtils.getFileName(((Stats)arg).getRouteToOwner()));
+                	systray.showMessage("Finished: " + FileUtils.getFileName(((SingleFileStat)arg).getRouteToOwner()));
                 }
 			} else {
 				this.jList1.setModel(new DefaultListModel());
