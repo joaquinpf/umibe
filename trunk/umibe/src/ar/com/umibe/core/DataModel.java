@@ -30,12 +30,7 @@ public class DataModel implements Observer {
 	private Settings settings = new Settings();
 
 	private DataModel() {
-		try {
-			InetAddress addr = InetAddress.getLocalHost();
-			settings.hostname = addr.getHostName();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		
 		this.workers = new ArrayList<Worker>();
 		
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();
@@ -43,6 +38,11 @@ public class DataModel implements Observer {
 		
 		saveConfig();
 	}
+
+    public void resetSettings() {
+        this.settings = new Settings();
+        saveConfig();
+    }
 	
 	public SingleFileStat updateStats(VideoFile oldFile, String newFile, double elapsedTimeMin){
 		return this.stats.updateStats(oldFile, newFile, elapsedTimeMin);

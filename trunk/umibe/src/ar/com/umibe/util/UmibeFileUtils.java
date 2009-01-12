@@ -1,39 +1,19 @@
 package ar.com.umibe.util;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
 
 import org.apache.commons.io.FileUtils;
 
 public class UmibeFileUtils {
 
 	public static void copy(File source, File dest) {
-		FileChannel in = null, out = null;
 		try {
-			in = new FileInputStream(source).getChannel();
-			out = new FileOutputStream(dest).getChannel();
-
-			long size = in.size();
-			MappedByteBuffer buf = in.map(FileChannel.MapMode.READ_ONLY, 0,
-					size);
-
-			out.write(buf);
-			if (in != null) {
-				in.close();
-			}
-			if (out != null) {
-				out.close();
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			FileUtils.copyFile(source, dest);
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.out.println("UmibeFileUtils: Could not copy File");
 		}
 	}
 
@@ -110,16 +90,11 @@ public class UmibeFileUtils {
 	}
 
 	public static void cleanUpDirectory(String directory) {
-		File dir = new File(directory);
-
-		String[] children = dir.list();
-		if (children == null) {
-			// Either dir does not exist or is not a directory
-		} else {
-			for (int i = 0; i < children.length; i++) {
-				File file = new File(directory,	children[i]);
-				System.out.print(file + "  deleted : " + file.delete());
-			}
+		try {
+			FileUtils.cleanDirectory(new File(directory));
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("UmibeFileUtils: Could not clean directory");
 		}
 	}
 

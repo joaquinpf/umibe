@@ -1,10 +1,10 @@
 <object type="ar.com.umibe.core.stats.GlobalStats" id="0">
-  <field name="originalSize" type="double" value="0.0016399258747696877" />
-  <field name="encodedSize" type="double" value="2.574743703007698E-4" />
-  <field name="gbSaved" type="double" value="0.0013824515044689178" />
-  <field name="compRatio" type="double" value="6.369278126028626" />
-  <field name="elapsedTime" type="double" value="0.7455666810274124" />
-  <field name="transcoded" type="int" value="3" />
+  <field name="originalSize" type="double" value="0.0" />
+  <field name="encodedSize" type="double" value="0.0" />
+  <field name="gbSaved" type="double" value="0.0" />
+  <field name="compRatio" type="double" value="0.0" />
+  <field name="elapsedTime" type="double" value="0.0" />
+  <field name="transcoded" type="int" value="0" />
   <field name="remoteJobsDone" type="int" value="0" />
-  <field name="localJobsDone" type="int" value="3" />
+  <field name="localJobsDone" type="int" value="0" />
 </object>

@@ -1,5 +1,8 @@
 package ar.com.umibe.core;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class Settings {
 	public String tempDir = "./temp/";
 	public String doneDir = "./done/";
@@ -10,4 +13,13 @@ public class Settings {
 	public int priority = 3;
 	public String hostname;
 	public String profilesDir = "./profiles/";
+	
+	public Settings(){
+		try {
+			InetAddress addr = InetAddress.getLocalHost();
+			hostname = addr.getHostName();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
 }

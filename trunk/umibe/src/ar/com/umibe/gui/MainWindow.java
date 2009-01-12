@@ -125,6 +125,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jButton3 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -526,6 +527,14 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
             }
         });
 
+        jButton4.setText(resourceMap.getString("jButton4.text")); // NOI18N
+        jButton4.setName("jButton4"); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -562,7 +571,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                             .addComponent(jLabel3)
                             .addComponent(jComboBox2, 0, 373, Short.MAX_VALUE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox3, 0, 373, Short.MAX_VALUE))
+                            .addComponent(jComboBox3, 0, 373, Short.MAX_VALUE)
+                            .addComponent(jButton4))
                         .addContainerGap())
                     .addComponent(jLabel6)))
         );
@@ -606,10 +616,12 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                 .addGap(27, 27, 27)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox2)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(resourceMap.getString("jPanel6.TabConstraints.tabTitle"), jPanel6); // NOI18N
@@ -867,6 +879,50 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        DataModel.INSTANCE.resetSettings();
+        
+        jTextField1.setText(DataModel.INSTANCE.getDoneDir());
+        jTextField2.setText(DataModel.INSTANCE.getTempDir());
+        jTextField6.setText(DataModel.INSTANCE.getMoveAfterDone());
+        String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
+        
+        if(profiles != null){
+            for(int i = 0; i < profiles.length; i++){
+                jComboBox1.addItem(profiles[i]);
+                if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
+                    jComboBox1.setSelectedIndex(i);
+                }
+            }
+        }
+        
+        profiles = DataModel.INSTANCE.loadProfiles("audio_");
+        if(profiles != null){
+            for(int i = 0; i < profiles.length; i++){
+                jComboBox2.addItem(profiles[i]);
+                if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
+                   jComboBox2.setSelectedIndex(i);
+                }
+            }
+        }
+        
+        profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
+        if(profiles != null){
+            for(int i = 0; i < profiles.length; i++){
+                jComboBox3.addItem(profiles[i]);
+                if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
+                   jComboBox3.setSelectedIndex(i);
+                }
+            }
+        }
+        
+        this.jSlider1.setValue(DataModel.INSTANCE.getPriority());
+        
+        this.jCheckBox1.setSelected(false);
+        this.jCheckBox2.setSelected(false);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 	private void formWindowClosing(java.awt.event.WindowEvent evt) {            
 		// event_formWindowClosing
 		DataModel.INSTANCE.stopWorkers();
@@ -1001,6 +1057,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
