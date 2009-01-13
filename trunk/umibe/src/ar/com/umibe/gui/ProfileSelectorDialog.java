@@ -12,6 +12,7 @@
 package ar.com.umibe.gui;
 
 import ar.com.umibe.core.DataModel;
+import ar.com.umibe.util.GuiUtils;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ProfileSelectorDialog extends javax.swing.JDialog {
     public ProfileSelectorDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+		GuiUtils.setIcon(this);
     }
 
     /** This method is called from within the constructor to

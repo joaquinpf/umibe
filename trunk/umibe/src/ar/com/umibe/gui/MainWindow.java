@@ -37,6 +37,7 @@ import ar.com.umibe.core.execution.StreamGobbler;
 import ar.com.umibe.core.stats.GlobalStats;
 import ar.com.umibe.core.stats.SingleFileStat;
 import ar.com.umibe.core.stats.StatGenerator;
+import ar.com.umibe.util.GuiUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 
 /**
@@ -54,7 +55,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		try {
             // set new skin by class name
             SubstanceLookAndFeel
-                .setSkin("org.jvnet.substance.skin.BusinessSkin");
+                .setSkin(new org.jvnet.substance.skin.RavenGraphiteGlassSkin());
+           // org.jvnet.substance.skin.NebulaSkin
             repaint();
 			//UIManager.setLookAndFeel(new SubstanceRavenGraphiteLookAndFeel());
 			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -62,6 +64,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 			e.printStackTrace();
 		}
 		initComponents();
+		GuiUtils.centerOnScreen(this);
+		GuiUtils.setIcon(this);
 		DataModel.INSTANCE.addStatsObserver(this);
 		DataModel.INSTANCE.setUi(this);
 		loadGuiConfig();
@@ -76,10 +80,19 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLayeredPane2 = new javax.swing.JLayeredPane();
+        jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new FileTable();
+        jTable1 = new FileTable(){
+            public boolean isCellEditable(int rowIndex, int vColIndex) {
+                return false;
+            }
+        };
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new FolderList();
         jPanel8 = new javax.swing.JPanel();
@@ -128,7 +141,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -137,8 +149,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(MainWindow.class);
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
         setResizable(false);
@@ -158,8 +173,16 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
         jTabbedPane1.setName("jTabbedPane1"); // NOI18N
 
+        jLayeredPane2.setName("jLayeredPane2"); // NOI18N
+
+        jLabel11.setIcon(resourceMap.getIcon("jLabel11.icon")); // NOI18N
+        jLabel11.setName("jLabel11"); // NOI18N
+        jLabel11.setBounds(210, 150, 360, 40);
+        jLayeredPane2.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
+        jTable1.setColumnSelectionAllowed(false);
         jTable1.setName("jTable1"); // NOI18N
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -168,7 +191,18 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
         jScrollPane3.setViewportView(jTable1);
 
-        jTabbedPane1.addTab(resourceMap.getString("jScrollPane3.TabConstraints.tabTitle"), jScrollPane3); // NOI18N
+        jScrollPane3.setBounds(0, 0, 790, 360);
+        jLayeredPane2.add(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab(resourceMap.getString("jLayeredPane2.TabConstraints.tabTitle"), jLayeredPane2); // NOI18N
+
+        jLayeredPane1.setName("jLayeredPane1"); // NOI18N
+
+        jLabel10.setIcon(resourceMap.getIcon("jLabel10.icon")); // NOI18N
+        jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
+        jLabel10.setName("jLabel10"); // NOI18N
+        jLabel10.setBounds(180, 150, 410, 40);
+        jLayeredPane1.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
@@ -180,7 +214,10 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
         jScrollPane2.setViewportView(jList2);
 
-        jTabbedPane1.addTab(resourceMap.getString("jScrollPane2.TabConstraints.tabTitle"), jScrollPane2); // NOI18N
+        jScrollPane2.setBounds(0, 0, 790, 360);
+        jLayeredPane1.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jTabbedPane1.addTab(resourceMap.getString("jLayeredPane1.TabConstraints.tabTitle"), jLayeredPane1); // NOI18N
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel7.border.title"))); // NOI18N
         jPanel8.setName("jPanel7"); // NOI18N
@@ -286,7 +323,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                         .addComponent(compRatio)
                         .addComponent(gbSaved, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(remoteJobsDone, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(105, 105, 105))
         );
@@ -348,13 +385,13 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -566,12 +603,12 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                                 .addComponent(jButton10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, 373, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, 388, Short.MAX_VALUE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox2, 0, 373, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, 388, Short.MAX_VALUE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox3, 0, 373, Short.MAX_VALUE)
+                            .addComponent(jComboBox3, 0, 388, Short.MAX_VALUE)
                             .addComponent(jButton4))
                         .addContainerGap())
                     .addComponent(jLabel6)))
@@ -621,7 +658,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox2)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(resourceMap.getString("jPanel6.TabConstraints.tabTitle"), jPanel6); // NOI18N
@@ -629,34 +666,27 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel3.border.title"))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
 
+        jLabel8.setIcon(resourceMap.getIcon("jLabel8.icon")); // NOI18N
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
+        jLabel8.setMaximumSize(new java.awt.Dimension(500, 500));
         jLabel8.setName("jLabel8"); // NOI18N
-
-        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
-        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel8.setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jLabel8)))
-                .addContainerGap(299, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(253, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(217, 217, 217))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(resourceMap.getString("jPanel3.TabConstraints.tabTitle"), jPanel3); // NOI18N
@@ -665,11 +695,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleName")); // NOI18N
@@ -732,9 +762,9 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                 .addComponent(jButton7)
                 .addGap(10, 10, 10)
                 .addComponent(jButton6)
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addContainerGap(470, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(encodingStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+            .addComponent(encodingStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -753,7 +783,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        int returnVal = folderChooser.showOpenDialog(this);
+        folderChooser = new JFolderChooser();
+    	int returnVal = folderChooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
         	try {
         		File file = folderChooser.getSelectedFile();
@@ -763,10 +794,12 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         		e.printStackTrace();
         	}
         }
+        folderChooser = null;
 }//GEN-LAST:event_jButton10MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-		int returnVal = folderChooser.showOpenDialog(this);
+    	folderChooser = new JFolderChooser();
+    	int returnVal = folderChooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
         	try {
         		File file = folderChooser.getSelectedFile();
@@ -776,6 +809,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         		e.printStackTrace();
         	}
         }
+        folderChooser = null;
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -987,6 +1021,28 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		}
 	}
 	
+	public void turnDndFileSign(){
+		if(jTable1.getModel().getRowCount() == 1){
+			this.jLabel11.setEnabled(true);
+			this.jLabel11.setVisible(true);
+			repaint();
+		} else {
+			this.jLabel11.setEnabled(false);
+			this.jLabel11.setVisible(false);			
+		}
+	}
+	
+	public void turnDndFolderSign(){
+		if(jList2.getModel().getSize()>0){
+			this.jLabel10.setEnabled(true);
+			this.jLabel10.setVisible(true);
+			repaint();
+		} else {
+			this.jLabel10.setEnabled(false);
+			this.jLabel10.setVisible(false);			
+		}
+	}
+	
 	private void updateGlobalStats(){
 		DecimalFormat formatter = new DecimalFormat("###.##");
 		GlobalStats s = DataModel.INSTANCE.getStats().getGlobalStats();
@@ -1047,7 +1103,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 	}
 
     private SysTray systray = null;
-	private JFolderChooser folderChooser = new JFolderChooser();
+	private JFolderChooser folderChooser = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField compRatio;
     private javax.swing.JTextField encodedSize;
@@ -1068,6 +1124,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1084,6 +1142,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
     private javax.swing.JMenu jMenu1;

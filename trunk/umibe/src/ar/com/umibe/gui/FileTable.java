@@ -32,12 +32,25 @@ public class FileTable extends DragAndDropTable implements Observer {
 	private boolean profileable = false;
 	
 	public FileTable() {
-		super();
+		super();		
+		DefaultTableModel model = (DefaultTableModel) this.getModel();
+		model.addColumn("Status");
+		model.addColumn("Filename");
+		model.addColumn("Owner Host");
+		TableColumn column = getColumnModel().getColumn(0); 
+		column.setPreferredWidth(5); 
+		column = getColumnModel().getColumn(1); 
+		column.setPreferredWidth(300); 
+		column = getColumnModel().getColumn(2); 
+		column.setPreferredWidth(5); 
+		
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		getTableHeader().setResizingAllowed(false);
 		setDefaultRenderer (Object.class, new FileTableRenderer());
 		refreshList();
 		DataModel.INSTANCE.addQueueObserver(this);
+		
+		model.addTableModelListener(new FileTableListener());
 	}
 	
 	@Override
@@ -96,10 +109,11 @@ public class FileTable extends DragAndDropTable implements Observer {
 	}
 	public void refreshList() {
 		ArrayList<VideoFile> a = DataModel.INSTANCE.getAllJobs();
-		DefaultTableModel model = new DefaultTableModel();
-		model.addColumn("Status");
-		model.addColumn("Filename");
-		model.addColumn("Owner Host");
+		DefaultTableModel model = (DefaultTableModel) this.getModel();
+		model.setRowCount(0);
+		for (int i=0; i<model.getRowCount(); i++){
+			model.removeRow(i);
+		}
 		for (int i = 0; i < a.size(); i++) {
 			if (a.get(i).getStatus() != Status.DELETED) {
 				VideoFile vf = a.get(i);
@@ -109,13 +123,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		}
 		padding(model);
 		this.setModel(model);
-		TableColumn column = getColumnModel().getColumn(0); 
-		column.setPreferredWidth(5); 
-		column = getColumnModel().getColumn(1); 
-		column.setPreferredWidth(300); 
-		column = getColumnModel().getColumn(2); 
-		column.setPreferredWidth(5); 
-		//setRenderer();
+		repaint();
 	}
 	
 	private void padding(DefaultTableModel d){
