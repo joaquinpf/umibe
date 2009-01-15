@@ -55,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		try {
             // set new skin by class name
             SubstanceLookAndFeel
-                .setSkin(new org.jvnet.substance.skin.RavenGraphiteGlassSkin());
+                .setSkin(new org.jvnet.substance.skin.BusinessSkin());
            // org.jvnet.substance.skin.NebulaSkin
             repaint();
 			//UIManager.setLookAndFeel(new SubstanceRavenGraphiteLookAndFeel());
@@ -960,7 +960,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
       if (evt.getClickCount() == 2) {
           VideoFile vf = ((FileTable)jTable1).getSelectedItem();
-          VideoInfoDialog vid = new VideoInfoDialog(this, false);
+          VideoInfoDialog vid = new VideoInfoDialog(this, true);
           vid.loadInfo(vf.getRoute());
           vid.setVisible(true);
       }

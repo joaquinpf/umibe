@@ -25,9 +25,9 @@ public class Worker implements Runnable {
 
 	private static boolean verbosity = true;
 	
-	private VideoFile current;
+	private VideoFile current = null;
 	
-	private String tempDir;
+	private File tempDir = null;
 	
 	private Policy policy;
 	
@@ -53,44 +53,49 @@ public class Worker implements Runnable {
 				String filename = UmibeFileUtils
 						.getFileName(this.current.getRoute());
 				String fullPath = UmibeFileUtils
-				.getFullPath(this.current.getRoute());
+						.getFullPath(this.current.getRoute());
 				
 				//Generacion de directorio temporal
-				tempDir = DataModel.INSTANCE.getTempDir() + Integer.toString(this.hashCode()) + filename + "/";
-				File temp = new File(tempDir);
-				if(!temp.exists()){
-					temp.mkdir();
-				}
+				String tempDirPath = generateTempDir();
 
 				//Mkvizacion
 				String MKVFile = tempDir + UmibeFileUtils.getFileName(fullPath) + ".mkv";
-				MatroskaUtils.MKVize(fullPath, MKVFile, verbosity);
-				
+				int mkvResult = MatroskaUtils.MKVize(fullPath, MKVFile, verbosity);
+				if(mkvResult == 0) {
+					fullPath = MKVFile;
+				}
+								
 				//Extraccion de informacion de MKV
 				String infoFile = tempDir + UmibeFileUtils.getFileName(fullPath) + "_info.txt";
 				MatroskaUtils.generateInfo(MKVFile, infoFile);
-				TracksInfoParser tip = new TracksInfoParser(infoFile, tempDir);
+				TracksInfoParser tip = new TracksInfoParser(infoFile, tempDirPath);
 				
-				//Generacion de script de video. Encoding de video
-				encodeVideo(fullPath);
+				//Encoding de video
+				vEncoder = new VideoEncoder(this.current.getVProfile(), 
+						this.current.getAviSynthProfile(), tempDirPath, true); 
+				ArrayList<MediaTrack> videoTracks = vEncoder.encode(fullPath, tip);
+				vEncoder = null;
 				
 				//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
-				ArrayList<MediaTrack> audioTracks = encodeAudio(tip,fullPath,MKVFile);
+				aEncoder = new AudioEncoder(this.current.getAProfile(), 
+						this.current.getAviSynthProfile(), tempDirPath, true); 
+				ArrayList<MediaTrack> audioTracks = aEncoder.encode(fullPath, tip);
+				aEncoder = null;
 				
 				//Extraccion de chapters
-				MatroskaUtils.extractChapters(MKVFile, tempDir);
+				MatroskaUtils.extractChapters(MKVFile, tempDirPath);
 				
 				//Demux de tracks de subtitulos
-				MatroskaUtils.demux(MKVFile, tempDir, tip.getTracks("subtitles"), verbosity);
+				MatroskaUtils.demux(MKVFile, tempDirPath, tip.getTracks("subtitles"), verbosity);
 				
 				//Merge
-				MatroskaUtils.merge(tempDir+ "video.mkv", audioTracks, 
-						filename, tempDir, this.current.getOutputFolder(),
+				MatroskaUtils.merge(videoTracks, audioTracks, 
+						filename, tempDirPath, this.current.getOutputFolder(),
 						tip, verbosity);
 				
 				//Borrado de temporales
 				UmibeFileUtils.cleanUpDirectory(tempDir);
-				temp.delete();
+				tempDir.delete();
 				
 				//Actualizacion de cola y estadisticas
 
@@ -101,16 +106,15 @@ public class Worker implements Runnable {
 				DataModel.INSTANCE.saveQueue();
 				
 				//Move after done
-				//FIXME No funciono :)
 				if(!DataModel.INSTANCE.getMoveAfterDone().equals(" ")) {
 					UmibeFileUtils.move(fullPath, DataModel.INSTANCE.getMoveAfterDone());
 				}
 				
 				DataModel.INSTANCE.changeVideoStatus(current, Status.DONE);
-
 				
 				this.current = null;
 				this.tempDir = null;
+
 			} else {
 				DataModel.INSTANCE.changeVideoStatus(current, Status.MOVED);
 				this.current = null;
@@ -118,55 +122,17 @@ public class Worker implements Runnable {
 			}
 		}
 	}
-
-	private void encodeVideo(String fullPath){
-		String script = AviSynthUtils.generateVideoScript(fullPath,
-				tempDir, this.current.getAviSynthProfile());
-		this.vEncoder = new Encoder(this.current.getVProfile(), false);
-		vEncoder.encode(script,tempDir + "video.mkv");
-		this.vEncoder = null;
-	}
 	
-	private ArrayList<MediaTrack> encodeAudio(TracksInfoParser tip, String fullPath, String MKVFile){
-		
-		//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
-		ArrayList<InfoTrack> audioTracks = tip.getTracks("audio","jpn");
-		ArrayList<MediaTrack> ret = new ArrayList<MediaTrack>();
-		//Si no se pudieron extraer los tracks (no se pudo mkvizar)
-		if(audioTracks == null) {
-			//Generacion de script de audio. Encoding de audio
-			String script = AviSynthUtils.generateAudioScript(fullPath,
-					tempDir, this.current.getAviSynthProfile());
-			this.aEncoder = new Encoder(this.current.getAProfile(), true);
-			aEncoder.pipedEncode(script,tempDir + "encodedaudio_" + 0 + ".m4a");
-			this.aEncoder = null;
-			MediaTrack m = new MediaTrack();
-			m.setRouteToTrack(tempDir + "encodedaudio_" + 0 + ".m4a");
-			ret.add(m);
-		} else {
-			if(audioTracks.size() == 0) {
-				audioTracks = tip.getTracks("audio");
-			}
-			MatroskaUtils.demux(MKVFile, tempDir, audioTracks , verbosity);
-			String[] audios = UmibeFileUtils.filterFiles(tempDir, "audio");
-
-			for(int i=0; i<audios.length; i++){
-				//Generacion de script de audio. Encoding de audio
-				MatroskaUtils.mux(UmibeFileUtils.getFullPath(tempDir + audios[i]),UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka");
-				String script = AviSynthUtils.generateAudioScript(UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka",
-						tempDir, this.current.getAviSynthProfile());
-				this.aEncoder = new Encoder(this.current.getAProfile(), true);
-				aEncoder.pipedEncode(script,tempDir + "encodedaudio_" + i + ".m4a");
-				this.aEncoder = null;
-				MediaTrack m = new MediaTrack();
-				m.setRouteToTrack(tempDir + "encodedaudio_" + i + ".m4a");
-				m.setInfoTrack(audioTracks.get(i));
-				ret.add(m);
-			}
+	private String generateTempDir() {
+		String temp = DataModel.INSTANCE.getTempDir() + Integer.toString(this.hashCode()) 
+			+ UmibeFileUtils.getFileName(this.current.getRoute()) + "/";
+		tempDir = new File(temp);
+		if(!tempDir.exists()){
+			tempDir.mkdirs();
 		}
-		return ret;
+		return temp;		
 	}
-	
+
 	public void start() {
 		if (this.workerThread == null) {
 			this.workerThread = new Thread(this);
@@ -189,9 +155,8 @@ public class Worker implements Runnable {
 				DataModel.INSTANCE.changeVideoStatus(current, Status.WAITING);
 			}
 			if (this.tempDir != null) {
-				File temp = new File(tempDir);
 				UmibeFileUtils.cleanUpDirectory(tempDir);
-				temp.delete();
+				tempDir.delete();
 			}
 		}
 	}

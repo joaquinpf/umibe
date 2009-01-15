@@ -4,23 +4,28 @@ import java.util.ArrayList;
 
 import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
+import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.util.UmibeFileUtils;
 
-public class Encoder {
+public abstract class Encoder {
 
-	private String executable;
-	private String BePipe;
-	private XMLConfigLoader pl;
-	private boolean verbosity = false;
-	private IExecutionEnvironment clienv = null;
+	protected String executable;
+	protected String BePipe;
+	protected XMLConfigLoader pl;
+	protected boolean verbosity = false;
+	protected IExecutionEnvironment clienv = null;
+	protected String tempDir = null;
+	protected String avsProfile = null;
 	
-	public Encoder(String config, boolean verbosity) {
+	public Encoder(String config, String avsProfile, String tempdir, boolean verbosity) {
 		this.pl = new XMLConfigLoader(config);
 		this.executable = this.pl.getNodeText("EncoderRoute");
 		this.executable = UmibeFileUtils.getFullPath(this.executable);
 		this.BePipe = UmibeFileUtils.getFullPath("./resources/BePipe.exe") + " ";
 		this.verbosity = verbosity;
 		this.clienv = new WindowsCLIEnvironment();
+		this.tempDir = tempdir;
+		this.avsProfile = avsProfile;
 	}
 
 	private String replace(String str, String pattern, String replace) {
@@ -39,7 +44,9 @@ public class Encoder {
 		// return str.replaceAll(pattern, replace);
 	}
 
-	public int encode(String input, String output) {
+	public abstract ArrayList<MediaTrack> encode(String file, TracksInfoParser tip);
+	
+	protected int encodeTrack(String input, String output) {
 
 		int result = 0;
 		for (int i = 1; i <= Integer.parseInt(this.pl
@@ -75,7 +82,7 @@ public class Encoder {
 		clienv.killProcess();
 	}
 
-	public int pipedEncode(String input, String output) {
+	protected int pipedEncodeTrack(String input, String output) {
 
 		String pipe = UmibeFileUtils.addComillas(this.BePipe) + " --script \"import(^"
 				+ UmibeFileUtils.getFullPath(input) + "^)\" | ";

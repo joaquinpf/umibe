@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Locale;
 
 import ar.com.umibe.core.MediaTrack;
@@ -16,7 +15,7 @@ public class MatroskaUtils {
 
 	private static String mkvPath = "./resources/mkvtools/";
 	
-	public static void MKVize(String input, String output, boolean verbosity) {
+	public static int MKVize(String input, String output, boolean verbosity) {
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
 				.getFullPath(mkvPath + "mkvmerge.exe"))
 				+ " -o ";
@@ -24,7 +23,7 @@ public class MatroskaUtils {
 		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
 
 		IExecutionEnvironment clienv = new WindowsCLIEnvironment();
-		clienv.execute(tool + output + input, verbosity, false);
+		return clienv.execute(tool + output + input, verbosity, false);		
 	}
 
 	public static void demux(String input, String outputFolder, ArrayList<InfoTrack> tracks, boolean verbosity) {
@@ -74,7 +73,7 @@ public class MatroskaUtils {
 		clienv.execute(tool + input + " > " + output, false, false);
 	}
 	
-	public static void merge(String video, ArrayList<MediaTrack> audioTracks, String filename,
+	public static void merge(ArrayList<MediaTrack> videoTracks, ArrayList<MediaTrack> audioTracks, String filename,
 			String dirToMux, String doneDir, TracksInfoParser tracks, boolean verbosity) {
 
 		String[] subs = UmibeFileUtils.filterFiles(dirToMux, "subtitles_", "sub");
@@ -109,15 +108,14 @@ public class MatroskaUtils {
 			files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 
-		File v = new File(UmibeFileUtils.getFullPath(video));
-		if (v.exists()) {
-			ArrayList<InfoTrack> videoTracks = tracks.getTracks("video");
+		for(int i=0; i<videoTracks.size(); i++) {
 			String videoOptions = " ";
-			if(videoTracks!=null && videoTracks.size()>0){
-				videoOptions = " --language 1:" + videoTracks.get(0).getLanguage() +
-							" --track-name 1:" + UmibeFileUtils.addComillas(videoTracks.get(0).getName()) + " ";
+			MediaTrack m = videoTracks.get(i);
+			if(m.getInfoTrack()!=null){
+				videoOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
+							" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
 			}
-			files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(video));
+			files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 		
 		ArrayList<InfoTrack> subtitleTracks = tracks.getTracks("subtitles");

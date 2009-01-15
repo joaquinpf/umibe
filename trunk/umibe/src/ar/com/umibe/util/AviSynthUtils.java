@@ -16,7 +16,6 @@ public class AviSynthUtils {
 		try {
 			input = UmibeFileUtils.getFullPath(input);
 			tempDir += UmibeFileUtils.getFileName(input);
-			//tempDir = tempDir.replaceAll(" ", "_");
 
 			BufferedWriter out = new BufferedWriter(new FileWriter(tempDir
 					+ ".avs"));
@@ -47,7 +46,6 @@ public class AviSynthUtils {
 		try {
 			input = UmibeFileUtils.getFullPath(input);
 			tempDir += UmibeFileUtils.getFileName(input);
-			//tempDir = tempDir.replaceAll(" ", "_");
 
 			BufferedWriter out = new BufferedWriter(new FileWriter(tempDir
 					+ "audio.avs"));

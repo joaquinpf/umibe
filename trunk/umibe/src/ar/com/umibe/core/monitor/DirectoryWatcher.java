@@ -59,18 +59,6 @@ public class DirectoryWatcher extends AbstractResourceWatcher {
 	}
 
 	/**
-	 * For testing only.
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// Monitor c:/temp every 5 seconds
-		DirectoryWatcher dw = new DirectoryWatcher("c:/temp/", 5);
-		// dw.addListener(new MediaFolderWatcher());
-		dw.start();
-	}
-
-	/**
 	 * Start the monitoring of this directory.
 	 */
 	@Override

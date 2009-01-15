@@ -26,7 +26,9 @@ import javax.swing.ImageIcon;
 import com.golden.gamedev.util.ImageUtil;
 
 import ar.com.umibe.util.GuiUtils;
+import ar.com.umibe.util.UmibeFileUtils;
 import ar.com.umibe.util.VideoUtils;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -57,6 +59,11 @@ public class VideoInfoDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel1.setMaximumSize(new java.awt.Dimension(320, 240));
@@ -95,22 +102,29 @@ public class VideoInfoDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        UmibeFileUtils.delete(scs);
+        UmibeFileUtils.delete(mediainfo);
+    }//GEN-LAST:event_formWindowClosing
+
     public void loadInfo(String file) {
     	File f = new File(file);
     	if(f.exists()){
-    		String scs = VideoUtils.takeScreenshot(file);
-    		String mediainfo = VideoUtils.getMediaInfo(file);
+    		scs = VideoUtils.takeScreenshot(file);
+    		mediainfo = VideoUtils.getMediaInfo(file);
     		try {
-				BufferedImage b = ImageIO.read(new File(scs));
-				b = ImageUtil.resize(b, 361, 240);
-		        Image i = Toolkit.getDefaultToolkit().createImage(b.getSource());
-				ImageIcon icon = new ImageIcon(i);
-				jLabel1.setIcon(icon);
-			    // setMargin(new Insets(0,0,0,0));
-				jLabel1.setIconTextGap(0);
-			    // setBorderPainted(false);
-				jLabel1.setText(null);
-				jLabel1.setSize(320, 240);
+    			if(scs != null){
+    				BufferedImage b = ImageIO.read(new File(scs));
+    				b = ImageUtil.resize(b, 361, 240);
+    				Image i = Toolkit.getDefaultToolkit().createImage(b.getSource());
+    				ImageIcon icon = new ImageIcon(i);
+    				jLabel1.setIcon(icon);
+    				// setMargin(new Insets(0,0,0,0));
+    				jLabel1.setIconTextGap(0);
+    				// setBorderPainted(false);
+    				jLabel1.setText(null);
+    				jLabel1.setSize(320, 240);
+    			}
 			    FileReader fileStream = new FileReader(mediainfo);
 			    jTextArea1.read( fileStream,mediainfo);
 			} catch (IOException e) {
@@ -136,6 +150,8 @@ public class VideoInfoDialog extends javax.swing.JDialog {
         });
     }
 
+	private String scs = null;
+	private String mediainfo = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

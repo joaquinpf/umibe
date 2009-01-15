@@ -8,6 +8,15 @@ import org.apache.commons.io.FileUtils;
 
 public class UmibeFileUtils {
 
+	public static boolean exists(String input){
+		File f = new File(input);
+		if(f.exists() == true){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public static void copy(File source, File dest) {
 		try {
 			FileUtils.copyFile(source, dest);
@@ -81,6 +90,15 @@ public class UmibeFileUtils {
 		}
 	}
 
+	public static void delete(String filename){
+		if(filename!=null){
+			File f = new File(filename);
+			if(f.exists()){
+				f.delete();
+			}
+		}
+	}
+	
 	public static boolean isSpecificMediaFile(String filename, String extension) {
 		if (filename.endsWith(extension) && (isMediaFile(filename))) {
 			return true;
@@ -89,9 +107,9 @@ public class UmibeFileUtils {
 		}
 	}
 
-	public static void cleanUpDirectory(String directory) {
+	public static void cleanUpDirectory(File directory) {
 		try {
-			FileUtils.cleanDirectory(new File(directory));
+			FileUtils.cleanDirectory(directory);
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("UmibeFileUtils: Could not clean directory");
