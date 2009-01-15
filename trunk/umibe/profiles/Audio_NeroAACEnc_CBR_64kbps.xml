@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Profile>
 	<Name>NeroAACEnc 64kbps</Name>
-	<EncoderName>neroaacenc.exe</EncoderName>
+	<EncoderName>neroAacEnc.exe</EncoderName>
 	<!-- 1Pass/2Pass -->
 	<EncoderPassNumber>1</EncoderPassNumber>
 	<!-- each setting as used in command line -->
