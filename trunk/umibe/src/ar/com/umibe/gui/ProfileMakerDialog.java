@@ -34,6 +34,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 		GuiUtils.setIcon(this);
+        GuiUtils.centerOnScreen(this);
     }
 
     /** This method is called from within the constructor to

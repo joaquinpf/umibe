@@ -2,9 +2,10 @@ package ar.com.umibe.core;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import ar.com.umibe.core.matroska.MatroskaUtils;
-import ar.com.umibe.core.matroska.Track;
+import ar.com.umibe.core.matroska.InfoTrack;
 import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.core.policies.AndPolicy;
 import ar.com.umibe.core.policies.DiskSpacePolicy;
@@ -74,7 +75,7 @@ public class Worker implements Runnable {
 				encodeVideo(fullPath);
 				
 				//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
-				ArrayList<Track> audioTracks = encodeAudio(tip,fullPath,MKVFile);
+				ArrayList<MediaTrack> audioTracks = encodeAudio(tip,fullPath,MKVFile);
 				
 				//Extraccion de chapters
 				MatroskaUtils.extractChapters(MKVFile, tempDir);
@@ -126,10 +127,11 @@ public class Worker implements Runnable {
 		this.vEncoder = null;
 	}
 	
-	private ArrayList<Track> encodeAudio(TracksInfoParser tip, String fullPath, String MKVFile){
+	private ArrayList<MediaTrack> encodeAudio(TracksInfoParser tip, String fullPath, String MKVFile){
 		
 		//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
-		ArrayList<Track> audioTracks = tip.getTracks("audio","jpn");
+		ArrayList<InfoTrack> audioTracks = tip.getTracks("audio","jpn");
+		ArrayList<MediaTrack> ret = new ArrayList<MediaTrack>();
 		//Si no se pudieron extraer los tracks (no se pudo mkvizar)
 		if(audioTracks == null) {
 			//Generacion de script de audio. Encoding de audio
@@ -137,7 +139,10 @@ public class Worker implements Runnable {
 					tempDir, this.current.getAviSynthProfile());
 			this.aEncoder = new Encoder(this.current.getAProfile(), true);
 			aEncoder.pipedEncode(script,tempDir + "encodedaudio_" + 0 + ".m4a");
-			this.aEncoder = null;	
+			this.aEncoder = null;
+			MediaTrack m = new MediaTrack();
+			m.setRouteToTrack(tempDir + "encodedaudio_" + 0 + ".m4a");
+			ret.add(m);
 		} else {
 			if(audioTracks.size() == 0) {
 				audioTracks = tip.getTracks("audio");
@@ -153,9 +158,13 @@ public class Worker implements Runnable {
 				this.aEncoder = new Encoder(this.current.getAProfile(), true);
 				aEncoder.pipedEncode(script,tempDir + "encodedaudio_" + i + ".m4a");
 				this.aEncoder = null;
+				MediaTrack m = new MediaTrack();
+				m.setRouteToTrack(tempDir + "encodedaudio_" + i + ".m4a");
+				m.setInfoTrack(audioTracks.get(i));
+				ret.add(m);
 			}
 		}
-		return audioTracks;
+		return ret;
 	}
 	
 	public void start() {

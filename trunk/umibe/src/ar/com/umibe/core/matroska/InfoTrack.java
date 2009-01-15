@@ -1,12 +1,12 @@
 package ar.com.umibe.core.matroska;
 
-public class Track {
+public class InfoTrack {
 	private int trackNumber;
 	private String trackType;
 	private String language;
 	private String name;
 	
-	public Track (int trackNumber, String trackType, String language, String name) {
+	public InfoTrack (int trackNumber, String trackType, String language, String name) {
 		this.language = language;
 		this.name = name;
 		this.trackType = trackType;

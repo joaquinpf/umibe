@@ -74,7 +74,7 @@ public class UmibeFileUtils {
 				|| filename.endsWith("rm") || filename.endsWith("rmvb")
 				|| filename.endsWith("flv") || filename.endsWith("3gp")
 				|| filename.endsWith("wmv") || filename.endsWith("mpeg")
-				|| filename.endsWith("mpg")) {
+				|| filename.endsWith("mpg") || filename.endsWith("avs")) {
 			return true;
 		} else {
 			return false;
@@ -82,7 +82,7 @@ public class UmibeFileUtils {
 	}
 
 	public static boolean isSpecificMediaFile(String filename, String extension) {
-		if (filename.endsWith(extension)) {
+		if (filename.endsWith(extension) && (isMediaFile(filename))) {
 			return true;
 		} else {
 			return false;

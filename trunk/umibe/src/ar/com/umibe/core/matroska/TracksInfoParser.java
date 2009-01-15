@@ -21,7 +21,7 @@ import org.jdom.output.XMLOutputter;
 
 public class TracksInfoParser {
 	
-	public ArrayList<Track> tracks = null;
+	public ArrayList<InfoTrack> tracks = null;
 
 	public TracksInfoParser(String input, String workDir) {
 		File f = new File(input);
@@ -34,7 +34,7 @@ public class TracksInfoParser {
 	}
 	
 	private void loadXMLTracks(String xmlinput) {
-		tracks = new ArrayList<Track>();
+		tracks = new ArrayList<InfoTrack>();
 		File f = new File(xmlinput);
 		if (f.exists()) {
 			try {
@@ -47,7 +47,7 @@ public class TracksInfoParser {
 				Iterator<Element> i = jobs.iterator();
 				while (i.hasNext()) {
 					Element e = i.next();
-					this.tracks.add(new Track(Integer.parseInt(e.getAttributeValue("Track_number")), 
+					this.tracks.add(new InfoTrack(Integer.parseInt(e.getAttributeValue("Track_number")), 
 							e.getAttributeValue("Track_type"), e.getAttributeValue("Language"), 
 							e.getAttributeValue("Name")));
 				}
@@ -121,9 +121,9 @@ public class TracksInfoParser {
 		}
 	}
 
-	public ArrayList<Track> getTracks(String type) {
+	public ArrayList<InfoTrack> getTracks(String type) {
 		if(tracks != null){
-			ArrayList<Track> a = new ArrayList<Track>();
+			ArrayList<InfoTrack> a = new ArrayList<InfoTrack>();
 			for(int i=0; i<tracks.size(); i++){
 				if(tracks.get(i).getTrackType().equals(type))
 					a.add(tracks.get(i));
@@ -135,9 +135,9 @@ public class TracksInfoParser {
 		}
 	}
 	
-	public ArrayList<Track> getTracks(String type, String language) {
+	public ArrayList<InfoTrack> getTracks(String type, String language) {
 		if(tracks != null){
-			ArrayList<Track> a = new ArrayList<Track>();
+			ArrayList<InfoTrack> a = new ArrayList<InfoTrack>();
 			for(int i=0; i<tracks.size(); i++){
 				if(tracks.get(i).getTrackType().equals(type) &&
 						tracks.get(i).getLanguage().equals(language))

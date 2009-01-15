@@ -80,7 +80,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jLayeredPane2 = new javax.swing.JLayeredPane();
@@ -149,11 +148,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(MainWindow.class);
-        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
-        jLabel9.setName("jLabel9"); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(MainWindow.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
         setResizable(false);
@@ -182,8 +178,12 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
-        jTable1.setColumnSelectionAllowed(false);
         jTable1.setName("jTable1"); // NOI18N
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTable1KeyReleased(evt);
@@ -957,6 +957,15 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+      if (evt.getClickCount() == 2) {
+          VideoFile vf = ((FileTable)jTable1).getSelectedItem();
+          VideoInfoDialog vid = new VideoInfoDialog(this, false);
+          vid.loadInfo(vf.getRoute());
+          vid.setVisible(true);
+      }
+    }//GEN-LAST:event_jTable1MouseClicked
+
 	private void formWindowClosing(java.awt.event.WindowEvent evt) {            
 		// event_formWindowClosing
 		DataModel.INSTANCE.stopWorkers();
@@ -1141,7 +1150,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JList jList1;

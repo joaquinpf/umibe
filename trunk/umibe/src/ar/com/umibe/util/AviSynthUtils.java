@@ -10,6 +10,9 @@ import ar.com.umibe.core.XMLConfigLoader;
 public class AviSynthUtils {
 	public static String generateVideoScript(String input, String tempDir,
 			String profile) {
+		if(UmibeFileUtils.isSpecificMediaFile(input, "avs")){
+			return input;
+		}
 		try {
 			input = UmibeFileUtils.getFullPath(input);
 			tempDir += UmibeFileUtils.getFileName(input);
@@ -38,6 +41,9 @@ public class AviSynthUtils {
 
 	public static String generateAudioScript(String input, String tempDir,
 			String profile) {
+		if(UmibeFileUtils.isSpecificMediaFile(input, "avs")){
+			return input;
+		}
 		try {
 			input = UmibeFileUtils.getFullPath(input);
 			tempDir += UmibeFileUtils.getFileName(input);

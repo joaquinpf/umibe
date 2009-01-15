@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Locale;
 
+import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 import ar.com.umibe.util.UmibeFileUtils;
@@ -25,7 +27,7 @@ public class MatroskaUtils {
 		clienv.execute(tool + output + input, verbosity, false);
 	}
 
-	public static void demux(String input, String outputFolder, ArrayList<Track> tracks, boolean verbosity) {
+	public static void demux(String input, String outputFolder, ArrayList<InfoTrack> tracks, boolean verbosity) {
 		if(tracks!= null && tracks.size()>0){
 			String files = " ";
 			for(int i=0; i<tracks.size(); i++) {
@@ -72,14 +74,12 @@ public class MatroskaUtils {
 		clienv.execute(tool + input + " > " + output, false, false);
 	}
 	
-	public static void merge(String video, ArrayList<Track> audioTracks, String filename,
+	public static void merge(String video, ArrayList<MediaTrack> audioTracks, String filename,
 			String dirToMux, String doneDir, TracksInfoParser tracks, boolean verbosity) {
 
 		String[] subs = UmibeFileUtils.filterFiles(dirToMux, "subtitles_", "sub");
 		
 		String[] chapters = UmibeFileUtils.filterFiles(dirToMux, "_chapters");
-
-		String[] audios = UmibeFileUtils.filterFiles(dirToMux, "encodedaudio_");
 		
 		String files = " ";
 		String chaps = " ";
@@ -99,18 +99,19 @@ public class MatroskaUtils {
 			}
 		}
 		
-		for(int i=0; i<audios.length; i++) {
+		for(int i=0; i<audioTracks.size(); i++) {
 			String audioOptions = " ";
-			if(audioTracks!=null && audioTracks.size()>0){
-				audioOptions = " --language 1:" + audioTracks.get(i).getLanguage() +
-							" --track-name 1:" + UmibeFileUtils.addComillas(audioTracks.get(i).getName()) + " ";
+			MediaTrack m = audioTracks.get(i);
+			if(m.getInfoTrack()!=null){
+				audioOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
+							" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
 			}
-			files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(dirToMux + audios[i]));
+			files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 
 		File v = new File(UmibeFileUtils.getFullPath(video));
 		if (v.exists()) {
-			ArrayList<Track> videoTracks = tracks.getTracks("video");
+			ArrayList<InfoTrack> videoTracks = tracks.getTracks("video");
 			String videoOptions = " ";
 			if(videoTracks!=null && videoTracks.size()>0){
 				videoOptions = " --language 1:" + videoTracks.get(0).getLanguage() +
@@ -119,7 +120,7 @@ public class MatroskaUtils {
 			files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(video));
 		}
 		
-		ArrayList<Track> subtitleTracks = tracks.getTracks("subtitles");
+		ArrayList<InfoTrack> subtitleTracks = tracks.getTracks("subtitles");
 		for (int i = 0; i < subs.length; i++) {
 				String subOptions = " ";
 				if(subtitleTracks!=null && subtitleTracks.size()>0){

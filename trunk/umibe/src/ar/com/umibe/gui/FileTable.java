@@ -53,6 +53,11 @@ public class FileTable extends DragAndDropTable implements Observer {
 		model.addTableModelListener(new FileTableListener());
 	}
 	
+	public VideoFile getSelectedItem(){
+		DefaultTableModel model = (DefaultTableModel) this.getModel();
+		return (VideoFile)model.getValueAt(getSelectedRow(), 1);
+	}
+	
 	@Override
 	public void drop(DropTargetDropEvent event) {
 
