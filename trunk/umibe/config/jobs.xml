@@ -1,1 +1,28 @@
-<object type="list" elementType="Object" length="0" id="0" />
+<object type="list" elementType="Object" length="2" id="0">
+  <object type="ar.com.umibe.core.VideoFile" id="1">
+    <field name="route" type="string" value="E:\Umibe SVN\umibe\[pinokkio] Hayden Panettiere_ButtSlap3_BIO3.wmv.mkv" />
+    <field name="vProfile" type="string" value="profiles/Video_X264_AnimeHD_1PassCQ.xml" />
+    <field name="aProfile" type="string" value="profiles/Audio_NeroAACEnc_CBR_64kbps.xml" />
+    <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Default.xml" />
+    <field name="outputFolder" type="string" value="./done/" />
+    <field name="moveAfterDone" type="string" value=" " />
+    <field name="ownerHost" type="string" value="zanarkand-d" />
+    <field name="priority" type="int" value="3" />
+    <field name="status">
+      <object type="ar.com.umibe.core.Status" id="2" />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.VideoFile" id="3">
+    <field name="route" type="string" value="E:\Umibe SVN\umibe\[pinokkio] Hayden Panettiere_ButtSlap2_BIO3.wmv.mkv" />
+    <field name="vProfile" type="string" value="profiles/Video_X264_AnimeHD_1PassCQ.xml" />
+    <field name="aProfile" type="string" value="profiles/Audio_NeroAACEnc_CBR_64kbps.xml" />
+    <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Default.xml" />
+    <field name="outputFolder" type="string" value="./done/" />
+    <field name="moveAfterDone" type="string" value=" " />
+    <field name="ownerHost" type="string" value="zanarkand-d" />
+    <field name="priority" type="int" value="3" />
+    <field name="status">
+      <object idref="2" />
+    </field>
+  </object>
+</object>

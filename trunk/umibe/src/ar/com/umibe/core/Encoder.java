@@ -19,9 +19,10 @@ public abstract class Encoder {
 	
 	public Encoder(String config, String avsProfile, String tempdir, boolean verbosity) {
 		this.pl = new XMLConfigLoader(config);
-		this.executable = this.pl.getNodeText("EncoderRoute");
+		this.executable = DataModel.INSTANCE.getToolPath(this.pl.getNodeText("EncoderName"));
 		this.executable = UmibeFileUtils.getFullPath(this.executable);
-		this.BePipe = UmibeFileUtils.getFullPath("./resources/BePipe.exe") + " ";
+		this.BePipe = UmibeFileUtils.getFullPath(DataModel.INSTANCE
+				.getToolPath("BePipe.exe"))	+ " ";
 		this.verbosity = verbosity;
 		this.clienv = new WindowsCLIEnvironment();
 		this.tempDir = tempdir;

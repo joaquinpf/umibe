@@ -8,11 +8,14 @@ import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 
 public class VideoUtils {
-	public static String takeScreenshot(String input){
-		
+	
+	private static String mplayer = "./resorces/mencoder/mplayer.exe";
+	private static String mediainfo = "./resorces/MediaInfo/MediaInfo.exe";
+	
+	public static String takeScreenshot(String input){	
 		//mplayer input-file -ss <position in seconds> -frames 1 -vo jpeg
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-				.getFullPath("./resources/mencoder/mplayer.exe"));
+				.getFullPath(mplayer));
 		
 		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
 		String tempDir = DataModel.INSTANCE.getTempDir();
@@ -31,7 +34,7 @@ public class VideoUtils {
 	public static String getMediaInfo(String input){
 		try {
 			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-					.getFullPath("./resources/MediaInfo/MediaInfo.exe"));
+					.getFullPath(mediainfo));
 
 			String inputFilename = UmibeFileUtils.getFileName(input);
 			input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
@@ -48,5 +51,13 @@ public class VideoUtils {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public static void setMplayer(String mplayer) {
+		VideoUtils.mplayer = mplayer;
+	}
+
+	public static void setMediainfo(String mediainfo) {
+		VideoUtils.mediainfo = mediainfo;
 	}		
 }

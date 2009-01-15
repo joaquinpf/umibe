@@ -59,14 +59,14 @@ public class Worker implements Runnable {
 				String tempDirPath = generateTempDir();
 
 				//Mkvizacion
-				String MKVFile = tempDir + UmibeFileUtils.getFileName(fullPath) + ".mkv";
+				String MKVFile = tempDirPath + UmibeFileUtils.getFileName(fullPath) + ".mkv";
 				int mkvResult = MatroskaUtils.MKVize(fullPath, MKVFile, verbosity);
 				if(mkvResult == 0) {
 					fullPath = MKVFile;
 				}
 								
 				//Extraccion de informacion de MKV
-				String infoFile = tempDir + UmibeFileUtils.getFileName(fullPath) + "_info.txt";
+				String infoFile = tempDirPath + UmibeFileUtils.getFileName(fullPath) + "_info.txt";
 				MatroskaUtils.generateInfo(MKVFile, infoFile);
 				TracksInfoParser tip = new TracksInfoParser(infoFile, tempDirPath);
 				

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Profile>
 	<Name>RealCQ24</Name>
-	<EncoderName>X264</EncoderName>
-	<EncoderRoute>./resources/x264.exe</EncoderRoute>
+	<EncoderName>x264.exe</EncoderName>
 	<!-- 1Pass/2Pass -->
 	<EncoderPassNumber>1</EncoderPassNumber>
 	<!-- each setting as used in command line -->

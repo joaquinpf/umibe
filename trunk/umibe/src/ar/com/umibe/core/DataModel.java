@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import wox.serial.Easy;
+import ar.com.umibe.core.matroska.MatroskaUtils;
 import ar.com.umibe.core.monitor.MediaFolderWatcher;
 import ar.com.umibe.core.policies.Policy;
 import ar.com.umibe.core.queue.DistributedQueue;
@@ -17,6 +18,7 @@ import ar.com.umibe.core.stats.SingleFileStat;
 import ar.com.umibe.core.stats.StatGenerator;
 import ar.com.umibe.gui.UserIterface;
 import ar.com.umibe.util.UmibeFileUtils;
+import ar.com.umibe.util.VideoUtils;
 
 public class DataModel implements Observer {
 
@@ -35,8 +37,11 @@ public class DataModel implements Observer {
 		
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();
 		loadConfig();
-		
-		saveConfig();
+		VideoUtils.setMediainfo(getToolPath("MediaInfo.exe"));
+		VideoUtils.setMplayer(getToolPath("mplayer.exe"));
+		MatroskaUtils.setMkvextract(getToolPath("mkvextract.exe"));
+		MatroskaUtils.setMkvinfo(getToolPath("mkvinfo.exe"));
+		MatroskaUtils.setMkvmerge(getToolPath("mkvmerge.exe"));
 	}
 
     public void resetSettings() {
@@ -195,6 +200,10 @@ public class DataModel implements Observer {
 		Easy.save(watchedFolders, "./config/folders.xml");
 	}
 
+	public String getToolPath(String tool) {
+		return settings.tools.get(tool);
+	}
+	
 	public String getVProfile() {
 		return settings.vProfile;
 	}

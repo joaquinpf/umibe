@@ -13,11 +13,13 @@ import ar.com.umibe.util.UmibeFileUtils;
 
 public class MatroskaUtils {
 
-	private static String mkvPath = "./resources/mkvtools/";
+	private static String mkvmerge = "./resources/mkvtools/mkvmerge.exe";
+	private static String mkvinfo = "./resources/mkvtools/mkvinfo.exe";
+	private static String mkvextract = "./resources/mkvtools/mkvextract.exe";
 	
 	public static int MKVize(String input, String output, boolean verbosity) {
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-				.getFullPath(mkvPath + "mkvmerge.exe"))
+				.getFullPath(mkvmerge))
 				+ " -o ";
 		output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(output));
 		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
@@ -35,7 +37,7 @@ public class MatroskaUtils {
 				files += tracks.get(i).getTrackNumber() + ":" + outFile;
 			}
 			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-					.getFullPath(mkvPath + "mkvextract.exe"))
+					.getFullPath(mkvextract))
 					+ " tracks ";
 			input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
 			
@@ -48,7 +50,7 @@ public class MatroskaUtils {
 		File f = new File(input);
 		if(f.exists()){
 			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-					.getFullPath(mkvPath + "mkvinfo.exe"))
+					.getFullPath(mkvinfo))
 					+ " ";
 
 			infoFile = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(infoFile));
@@ -62,7 +64,7 @@ public class MatroskaUtils {
 	
 	public static void extractChapters(String input, String outputFolder) {
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
-				.getFullPath(mkvPath + "mkvextract.exe"))
+				.getFullPath(mkvextract))
 				+ " chapters ";
 		String output = outputFolder + UmibeFileUtils.getFileName(input) + "_chapters.xml";
 		output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(output));
@@ -144,7 +146,7 @@ public class MatroskaUtils {
 		} else {
 			String tool = UmibeFileUtils
 					.addComillas(UmibeFileUtils
-							.getFullPath(mkvPath + "mkvmerge.exe"))
+							.getFullPath(mkvmerge))
 					+ " -o ";
 			String output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(doneDir
 					+ filename + ".mkv"));
@@ -157,10 +159,22 @@ public class MatroskaUtils {
 	public static void mux(String fullPath, String output) {
 		String tool = UmibeFileUtils
 				.addComillas(UmibeFileUtils
-						.getFullPath(mkvPath + "mkvmerge.exe"))
+						.getFullPath(mkvmerge))
 				+ " -o ";
 
 		IExecutionEnvironment clienv = new WindowsCLIEnvironment();
 		clienv.execute(tool + UmibeFileUtils.addComillas(output) + UmibeFileUtils.addComillas(fullPath), true, false);
+	}
+
+	public static void setMkvmerge(String mkvmerge) {
+		MatroskaUtils.mkvmerge = mkvmerge;
+	}
+
+	public static void setMkvinfo(String mkvinfo) {
+		MatroskaUtils.mkvinfo = mkvinfo;
+	}
+
+	public static void setMkvextract(String mkvextract) {
+		MatroskaUtils.mkvextract = mkvextract;
 	}
 }
