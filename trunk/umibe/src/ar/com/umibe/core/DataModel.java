@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,6 +17,7 @@ import ar.com.umibe.core.queue.GenericQueue;
 import ar.com.umibe.core.queue.LocalQueue;
 import ar.com.umibe.core.stats.SingleFileStat;
 import ar.com.umibe.core.stats.StatGenerator;
+import ar.com.umibe.core.tool.Tool;
 import ar.com.umibe.gui.UserIterface;
 import ar.com.umibe.util.UmibeFileUtils;
 import ar.com.umibe.util.VideoUtils;
@@ -24,6 +26,7 @@ public class DataModel implements Observer {
 
 	public final static DataModel INSTANCE = new DataModel();
 	private GenericQueue queue;
+	public HashMap<String, Tool> tools = new HashMap<String, Tool>();
 
 	private ArrayList<MediaFolderWatcher> watchedFolders = null;
 	private ArrayList<Worker> workers;
@@ -37,11 +40,12 @@ public class DataModel implements Observer {
 		
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();
 		loadConfig();
-		VideoUtils.setMediainfo(getToolPath("MediaInfo.exe"));
-		VideoUtils.setMplayer(getToolPath("mplayer.exe"));
-		MatroskaUtils.setMkvextract(getToolPath("mkvextract.exe"));
-		MatroskaUtils.setMkvinfo(getToolPath("mkvinfo.exe"));
-		MatroskaUtils.setMkvmerge(getToolPath("mkvmerge.exe"));
+		loadTools();
+		//VideoUtils.setMediainfo(getToolPath("MediaInfo.exe"));
+		//VideoUtils.setMplayer(getToolPath("mplayer.exe"));
+		//MatroskaUtils.setMkvextract(getToolPath("mkvextract.exe"));
+		//MatroskaUtils.setMkvinfo(getToolPath("mkvinfo.exe"));
+		//MatroskaUtils.setMkvmerge(getToolPath("mkvmerge.exe"));
 	}
 
     public void resetSettings() {
@@ -200,8 +204,18 @@ public class DataModel implements Observer {
 		Easy.save(watchedFolders, "./config/folders.xml");
 	}
 
+	public void loadTools(){
+		String[] xmls = UmibeFileUtils.filterFiles("./tools/", "Tool");
+		if(xmls!=null){
+			for(int i=0; i<xmls.length; i++){
+				Tool t = new Tool(xmls[i]);
+				tools.put(t.getName(),t);
+			}
+		}
+	}
+	
 	public String getToolPath(String tool) {
-		return settings.tools.get(tool);
+		return tools.get(tool).getPath();
 	}
 	
 	public String getVProfile() {
