@@ -3,12 +3,11 @@
 	<Name>AnimeSD2Pass</Name>
 	<EncoderName>x264.exe</EncoderName>
 	<!-- 1Pass/2Pass -->
-	<EncoderPassNumber>2</EncoderPassNumber>
+	<Mode>2P</Mode>
 	<!-- each setting as used in command line -->
 	<PassOption1s>
 		<PassOption1>--pass 1</PassOption1>
 		<PassOption1>--bitrate 450</PassOption1>
-		<PassOption1>--stats REPLACESTATS</PassOption1>
 		<PassOption1>--bframes 16</PassOption1>
 		<PassOption1>--b-pyramid</PassOption1>
 		<PassOption1>--weightb</PassOption1>
@@ -25,8 +24,6 @@
 		<PassOption1>--no-psnr</PassOption1>
 		<PassOption1>--no-ssim</PassOption1>
 		<PassOption1>--psy-rd 0.0:0</PassOption1>
-		<PassOption1>--output NUL</PassOption1>
-		<PassOption1>REPLACEINPUT</PassOption1>
 	</PassOption1s>	
 	<PassOption2s>
 		<PassOption2>--pass 2</PassOption2>

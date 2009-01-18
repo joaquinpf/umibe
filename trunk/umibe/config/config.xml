@@ -4,7 +4,7 @@
   <field name="moveAfterDone" type="string" value=" " />
   <field name="vProfile" type="string" value="profiles/Video_X264_AnimeHD_1PassCQ.xml" />
   <field name="aProfile" type="string" value="profiles/Audio_NeroAACEnc_CBR_64kbps.xml" />
-  <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Default.xml" />
+  <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Crop.xml" />
   <field name="priority" type="int" value="3" />
   <field name="hostname" type="string" value="zanarkand-d" />
   <field name="profilesDir" type="string" value="./profiles/" />
@@ -15,36 +15,36 @@
         <object type="string" value="./resources/mkvtools/mkvextract.exe" id="3" />
       </object>
       <object type="entry">
-        <object type="string" value="mplayer.exe" id="4" />
-        <object type="string" value="./resources/mencoder/mplayer.exe" id="5" />
+        <object type="string" value="x264.exe" id="4" />
+        <object type="string" value="./resources/x264.exe" id="5" />
       </object>
       <object type="entry">
-        <object type="string" value="x264.exe" id="6" />
-        <object type="string" value="./resources/x264.exe" id="7" />
+        <object type="string" value="mplayer.exe" id="6" />
+        <object type="string" value="./resources/mencoder/mplayer.exe" id="7" />
       </object>
       <object type="entry">
-        <object type="string" value="MediaInfo.exe" id="8" />
-        <object type="string" value="./resources/MediaInfo/MediaInfo.exe" id="9" />
+        <object type="string" value="neroAacEnc.exe" id="8" />
+        <object type="string" value="./resources/neroAacEnc.exe" id="9" />
       </object>
       <object type="entry">
         <object type="string" value="mkvinfo.exe" id="10" />
         <object type="string" value="./resources/mkvtools/mkvinfo.exe" id="11" />
       </object>
       <object type="entry">
-        <object type="string" value="neroAacEnc.exe" id="12" />
-        <object type="string" value="./resources/neroAacEnc.exe" id="13" />
+        <object type="string" value="MediaInfo.exe" id="12" />
+        <object type="string" value="./resources/MediaInfo/MediaInfo.exe" id="13" />
       </object>
       <object type="entry">
         <object type="string" value="mencoder.exe" id="14" />
         <object type="string" value="./resources/mencoder/mencoder.exe" id="15" />
       </object>
       <object type="entry">
-        <object type="string" value="BePipe.exe" id="16" />
-        <object type="string" value="./resources/BePipe.exe" id="17" />
+        <object type="string" value="mkvmerge.exe" id="16" />
+        <object type="string" value="./resources/mkvtools/mkvmerge.exe" id="17" />
       </object>
       <object type="entry">
-        <object type="string" value="mkvmerge.exe" id="18" />
-        <object type="string" value="./resources/mkvtools/mkvmerge.exe" id="19" />
+        <object type="string" value="BePipe.exe" id="18" />
+        <object type="string" value="./resources/BePipe.exe" id="19" />
       </object>
     </object>
   </field>

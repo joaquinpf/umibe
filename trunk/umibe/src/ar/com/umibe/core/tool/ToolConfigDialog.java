@@ -171,6 +171,7 @@ public class ToolConfigDialog extends javax.swing.JDialog {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         saveProfile();
+        this.setVisible(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     public void addTool(Tool t){
@@ -242,11 +243,12 @@ public class ToolConfigDialog extends javax.swing.JDialog {
 		el.setText(((Tool)jComboBox2.getSelectedItem()).getName());
 		root.addContent(el);               
 		
-		el = new Element("EncoderPassNumber");
-		int steps = jComboBox3.getItemCount();
-		el.setText(Integer.toString(steps));
+		el = new Element("Mode");
+		el.setText(((ToolMode)jComboBox1.getSelectedItem()).name);
 		root.addContent(el);   
 
+		int steps = jComboBox3.getItemCount();
+		
 		for (int i = 1; i <= steps; i++) {
 			DefaultTableModel m = models.get(i-1);
 			String key = "PassOption" + i;
@@ -267,8 +269,10 @@ public class ToolConfigDialog extends javax.swing.JDialog {
     		Format f = serializer.getFormat();
     		f.setIndent("  ");
     		serializer.setFormat(f);
-    		String name = ((Tool)jComboBox2.getSelectedItem()).getName() + "_" + jTextField1.getText() + ".xml";
-    		FileWriter fileWriter = new FileWriter("./config/" + name);
+    		String name = ((Tool)jComboBox2.getSelectedItem()).getType() + "_" +
+    			((Tool)jComboBox2.getSelectedItem()).getName() + "_" + 
+    			jTextField1.getText() + ".xml";
+    		FileWriter fileWriter = new FileWriter("./profiles/" + name);
     		serializer.output(doc, fileWriter);
     		fileWriter.flush();
     		fileWriter.close();

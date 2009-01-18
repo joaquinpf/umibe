@@ -21,6 +21,7 @@ import java.util.Observable;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import org.jdom.Document;
@@ -56,10 +57,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
             // set new skin by class name
             SubstanceLookAndFeel
                 .setSkin(new org.jvnet.substance.skin.BusinessSkin());
-           // org.jvnet.substance.skin.NebulaSkin
             repaint();
-			//UIManager.setLookAndFeel(new SubstanceRavenGraphiteLookAndFeel());
-			//UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,6 +66,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		GuiUtils.setIcon(this);
 		DataModel.INSTANCE.addStatsObserver(this);
 		DataModel.INSTANCE.setUi(this);
+		loadComboBoxes();
 		loadGuiConfig();
 	}
 
@@ -138,6 +137,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jButton4 = new javax.swing.JButton();
+        jComboBox4 = new javax.swing.JComboBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -153,6 +154,13 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -493,15 +501,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jComboBox1.setName("jComboBox1"); // NOI18N
-        String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
-        if(profiles != null){
-            for(int i = 0; i < profiles.length; i++){
-                jComboBox1.addItem(profiles[i]);
-                if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
-                    jComboBox1.setSelectedIndex(i);
-                }
-            }
-        }
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
@@ -509,15 +508,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jComboBox2.setName("jComboBox2"); // NOI18N
-        profiles = DataModel.INSTANCE.loadProfiles("audio_");
- if(profiles != null){
-     for(int i = 0; i < profiles.length; i++){
-         jComboBox2.addItem(profiles[i]);
-        if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
-            jComboBox2.setSelectedIndex(i);
-         }
-     }
- }
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox2ItemStateChanged(evt);
@@ -525,15 +515,6 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jComboBox3.setName("jComboBox3"); // NOI18N
-        profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
- if(profiles != null){
-     for(int i = 0; i < profiles.length; i++){
-         jComboBox3.addItem(profiles[i]);
-         if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
-            jComboBox3.setSelectedIndex(i);
-         }
-     }
- }
         jComboBox3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox3ItemStateChanged(evt);
@@ -572,6 +553,23 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
             }
         });
 
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BusinessSkin", "NebulaSkin", "RavenGraphiteGlassSkin", "MistSilverSkin", "ModerateSkin", "RavenGraphiteSkin", "RavenSkin", "EmeraldDuskSkin", "SaharaSkin", "ChallengerDeepSkin", "CremeCoffeeSkin", "AutumnSkin", "BusinessBlackSteelSkin", "BusinessBlueSteelSkin", "CremeSkin", "MagmaSkin", "MistAquaSkin", "OfficeSilver2007Skin", "OfficeBlue2007Skin", "NebulaBrickWallSkin" }));
+        jComboBox4.setName("jComboBox4"); // NOI18N
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setSelected(true);
+        jCheckBox3.setText(resourceMap.getString("jCheckBox3.text")); // NOI18N
+        jCheckBox3.setName("jCheckBox3"); // NOI18N
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -601,15 +599,22 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, 388, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBox2, 0, 388, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addComponent(jComboBox3, 0, 388, Short.MAX_VALUE)
-                            .addComponent(jButton4))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, 0, 388, Short.MAX_VALUE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jComboBox2, 0, 388, Short.MAX_VALUE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jComboBox3, 0, 388, Short.MAX_VALUE)
+                                    .addComponent(jButton4)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox3)))
                         .addContainerGap())
                     .addComponent(jLabel6)))
         );
@@ -644,12 +649,17 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton10)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(7, 7, 7)
                         .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBox3)))
                 .addGap(27, 27, 27)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
@@ -920,35 +930,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jTextField2.setText(DataModel.INSTANCE.getTempDir());
         jTextField6.setText(DataModel.INSTANCE.getMoveAfterDone());
         String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
-        
-        if(profiles != null){
-            for(int i = 0; i < profiles.length; i++){
-                jComboBox1.addItem(profiles[i]);
-                if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
-                    jComboBox1.setSelectedIndex(i);
-                }
-            }
-        }
-        
-        profiles = DataModel.INSTANCE.loadProfiles("audio_");
-        if(profiles != null){
-            for(int i = 0; i < profiles.length; i++){
-                jComboBox2.addItem(profiles[i]);
-                if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
-                   jComboBox2.setSelectedIndex(i);
-                }
-            }
-        }
-        
-        profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
-        if(profiles != null){
-            for(int i = 0; i < profiles.length; i++){
-                jComboBox3.addItem(profiles[i]);
-                if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
-                   jComboBox3.setSelectedIndex(i);
-                }
-            }
-        }
+
+    	jComboBox1.removeAllItems();
+    	jComboBox2.removeAllItems();
+    	jComboBox3.removeAllItems();
+    	loadComboBoxes();
         
         this.jSlider1.setValue(DataModel.INSTANCE.getPriority());
         
@@ -966,38 +952,110 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
       }
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    	// set new skin by class name
+    	SubstanceLookAndFeel
+    	.setSkin("org.jvnet.substance.skin." + (String)jComboBox4.getSelectedItem());
+    	// org.jvnet.substance.skin.NebulaSkin
+    	repaint();
+    	saveGuiConfig();
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    	if(jCheckBox3.isSelected()==false){
+    		try {
+    			UIManager.setLookAndFeel(
+    					UIManager.getSystemLookAndFeelClassName());
+    		} catch (Exception ex) {
+    			System.out.println("Unable to load native look and feel");
+			}
+    	} else {
+    		// set new skin by class name
+    		SubstanceLookAndFeel
+    		.setSkin("org.jvnet.substance.skin." + (String)jComboBox4.getSelectedItem());
+    		// org.jvnet.substance.skin.NebulaSkin
+    		repaint();
+    	}
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+    	loadComboBoxes();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void loadComboBoxes() {
+
+    	String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
+    	if(profiles != null){
+    		for(int i = 0; i < profiles.length; i++){
+    			if(GuiUtils.contains(jComboBox1, profiles[i]) == false){
+    				jComboBox1.addItem(profiles[i]);
+    				if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
+    					jComboBox1.setSelectedIndex(i);
+    				}
+    			}
+    		}
+    	}
+
+    	profiles = DataModel.INSTANCE.loadProfiles("audio_");
+    	if(profiles != null){
+    		for(int i = 0; i < profiles.length; i++){
+    			if(GuiUtils.contains(jComboBox2, profiles[i]) == false){
+    				jComboBox2.addItem(profiles[i]);
+    				if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
+    					jComboBox2.setSelectedIndex(i);
+    				}
+    			}
+    		}
+    	}
+
+    	profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
+    	if(profiles != null){
+    		for(int i = 0; i < profiles.length; i++){
+    			if(GuiUtils.contains(jComboBox3, profiles[i]) == false){
+    				jComboBox3.addItem(profiles[i]);
+    				if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
+    					jComboBox3.setSelectedIndex(i);
+    				}
+    			}
+    		}
+    	}		
+	}
+
 	private void formWindowClosing(java.awt.event.WindowEvent evt) {            
-		// event_formWindowClosing
-		DataModel.INSTANCE.stopWorkers();
-		DataModel.INSTANCE.saveQueue();
-	}// GEN-LAST:event_formWindowClosing
+    	// event_formWindowClosing
+    	DataModel.INSTANCE.stopWorkers();
+    	DataModel.INSTANCE.saveQueue();
+    }// GEN-LAST:event_formWindowClosing
 
-	private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
-		// :
-		// event_jButton5MouseClicked
-		DataModel.INSTANCE.addWorker();
-	}// GEN-LAST:event_jButton5MouseClicked
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
+    	// :
+    	// event_jButton5MouseClicked
+    	DataModel.INSTANCE.addWorker();
+    }// GEN-LAST:event_jButton5MouseClicked
 
-	private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
-		// :
-		// event_jButton7MouseClicked
-		DataModel.INSTANCE.startWorkers();
-	}// GEN-LAST:event_jButton7MouseClicked
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
+    	// :
+    	// event_jButton7MouseClicked
+    	DataModel.INSTANCE.startWorkers();
+    }// GEN-LAST:event_jButton7MouseClicked
 
-	private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
-		// :
-		// event_jButton6MouseClicked
-		DataModel.INSTANCE.stopWorkers();
-		DataModel.INSTANCE.saveQueue();
-	}// GEN-LAST:event_jButton6MouseClicked
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST
+    	// :
+    	// event_jButton6MouseClicked
+    	DataModel.INSTANCE.stopWorkers();
+    	DataModel.INSTANCE.saveQueue();
+    }// GEN-LAST:event_jButton6MouseClicked
 
-	public void saveGuiConfig() {
-		Element root = new Element("GuiConfig");
-		Element el = new Element("EnableFolderProfiling");
-		el.setText(Boolean.toString(this.jCheckBox1.isSelected()));
-		root.addContent(el);
+    public void saveGuiConfig() {
+    	Element root = new Element("GuiConfig");
+    	Element el = new Element("EnableFolderProfiling");
+    	el.setText(Boolean.toString(this.jCheckBox1.isSelected()));
+    	root.addContent(el);
 		el = new Element("EnableFileProfiling");
 		el.setText(Boolean.toString(this.jCheckBox2.isSelected()));
+		root.addContent(el);
+		el = new Element("SelectedSkin");
+		el.setText((String)this.jComboBox4.getSelectedItem());
 		root.addContent(el);
 		Document doc = new Document(root);
 		// serialize it onto System.out
@@ -1027,6 +1085,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 			if (s != null) {
 				jCheckBox2.setSelected(Boolean.parseBoolean(s));
 			}	
+			s = xml.getNodeText("SelectedSkin");
+			if (s != null) {
+				this.jComboBox4.setSelectedItem(s);
+			}	
+			
 		}
 	}
 	
@@ -1129,9 +1192,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

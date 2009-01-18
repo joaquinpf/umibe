@@ -1,10 +1,9 @@
 package ar.com.umibe.core;
 
 import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,7 +25,7 @@ public class DataModel implements Observer {
 
 	public final static DataModel INSTANCE = new DataModel();
 	private GenericQueue queue;
-	public HashMap<String, Tool> tools = new HashMap<String, Tool>();
+	public Hashtable<String, Tool> tools = new Hashtable<String, Tool>();
 
 	private ArrayList<MediaFolderWatcher> watchedFolders = null;
 	private ArrayList<Worker> workers;
@@ -35,17 +34,21 @@ public class DataModel implements Observer {
 	private Settings settings = new Settings();
 
 	private DataModel() {
-		
+
 		this.workers = new ArrayList<Worker>();
-		
+
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();
 		loadConfig();
 		loadTools();
-		//VideoUtils.setMediainfo(getToolPath("MediaInfo.exe"));
-		//VideoUtils.setMplayer(getToolPath("mplayer.exe"));
-		//MatroskaUtils.setMkvextract(getToolPath("mkvextract.exe"));
-		//MatroskaUtils.setMkvinfo(getToolPath("mkvinfo.exe"));
-		//MatroskaUtils.setMkvmerge(getToolPath("mkvmerge.exe"));
+		try{
+			VideoUtils.setMediainfo(getTool("MediaInfo.exe").getPath());
+			VideoUtils.setMplayer(getTool("mplayer.exe").getPath());
+			MatroskaUtils.setMkvextract(getTool("mkvextract.exe").getPath());
+			MatroskaUtils.setMkvinfo(getTool("mkvinfo.exe").getPath());
+			MatroskaUtils.setMkvmerge(getTool("mkvmerge.exe").getPath());
+		}catch (Exception e) {
+			System.out.println("Faltan tools");
+		}
 	}
 
     public void resetSettings() {
@@ -205,17 +208,29 @@ public class DataModel implements Observer {
 	}
 
 	public void loadTools(){
-		String[] xmls = UmibeFileUtils.filterFiles("./tools/", "Tool");
+		String[] xmls = UmibeFileUtils.filterFiles("./tools/", "");
 		if(xmls!=null){
 			for(int i=0; i<xmls.length; i++){
-				Tool t = new Tool(xmls[i]);
+				Tool t = new Tool("./tools/" + xmls[i]);
 				tools.put(t.getName(),t);
 			}
 		}
 	}
 	
-	public String getToolPath(String tool) {
-		return tools.get(tool).getPath();
+	public Tool getTool(String tool) {
+		return tools.get(tool);
+	}
+	
+	public ArrayList<Tool> getToolsByType(String type){
+		ArrayList<Tool> a = new ArrayList<Tool>();
+		Enumeration<String> enu = tools.keys();
+		while(enu.hasMoreElements()){
+			Tool t = tools.get(enu.nextElement());
+			if(t.getType().equals(type)){
+				a.add(t);
+			}
+		}
+		return a;
 	}
 	
 	public String getVProfile() {

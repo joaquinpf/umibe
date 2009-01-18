@@ -73,6 +73,14 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 345));
@@ -108,15 +116,6 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         jLabel1.setName("jLabel1"); // NOI18N
 
         jComboBox1.setName("jComboBox1"); // NOI18N
-        String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
-        if(profiles != null){
-            for(int i = 0; i < profiles.length; i++){
-                jComboBox1.addItem(profiles[i]);
-                if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
-                    jComboBox1.setSelectedIndex(i);
-                }
-            }
-        }
 
         jLabel4.setText("Video profile");
         jLabel4.setName("jLabel4"); // NOI18N
@@ -125,29 +124,11 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         jLabel3.setName("jLabel3"); // NOI18N
 
         jComboBox2.setName("jComboBox2"); // NOI18N
-        profiles = DataModel.INSTANCE.loadProfiles("audio_");
- if(profiles != null){
-     for(int i = 0; i < profiles.length; i++){
-         jComboBox2.addItem(profiles[i]);
-        if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
-            jComboBox2.setSelectedIndex(i);
-         }
-     }
- }
 
         jLabel5.setText("AviSynth profile");
         jLabel5.setName("jLabel5"); // NOI18N
 
         jComboBox3.setName("jComboBox3"); // NOI18N
-        profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
- if(profiles != null){
-     for(int i = 0; i < profiles.length; i++){
-         jComboBox3.addItem(profiles[i]);
-         if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
-            jComboBox3.setSelectedIndex(i);
-         }
-     }
- }
 
         jLabel2.setText("Profile maker");
         jLabel2.setName("jLabel2"); // NOI18N
@@ -179,53 +160,36 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField6)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton10)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4))))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(158, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(154, 154, 154))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6)
+                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField6)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton10)
+                                    .addComponent(jButton5)
+                                    .addComponent(jButton4))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(154, 154, 154))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,10 +333,48 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ToolConfigDialog t = new ToolConfigDialog((JFrame)this.getOwner(), true);
-        t.addTool(new Tool("x264.xml"));
-        t.setVisible(true);
+    	ToolConfigDialog t = new ToolConfigDialog((JFrame)this.getOwner(), true);
+    	t.addTool(new Tool("x264.xml"));
+    	t.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+		String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
+		if(profiles != null){
+			for(int i = 0; i < profiles.length; i++){
+				if(GuiUtils.contains(jComboBox1, profiles[i]) == false){
+					jComboBox1.addItem(profiles[i]);
+					if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
+						jComboBox1.setSelectedIndex(i);
+					}
+				}
+    		}
+    	}
+
+		profiles = DataModel.INSTANCE.loadProfiles("audio_");
+		if(profiles != null){
+			for(int i = 0; i < profiles.length; i++){
+				if(GuiUtils.contains(jComboBox2, profiles[i]) == false){
+					jComboBox2.addItem(profiles[i]);
+					if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
+						jComboBox2.setSelectedIndex(i);
+					}
+				}
+			}
+		}
+
+		profiles = DataModel.INSTANCE.loadProfiles("avisynth_");
+		if(profiles != null){
+			for(int i = 0; i < profiles.length; i++){
+				if(GuiUtils.contains(jComboBox3, profiles[i]) == false){
+					jComboBox3.addItem(profiles[i]);
+					if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
+						jComboBox3.setSelectedIndex(i);
+					}
+				}
+			}
+    	}
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
     * @param args the command line arguments

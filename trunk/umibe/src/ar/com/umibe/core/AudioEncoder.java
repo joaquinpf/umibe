@@ -32,7 +32,7 @@ public class AudioEncoder extends Encoder {
 				MatroskaUtils.mux(UmibeFileUtils.getFullPath(tempDir + audios[i]),UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka");
 				String script = AviSynthUtils.generateAudioScript(UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka",
 						tempDir, avsProfile);
-				this.pipedEncodeTrack(script,tempDir + "encodedaudio_" + i + ".m4a");
+				this.encodeTrack(script,tempDir + "encodedaudio_" + i + ".m4a");
 				MediaTrack m = new MediaTrack();
 				m.setRouteToTrack(tempDir + "encodedaudio_" + i + ".m4a");
 				m.setInfoTrack(audioTracks.get(i));
@@ -42,7 +42,7 @@ public class AudioEncoder extends Encoder {
 			//Generacion de script de audio. Encoding de audio
 			String script = AviSynthUtils.generateAudioScript(file,
 					tempDir, avsProfile);
-			this.pipedEncodeTrack(script,tempDir + "encodedaudio_" + 0 + ".m4a");
+			this.encodeTrack(script,tempDir + "encodedaudio_" + 0 + ".m4a");
 			MediaTrack m = new MediaTrack();
 			m.setRouteToTrack(tempDir + "encodedaudio_" + 0 + ".m4a");
 			ret.add(m);

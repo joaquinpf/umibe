@@ -38,6 +38,7 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
   <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
     <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
     <EventHandler event="windowDeiconified" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowDeiconified"/>
     <EventHandler event="windowIconified" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowIconified"/>
@@ -623,15 +624,25 @@
                                           <Component id="jButton10" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox1" pref="388" max="32767" attributes="1"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox2" pref="388" max="32767" attributes="1"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox3" alignment="0" pref="388" max="32767" attributes="1"/>
-                                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jComboBox1" pref="388" max="32767" attributes="1"/>
+                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jComboBox2" pref="388" max="32767" attributes="1"/>
+                                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jComboBox3" alignment="0" pref="388" max="32767" attributes="1"/>
+                                              <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                          <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -672,7 +683,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -680,12 +691,20 @@
                                       <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                   <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
@@ -825,9 +844,6 @@
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox1ItemStateChanged"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="String[] profiles = DataModel.INSTANCE.loadProfiles(&quot;video_&quot;);&#xd;&#xa;if(profiles != null){&#xd;&#xa;    for(int i = 0; i &lt; profiles.length; i++){&#xd;&#xa;        jComboBox1.addItem(profiles[i]);&#xd;&#xa;        if(DataModel.INSTANCE.getVProfile().equals(&quot;profiles/&quot; + profiles[i])){&#xd;&#xa;            jComboBox1.setSelectedIndex(i);&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;}"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox2">
                   <Properties>
@@ -839,9 +855,6 @@
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="profiles = DataModel.INSTANCE.loadProfiles(&quot;audio_&quot;);&#xd; if(profiles != null){&#xd;     for(int i = 0; i &lt; profiles.length; i++){&#xd;         jComboBox2.addItem(profiles[i]);&#xd;        if(DataModel.INSTANCE.getAProfile().equals(&quot;profiles/&quot; + profiles[i])){&#xd;            jComboBox2.setSelectedIndex(i);&#xd;         }&#xd;     }&#xd; }"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox3">
                   <Properties>
@@ -853,9 +866,6 @@
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox3ItemStateChanged"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="profiles = DataModel.INSTANCE.loadProfiles(&quot;avisynth_&quot;);&#xd; if(profiles != null){&#xd;     for(int i = 0; i &lt; profiles.length; i++){&#xd;         jComboBox3.addItem(profiles[i]);&#xd;         if(DataModel.INSTANCE.getAviSynthProfile().equals(&quot;profiles/&quot; + profiles[i])){&#xd;            jComboBox3.setSelectedIndex(i);&#xd;         }&#xd;     }&#xd; }"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton3">
                   <Properties>
@@ -891,6 +901,48 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jComboBox4">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="20">
+                        <StringItem index="0" value="BusinessSkin"/>
+                        <StringItem index="1" value="NebulaSkin"/>
+                        <StringItem index="2" value="RavenGraphiteGlassSkin"/>
+                        <StringItem index="3" value="MistSilverSkin"/>
+                        <StringItem index="4" value="ModerateSkin"/>
+                        <StringItem index="5" value="RavenGraphiteSkin"/>
+                        <StringItem index="6" value="RavenSkin"/>
+                        <StringItem index="7" value="EmeraldDuskSkin"/>
+                        <StringItem index="8" value="SaharaSkin"/>
+                        <StringItem index="9" value="ChallengerDeepSkin"/>
+                        <StringItem index="10" value="CremeCoffeeSkin"/>
+                        <StringItem index="11" value="AutumnSkin"/>
+                        <StringItem index="12" value="BusinessBlackSteelSkin"/>
+                        <StringItem index="13" value="BusinessBlueSteelSkin"/>
+                        <StringItem index="14" value="CremeSkin"/>
+                        <StringItem index="15" value="MagmaSkin"/>
+                        <StringItem index="16" value="MistAquaSkin"/>
+                        <StringItem index="17" value="OfficeSilver2007Skin"/>
+                        <StringItem index="18" value="OfficeBlue2007Skin"/>
+                        <StringItem index="19" value="NebulaBrickWallSkin"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="jComboBox4" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                  <Properties>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jCheckBox3.text"/>
+                    <Property name="name" type="java.lang.String" value="jCheckBox3" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

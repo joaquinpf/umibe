@@ -3,7 +3,7 @@
 	<Name>AnimeHDCQ</Name>
 	<EncoderName>x264.exe</EncoderName>
 	<!-- 1Pass/2Pass -->
-	<EncoderPassNumber>1</EncoderPassNumber>
+	<Mode>CRF</Mode>
 	<!-- each setting as used in command line -->
 	<PassOptions1>
 		<PassOption1>--crf 20.5</PassOption1>
@@ -26,7 +26,5 @@
 		<PassOption1>--progress</PassOption1>
 		<PassOption1>--no-psnr</PassOption1>
 		<PassOption1>--no-ssim</PassOption1>
-		<PassOption1>--output REPLACEOUTPUT</PassOption1>
-		<PassOption1>REPLACEINPUT</PassOption1>
 	</PassOptions1>	
 </Profile>

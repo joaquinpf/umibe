@@ -7,7 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -32,5 +34,15 @@ public class GuiUtils {
 	
 	public static void setIcon(final JDialog target){
         target.setIconImage(new ImageIcon("resources/icon.png").getImage());
+	}
+	
+	public static boolean contains(JComboBox j, String s){
+		DefaultComboBoxModel model = (DefaultComboBoxModel) j.getModel();
+		for(int i=0; i<model.getSize(); i++){
+			if(model.getElementAt(i).equals(s)){
+				return true;
+			}
+		}
+		return false;
 	}
 }

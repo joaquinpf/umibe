@@ -9,6 +9,7 @@ public class Tool {
 	private ArrayList<ToolMode> modes;
 	private String name;
 	private String path;
+	private String type;
 	
 	public Tool(String toolxml){
 		ToolXMLParser txml = new ToolXMLParser(toolxml);
@@ -16,6 +17,7 @@ public class Tool {
 		modes = txml.getToolModes();
 		path = txml.getNodeText("Path");
 		name = txml.getNodeText("Name");
+		setType(txml.getNodeText("Type"));
 	}
 
 	public String toString(){
@@ -57,5 +59,22 @@ public class Tool {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public ToolMode getMode(String nodeText) {
+		for(int i=0; i<modes.size(); i++){
+			if(modes.get(i).name.equals(nodeText)){
+				return modes.get(i);
+			}
+		}
+		return null;
 	}
 }
