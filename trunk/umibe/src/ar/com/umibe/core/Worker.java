@@ -2,10 +2,8 @@ package ar.com.umibe.core;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import ar.com.umibe.core.matroska.MatroskaUtils;
-import ar.com.umibe.core.matroska.InfoTrack;
 import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.core.policies.AndPolicy;
 import ar.com.umibe.core.policies.DiskSpacePolicy;
@@ -13,7 +11,6 @@ import ar.com.umibe.core.policies.OrPolicy;
 import ar.com.umibe.core.policies.Policy;
 import ar.com.umibe.core.policies.SimplePolicy;
 import ar.com.umibe.core.policies.UNCPolicy;
-import ar.com.umibe.util.AviSynthUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 
 public class Worker implements Runnable {
@@ -78,7 +75,8 @@ public class Worker implements Runnable {
 				
 				//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
 				aEncoder = new AudioEncoder(this.current.getAProfile(), 
-						this.current.getAviSynthProfile(), tempDirPath, true); 
+						this.current.getAviSynthProfile(), tempDirPath, 
+						this.current.isKeepOriginalAudio(), true); 
 				ArrayList<MediaTrack> audioTracks = aEncoder.encode(fullPath, tip);
 				aEncoder = null;
 				
@@ -106,8 +104,9 @@ public class Worker implements Runnable {
 				DataModel.INSTANCE.saveQueue();
 				
 				//Move after done
-				if(!DataModel.INSTANCE.getMoveAfterDone().equals(" ")) {
-					UmibeFileUtils.move(fullPath, DataModel.INSTANCE.getMoveAfterDone());
+				
+				if(current.getMoveAfterDone().equals(" ") == false) {
+					UmibeFileUtils.move(current.getRoute(), current.getMoveAfterDone());
 				}
 				
 				DataModel.INSTANCE.changeVideoStatus(current, Status.DONE);

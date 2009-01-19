@@ -14,6 +14,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 	private String outputFolder;
 	private String moveAfterDone;
 	private String ownerHost;
+	private boolean keepOriginalAudio;
 	private int priority;
 	private Status status = Status.WAITING;
 
@@ -26,6 +27,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 		this.aviSynthProfile = DataModel.INSTANCE.getAviSynthProfile();
 		this.moveAfterDone = DataModel.INSTANCE.getMoveAfterDone();
 		this.ownerHost = DataModel.INSTANCE.getHostname();
+		this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
 	}
 
 	public VideoFile(String route, String profile) {
@@ -34,7 +36,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 		this.ownerHost = DataModel.INSTANCE.getHostname();
 	}
 	
-	public VideoFile(String route, String vProfile, String aProfile,
+	/*public VideoFile(String route, String vProfile, String aProfile,
 			String aviSynthProfile, String outputFolder, String moveAfterDone, int priority,
 			String ownerHost) {
 		this.route = route;
@@ -45,7 +47,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 		this.moveAfterDone = moveAfterDone;
 		this.priority = priority;
 		this.ownerHost = ownerHost;
-	}
+	}*/
 
 	public Status getStatus() {
 		return this.status;
@@ -151,6 +153,12 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 			} else {
 				this.moveAfterDone = DataModel.INSTANCE.getMoveAfterDone();
 			}
+			s = xml.getNodeText("KeepOriginalAudio");
+			if (s != null) {
+				this.keepOriginalAudio = Boolean.parseBoolean(s);
+			} else {
+				this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
+			}
 		} else {
 			this.moveAfterDone = DataModel.INSTANCE.getMoveAfterDone();
 			this.priority = DataModel.INSTANCE.getPriority();
@@ -158,7 +166,12 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 			this.vProfile = DataModel.INSTANCE.getVProfile();
 			this.aProfile = DataModel.INSTANCE.getAProfile();
 			this.outputFolder = DataModel.INSTANCE.getDoneDir();
+			this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
 		}
+	}
+
+	public boolean isKeepOriginalAudio() {
+		return keepOriginalAudio;
 	}
 
 }

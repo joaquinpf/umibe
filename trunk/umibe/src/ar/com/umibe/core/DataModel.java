@@ -208,7 +208,7 @@ public class DataModel implements Observer {
 	}
 
 	public void loadTools(){
-		String[] xmls = UmibeFileUtils.filterFiles("./tools/", "");
+		String[] xmls = UmibeFileUtils.filterFiles("./tools/", "xml");
 		if(xmls!=null){
 			for(int i=0; i<xmls.length; i++){
 				Tool t = new Tool("./tools/" + xmls[i]);
@@ -319,5 +319,13 @@ public class DataModel implements Observer {
 
 	public void setUi(UserIterface ui) {
 		this.ui = ui;
+	}
+
+	public boolean getKeepOriginalAudio() {
+		return settings.keepOriginalAudio;
+	}
+	
+	public void setKeepOriginalAudio(boolean value) {
+		settings.keepOriginalAudio = value;
 	}
 }

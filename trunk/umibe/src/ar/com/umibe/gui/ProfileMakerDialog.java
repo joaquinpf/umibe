@@ -32,7 +32,11 @@ import javax.swing.JFrame;
  */
 public class ProfileMakerDialog extends javax.swing.JDialog {
 
-    /** Creates new form ProfileMakerDialog */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3475358281304483859L;
+	/** Creates new form ProfileMakerDialog */
     public ProfileMakerDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -69,6 +73,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -154,6 +159,14 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 
         jButton5.setText("New...");
         jButton5.setName("jButton5"); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox1.setText("Keep original audio");
+        jCheckBox1.setName("jCheckBox1"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,7 +182,10 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
                             .addComponent(jLabel7)
                             .addComponent(jLabel1)
                             .addComponent(jLabel6)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1))
                             .addComponent(jLabel3)
                             .addComponent(jLabel8)
                             .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
@@ -225,9 +241,12 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -296,6 +315,9 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 		el = new Element("DefaultPriority");
 		el.setText(Integer.toString(jSlider1.getValue()));
 		root.addContent(el);
+		el = new Element("KeepOriginalAudio");
+		el.setText(Boolean.toString(jCheckBox1.isSelected()));
+		root.addContent(el);
 
 		Document doc = new Document(root);
 		// serialize it onto System.out
@@ -329,12 +351,12 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     	ToolConfigDialog t = new ToolConfigDialog((JFrame)this.getOwner(), true);
-    	t.addTool(new Tool("x264.xml"));
+    	t.addTool(DataModel.INSTANCE.getToolsByType("video"));
     	t.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -376,6 +398,12 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
     	}
     }//GEN-LAST:event_formWindowGainedFocus
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    	ToolConfigDialog t = new ToolConfigDialog((JFrame)this.getOwner(), true);
+    	t.addTool(DataModel.INSTANCE.getToolsByType("audio"));
+    	t.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -400,6 +428,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;

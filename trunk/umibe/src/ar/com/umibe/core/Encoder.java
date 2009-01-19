@@ -20,7 +20,8 @@ public abstract class Encoder {
 	protected String tempDir = null;
 	protected String avsProfile = null;
 	
-	public Encoder(String config, String avsProfile, String tempdir, boolean verbosity) {
+	public Encoder(String config, String avsProfile, String tempdir,
+			boolean verbosity) {
 		this.pl = new XMLConfigLoader(config);
 		
 		this.executable = DataModel.INSTANCE.getTool(this.pl.getNodeText("EncoderName"));
