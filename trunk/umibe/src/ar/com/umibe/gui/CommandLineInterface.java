@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import ar.com.umibe.core.DataModel;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 
 public class CommandLineInterface implements UserIterface {
 	
@@ -36,7 +36,7 @@ public class CommandLineInterface implements UserIterface {
 				if (file.exists() && file.isFile()) {
 					System.out.println("GOT FILE: "
 							+ split[1]);
-					DataModel.INSTANCE.addToQueue(new VideoFile(split[1]));
+					DataModel.INSTANCE.addToQueue(new VideoTask(split[1]));
 				}
 			}
 			if(split[0].equals("addfolder")){
@@ -65,7 +65,7 @@ public class CommandLineInterface implements UserIterface {
 		}
 	}
 
-	private void list(ArrayList<VideoFile> allJobs) {
+	private void list(ArrayList<VideoTask> allJobs) {
 		for(int i=0; i<allJobs.size();i++){
 			System.out.println(allJobs.get(i).getRoute());
 		}

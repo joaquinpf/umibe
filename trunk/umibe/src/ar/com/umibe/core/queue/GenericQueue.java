@@ -7,31 +7,31 @@ import java.util.Observable;
 
 import ar.com.umibe.core.PriorityComparator;
 import ar.com.umibe.core.Status;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
 
 public abstract class GenericQueue extends Observable {	
 	
-	protected List<VideoFile> enqueued;
+	protected List<VideoTask> enqueued;
 	protected boolean availableItems = false;
 		
-	public abstract VideoFile get(Policy p);
-	public void put(ArrayList<VideoFile> newFiles){
+	public abstract VideoTask get(Policy p);
+	public void put(ArrayList<VideoTask> newFiles){
 		if(newFiles != null){
 			for(int i=0; i<newFiles.size();i++){
 				this.put(newFiles.get(i));
 			}
 		}
 	}
-	public abstract void put(VideoFile newFile);
-	public abstract void delete(VideoFile newFile);
-	public abstract void changeItemStatus(VideoFile vf, Status status);
+	public abstract void put(VideoTask newFile);
+	public abstract void delete(VideoTask newFile);
+	public abstract void changeItemStatus(VideoTask vf, Status status);
 		
-	public ArrayList<VideoFile> getEnqueuedElements() {
-		ArrayList<VideoFile> a = new ArrayList<VideoFile>();
-		Iterator<VideoFile> it = enqueued.iterator();
+	public ArrayList<VideoTask> getEnqueuedElements() {
+		ArrayList<VideoTask> a = new ArrayList<VideoTask>();
+		Iterator<VideoTask> it = enqueued.iterator();
 		while (it.hasNext()) { 
-			VideoFile vf = it.next(); 
+			VideoTask vf = it.next(); 
 			if ((vf.getStatus() == Status.WAITING)
 					|| (vf.getStatus() == Status.FAILED)) {
 				a.add(vf);
@@ -40,10 +40,10 @@ public abstract class GenericQueue extends Observable {
 		return a;
 	}
 
-	protected VideoFile getFirstWaiting(Policy p) {
-		Iterator<VideoFile> it = enqueued.iterator();
+	protected VideoTask getFirstWaiting(Policy p) {
+		Iterator<VideoTask> it = enqueued.iterator();
 		while (it.hasNext()) { 
-			VideoFile vf = it.next(); 
+			VideoTask vf = it.next(); 
 			if (vf.getStatus() == Status.WAITING && p.evaluate(vf) == true) {
 				return vf;
 			}
@@ -51,12 +51,12 @@ public abstract class GenericQueue extends Observable {
 		return null;
 	}
 	
-	protected synchronized VideoFile getFirstWaitingWithPriority(Policy policy) {
-		Iterator<VideoFile> it = enqueued.iterator();
+	protected synchronized VideoTask getFirstWaitingWithPriority(Policy policy) {
+		Iterator<VideoTask> it = enqueued.iterator();
 		PriorityComparator p = new PriorityComparator();
-		VideoFile last = null;
+		VideoTask last = null;
 		while (it.hasNext()) { 
-			VideoFile vf = it.next(); 
+			VideoTask vf = it.next(); 
 			if (vf.getStatus() == Status.WAITING && policy.evaluate(vf) == true) {
 				if(p.compare(last, vf)==1) {
 					last = vf;					
@@ -66,20 +66,20 @@ public abstract class GenericQueue extends Observable {
 		return last;
 	}
 
-	public ArrayList<VideoFile> getAllElements() {
-		ArrayList<VideoFile> a = new ArrayList<VideoFile>();
-		Iterator<VideoFile> it = enqueued.iterator();
+	public ArrayList<VideoTask> getAllElements() {
+		ArrayList<VideoTask> a = new ArrayList<VideoTask>();
+		Iterator<VideoTask> it = enqueued.iterator();
 		while (it.hasNext()) { 
-			VideoFile vf = it.next(); 
+			VideoTask vf = it.next(); 
 			a.add(vf);
 		}
 		return a;
 	}
 
-	public boolean exists(VideoFile file) {
-		Iterator<VideoFile> it = enqueued.iterator();
+	public boolean exists(VideoTask file) {
+		Iterator<VideoTask> it = enqueued.iterator();
 		while (it.hasNext()) { 
-			VideoFile vf = it.next(); 
+			VideoTask vf = it.next(); 
 			if (vf.compareTo(file) == 0) {
 				return true;
 			}

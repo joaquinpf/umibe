@@ -28,13 +28,17 @@ public class MatroskaUtils {
 		return clienv.execute(tool + output + input, verbosity, false);		
 	}
 
-	public static void demux(String input, String outputFolder, ArrayList<InfoTrack> tracks, boolean verbosity) {
+	public static ArrayList<MediaTrack> demux(String input, String outputFolder, ArrayList<InfoTrack> tracks, boolean verbosity) {
 		if(tracks!= null && tracks.size()>0){
 			String files = " ";
+			ArrayList<MediaTrack> outputTracks = new ArrayList<MediaTrack>();
 			for(int i=0; i<tracks.size(); i++) {
 				String outFile = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(outputFolder 
 						+ tracks.get(i).getTrackType() + "_" + i)) + " ";
 				files += tracks.get(i).getTrackNumber() + ":" + outFile;
+				MediaTrack m = new MediaTrack();
+				m.setInfoTrack(tracks.get(i));
+				m.setRouteToTrack(outFile);
 			}
 			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
 					.getFullPath(mkvextract))
@@ -43,6 +47,10 @@ public class MatroskaUtils {
 			
 			IExecutionEnvironment clienv = new WindowsCLIEnvironment();
 			clienv.execute(tool + input + files, verbosity, false);
+			
+			return outputTracks;
+		} else {
+			return null;
 		}
 	}
 
@@ -62,7 +70,7 @@ public class MatroskaUtils {
 		}
 	}
 	
-	public static void extractChapters(String input, String outputFolder) {
+	public static String extractChapters(String input, String outputFolder) {
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
 				.getFullPath(mkvextract))
 				+ " chapters ";
@@ -73,6 +81,8 @@ public class MatroskaUtils {
 		
 		IExecutionEnvironment clienv = new WindowsCLIEnvironment();
 		clienv.execute(tool + input + " > " + output, false, false);
+		
+		return output;
 	}
 	
 	public static void merge(ArrayList<MediaTrack> videoTracks, ArrayList<MediaTrack> audioTracks, String filename,

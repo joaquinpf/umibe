@@ -5,16 +5,16 @@ import java.util.Collections;
 
 import ar.com.umibe.core.PriorityComparator;
 import ar.com.umibe.core.Status;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
 
 public class LocalQueue extends GenericQueue {
 
 	public LocalQueue(){
-		enqueued = new ArrayList<VideoFile>();
+		enqueued = new ArrayList<VideoTask>();
 	}
 	
-	public synchronized VideoFile get(Policy p) {
+	public synchronized VideoTask get(Policy p) {
 		while (getFirstWaiting(p) == null) {
 			try {
 				wait();
@@ -22,7 +22,7 @@ public class LocalQueue extends GenericQueue {
 				e.getCause().printStackTrace();
 			}
 		}
-		VideoFile f = getFirstWaiting(p);
+		VideoTask f = getFirstWaiting(p);
 		
 		changeItemStatus(f, Status.ENCODING);
 	
@@ -31,7 +31,7 @@ public class LocalQueue extends GenericQueue {
 		return f;
 	}
 
-	public synchronized void put(VideoFile newFile) {
+	public synchronized void put(VideoTask newFile) {
 		if(!exists(newFile)){
 			this.enqueued.add(newFile);
 			changeItemStatus(newFile, Status.WAITING);
@@ -40,7 +40,7 @@ public class LocalQueue extends GenericQueue {
 		notifyAll();
 	}
 
-	public synchronized void delete(VideoFile newFile) {
+	public synchronized void delete(VideoTask newFile) {
 		for (int i = 0; i < this.enqueued.size(); i++) {
 			if (this.enqueued.get(i).compareTo(newFile) == 0) {
 				this.enqueued.remove(i);
@@ -52,7 +52,7 @@ public class LocalQueue extends GenericQueue {
 	}
 
 	@Override
-	public void changeItemStatus(VideoFile vf, Status status) {
+	public void changeItemStatus(VideoTask vf, Status status) {
 		vf.setStatus(status);
 		setChanged();
 		notifyObservers();

@@ -20,7 +20,7 @@ import javax.swing.table.TableColumn;
 
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.Status;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 
 public class FileTable extends DragAndDropTable implements Observer {
 
@@ -53,9 +53,9 @@ public class FileTable extends DragAndDropTable implements Observer {
 		model.addTableModelListener(new FileTableListener());
 	}
 	
-	public VideoFile getSelectedItem(){
+	public VideoTask getSelectedItem(){
 		DefaultTableModel model = (DefaultTableModel) this.getModel();
-		return (VideoFile)model.getValueAt(getSelectedRow(), 1);
+		return (VideoTask)model.getValueAt(getSelectedRow(), 1);
 	}
 	
 	@Override
@@ -85,10 +85,10 @@ public class FileTable extends DragAndDropTable implements Observer {
 						System.out.println("GOT FILE: "
 								+ file.getCanonicalPath());
 						if(profileable == true) {
-							DataModel.INSTANCE.addToQueue(new VideoFile(file
+							DataModel.INSTANCE.addToQueue(new VideoTask(file
 									.getCanonicalPath(),profile));
 						} else {
-							DataModel.INSTANCE.addToQueue(new VideoFile(file
+							DataModel.INSTANCE.addToQueue(new VideoTask(file
 									.getCanonicalPath()));
 						}
 					}
@@ -113,7 +113,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		refreshList();
 	}
 	public void refreshList() {
-		ArrayList<VideoFile> a = DataModel.INSTANCE.getAllJobs();
+		ArrayList<VideoTask> a = DataModel.INSTANCE.getAllJobs();
 		DefaultTableModel model = (DefaultTableModel) this.getModel();
 		model.setRowCount(0);
 		for (int i=0; i<model.getRowCount(); i++){
@@ -121,7 +121,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		}
 		for (int i = 0; i < a.size(); i++) {
 			if (a.get(i).getStatus() != Status.DELETED) {
-				VideoFile vf = a.get(i);
+				VideoTask vf = a.get(i);
 				Object row [] = {vf.getStatus().toString(),vf,vf.getOwnerHost()};
 				model.addRow(row);
 			}

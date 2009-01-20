@@ -7,7 +7,7 @@ import org.grlea.log.SimpleLogger;
 
 import wox.serial.Easy;
 import ar.com.umibe.core.DataModel;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
 
@@ -24,7 +24,7 @@ public class StatGenerator extends Observable {
 		loadStats();
 	}
 	
-	public synchronized SingleFileStat updateStats(VideoFile oldFile, String newFile, double elapsedTimeMin){	
+	public synchronized SingleFileStat updateStats(VideoTask oldFile, String newFile, double elapsedTimeMin){	
 		File fOld = new File(oldFile.getRoute());
 		File fNew = new File(newFile);
 		if(fOld.exists() && fNew.exists()){

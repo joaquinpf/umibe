@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import ar.com.umibe.core.DataModel;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
 public class MediaFolderWatcher extends BaseListener implements IFileListener {
@@ -54,7 +54,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 				for (int i = 0; i < files.length; i++) {
 					if (files[i].isFile()) {
 						try {
-							VideoFile f = new VideoFile(files[i]
+							VideoTask f = new VideoTask(files[i]
 									.getCanonicalPath(), profile);
 							DataModel.INSTANCE.addToQueue(f);
 							System.out.println("<MediaFolderWatcher> Added: "
@@ -79,7 +79,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 			File file = (File) newResource;
 			if (file.isFile()) {
 				try {
-					DataModel.INSTANCE.addToQueue(new VideoFile(file
+					DataModel.INSTANCE.addToQueue(new VideoTask(file
 							.getCanonicalPath(), profile));
 					System.out.println("<MediaFolderWatcher> Added: "
 							+ file.getAbsolutePath());
@@ -103,7 +103,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 	public void onDelete(Object deletedResource) {
 		if (deletedResource instanceof String) {
 			String deletedFile = (String) deletedResource;
-			DataModel.INSTANCE.deleteFromQueue(new VideoFile(deletedFile));
+			DataModel.INSTANCE.deleteFromQueue(new VideoTask(deletedFile));
 			System.out.println("<MediaFolderWatcher> Deleted: " + deletedFile);
 		}
 	}

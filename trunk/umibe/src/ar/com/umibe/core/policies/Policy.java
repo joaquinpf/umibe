@@ -1,7 +1,7 @@
 package ar.com.umibe.core.policies;
 
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 
 public abstract class Policy {
-	public abstract boolean evaluate(VideoFile vf);
+	public abstract boolean evaluate(VideoTask vf);
 }

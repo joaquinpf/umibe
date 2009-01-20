@@ -1,6 +1,6 @@
 package ar.com.umibe.core.policies;
 
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 
 public class OrPolicy extends Policy {
 
@@ -13,7 +13,7 @@ public class OrPolicy extends Policy {
 	}
 	
 	@Override
-	public boolean evaluate(VideoFile vf) {
+	public boolean evaluate(VideoTask vf) {
 		return a.evaluate(vf) || a.evaluate(vf);
 	}
 

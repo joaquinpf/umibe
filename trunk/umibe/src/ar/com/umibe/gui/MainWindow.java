@@ -32,7 +32,7 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 import org.psafix.folderchooser.JFolderChooser;
 
 import ar.com.umibe.core.DataModel;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.XMLConfigLoader;
 import ar.com.umibe.core.execution.StreamGobbler;
 import ar.com.umibe.core.stats.GlobalStats;
@@ -943,7 +943,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
             int index = this.jTable1.getSelectedRow();
             DefaultTableModel d = (DefaultTableModel) this.jTable1.getModel();
-            VideoFile v = (VideoFile)d.getValueAt(index, 1);
+            VideoTask v = (VideoTask)d.getValueAt(index, 1);
             d.removeRow(index);
             DataModel.INSTANCE.deleteFromQueue(v);
         }
@@ -1035,7 +1035,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
       if (evt.getClickCount() == 2) {
-          VideoFile vf = ((FileTable)jTable1).getSelectedItem();
+          VideoTask vf = ((FileTable)jTable1).getSelectedItem();
           VideoInfoDialog vid = new VideoInfoDialog(this, true);
           vid.loadInfo(vf.getRoute());
           vid.setVisible(true);

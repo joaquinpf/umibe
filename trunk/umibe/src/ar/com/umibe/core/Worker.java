@@ -22,7 +22,7 @@ public class Worker implements Runnable {
 
 	private static boolean verbosity = true;
 	
-	private VideoFile current = null;
+	private VideoTask current = null;
 	
 	private File tempDir = null;
 	
@@ -52,6 +52,8 @@ public class Worker implements Runnable {
 				String fullPath = UmibeFileUtils
 						.getFullPath(this.current.getRoute());
 				
+				EncodingVideo currentev = new EncodingVideo(filename);
+				
 				//Generacion de directorio temporal
 				String tempDirPath = generateTempDir();
 
@@ -70,21 +72,21 @@ public class Worker implements Runnable {
 				//Encoding de video
 				vEncoder = new VideoEncoder(this.current.getVProfile(), 
 						this.current.getAviSynthProfile(), tempDirPath, true); 
-				ArrayList<MediaTrack> videoTracks = vEncoder.encode(fullPath, tip);
+				currentev.setVideoTracks(vEncoder.encode(fullPath, tip));
 				vEncoder = null;
 				
 				//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
 				aEncoder = new AudioEncoder(this.current.getAProfile(), 
 						this.current.getAviSynthProfile(), tempDirPath, 
 						this.current.isKeepOriginalAudio(), true); 
-				ArrayList<MediaTrack> audioTracks = aEncoder.encode(fullPath, tip);
+				currentev.setAudioTracks(aEncoder.encode(fullPath, tip));
 				aEncoder = null;
 				
 				//Extraccion de chapters
-				MatroskaUtils.extractChapters(MKVFile, tempDirPath);
+				currentev.setChapters(MatroskaUtils.extractChapters(MKVFile, tempDirPath));
 				
 				//Demux de tracks de subtitulos
-				MatroskaUtils.demux(MKVFile, tempDirPath, tip.getTracks("subtitles"), verbosity);
+				currentev.setSubtitleTracks(MatroskaUtils.demux(MKVFile, tempDirPath, tip.getTracks("subtitles"), verbosity));
 				
 				//Merge
 				MatroskaUtils.merge(videoTracks, audioTracks, 

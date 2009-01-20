@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 
 
-public class VideoFile implements Comparable<VideoFile>, Serializable {
+public class VideoTask implements Comparable<VideoTask>, Serializable {
 
 	private static final long serialVersionUID = 8723856021264116783L;
 	private String route = " ";
@@ -18,7 +18,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 	private int priority;
 	private Status status = Status.WAITING;
 
-	public VideoFile(String route) {
+	public VideoTask(String route) {
 		this.route = route;
 		this.priority = DataModel.INSTANCE.getPriority();
 		this.vProfile = DataModel.INSTANCE.getVProfile();
@@ -30,7 +30,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 		this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
 	}
 
-	public VideoFile(String route, String profile) {
+	public VideoTask(String route, String profile) {
 		this.route = route;
 		loadProfiles(profile);
 		this.ownerHost = DataModel.INSTANCE.getHostname();
@@ -100,7 +100,7 @@ public class VideoFile implements Comparable<VideoFile>, Serializable {
 	}
 
 	@Override
-	public int compareTo(VideoFile o) {
+	public int compareTo(VideoTask o) {
 		if (this.getRoute().equals(o.getRoute())) {
 			return 0;
 		} else {

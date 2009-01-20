@@ -2,7 +2,7 @@ package ar.com.umibe.core.policies;
 
 import java.lang.reflect.Method;
 
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 
 public class SimplePolicy extends Policy {
 
@@ -16,7 +16,7 @@ public class SimplePolicy extends Policy {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean evaluate(VideoFile vf) {
+	public boolean evaluate(VideoTask vf) {
 		try {
 			Class params[] = {};
 			Object paramsObj[] = {};
@@ -34,7 +34,7 @@ public class SimplePolicy extends Policy {
 	}
 	
 	public static void main(String args[]) {
-		VideoFile v = new VideoFile("lala");
+		VideoTask v = new VideoTask("lala");
 		SimplePolicy s = new SimplePolicy("Route","o");
 		s.evaluate(v);
 	}

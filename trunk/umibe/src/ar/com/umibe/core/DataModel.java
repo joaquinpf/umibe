@@ -56,7 +56,7 @@ public class DataModel implements Observer {
         saveConfig();
     }
 	
-	public SingleFileStat updateStats(VideoFile oldFile, String newFile, double elapsedTimeMin){
+	public SingleFileStat updateStats(VideoTask oldFile, String newFile, double elapsedTimeMin){
 		return this.stats.updateStats(oldFile, newFile, elapsedTimeMin);
 	}
 	
@@ -121,7 +121,7 @@ public class DataModel implements Observer {
 		}
 	}
 
-	public boolean addToQueue(VideoFile vf) {
+	public boolean addToQueue(VideoTask vf) {
 		if (UmibeFileUtils.isMediaFile(vf.getRoute()) && !this.queue.exists(vf)) {
 			this.queue.put(vf);
 			saveQueue();
@@ -130,12 +130,12 @@ public class DataModel implements Observer {
 		return false;
 	}
 
-	public void deleteFromQueue(VideoFile vf) {
+	public void deleteFromQueue(VideoTask vf) {
 		this.queue.delete(vf);
 		saveQueue();
 	}
 
-	public void changeVideoStatus(VideoFile vf, Status status) {
+	public void changeVideoStatus(VideoTask vf, Status status) {
 		this.queue.changeItemStatus(vf, status);
 	}
 	
@@ -147,11 +147,11 @@ public class DataModel implements Observer {
 		this.stats.addObserver(o);
 	}
 
-	public VideoFile getEnqueued(Policy p) {
+	public VideoTask getEnqueued(Policy p) {
 		return this.queue.get(p);
 	}
 
-	public ArrayList<VideoFile> getAllJobs() {
+	public ArrayList<VideoTask> getAllJobs() {
 		return this.queue.getAllElements();
 	}
 	
@@ -176,12 +176,12 @@ public class DataModel implements Observer {
 		
 		File f = new File("./config/jobs.xml");
 		if (f.exists()) {
-			this.queue.put((ArrayList<VideoFile>)Easy.load("./config/jobs.xml"));
+			this.queue.put((ArrayList<VideoTask>)Easy.load("./config/jobs.xml"));
 		}
 	}
 
 	public synchronized void saveQueue() {
-		ArrayList<VideoFile> a = this.queue.getEnqueuedElements();
+		ArrayList<VideoTask> a = this.queue.getEnqueuedElements();
 		Easy.save(a,"./config/jobs.xml");
 	}
 

@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import ar.com.umibe.core.Status;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
 public class FileTableRenderer extends DefaultTableCellRenderer {
@@ -22,10 +22,10 @@ public class FileTableRenderer extends DefaultTableCellRenderer {
 			Object obj, boolean isSelected, boolean hasFocus, int row, int column) {
 		Component cell = super.getTableCellRendererComponent(
 				table, obj, isSelected, hasFocus, row, column);
-		if(column == 1 && obj instanceof VideoFile){
-			setText(UmibeFileUtils.getFileName(((VideoFile)obj).getRoute()));
+		if(column == 1 && obj instanceof VideoTask){
+			setText(UmibeFileUtils.getFileName(((VideoTask)obj).getRoute()));
 		}
-		if(obj instanceof String || obj instanceof VideoFile){
+		if(obj instanceof String || obj instanceof VideoTask){
 			String evaluate = (String)table.getValueAt(row, 0);
 			if (evaluate.equals(Status.WAITING.toString())) {
 				setBackground(Color.white);

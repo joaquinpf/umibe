@@ -7,14 +7,14 @@ import java.util.concurrent.locks.Lock;
 
 import ar.com.umibe.core.PriorityComparator;
 import ar.com.umibe.core.Status;
-import ar.com.umibe.core.VideoFile;
+import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.IList;
 import com.hazelcast.core.ItemListener;
 
-public class DistributedQueue extends GenericQueue implements ItemListener<VideoFile> {
+public class DistributedQueue extends GenericQueue implements ItemListener<VideoTask> {
 
 	private Lock lock;
 	
@@ -25,7 +25,7 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 		((IList)enqueued).addItemListener(this, true);
 	}
 	
-	public synchronized VideoFile get(Policy p) {
+	public synchronized VideoTask get(Policy p) {
 		while (getFirstWaiting(p) == null) {
 			try {
 				wait();
@@ -33,7 +33,7 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 				e.printStackTrace();
 			}
 		}
-		VideoFile f = getFirstWaitingWithPriority(p);
+		VideoTask f = getFirstWaitingWithPriority(p);
 		
 		changeItemStatus(f, Status.ENCODING);
 
@@ -42,7 +42,7 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 		return f;
 	}
 
-	public void changeItemStatus(VideoFile vf, Status status) {
+	public void changeItemStatus(VideoTask vf, Status status) {
 		//TODO Sorting evilness
 		if(exists(vf)){
 			//No se utiliza put por razones de performance
@@ -70,7 +70,7 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 		lock.unlock();
 	}*/
 	
-	public synchronized void put(VideoFile newFile) {
+	public synchronized void put(VideoTask newFile) {
 		if(!exists(newFile)){
 			lock.lock();
 			enqueued.add(newFile);
@@ -80,7 +80,7 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 		}
 	}
 
-	public synchronized void delete(VideoFile newFile) {
+	public synchronized void delete(VideoTask newFile) {
 		if(exists(newFile)) {
 			lock.lock();
 			enqueued.remove(newFile);	
@@ -90,13 +90,13 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 	}
 	
 	@Override
-	public void itemAdded(VideoFile arg0) {
+	public void itemAdded(VideoTask arg0) {
 		setChanged();
 		notifyObservers();
 	}
 
 	@Override
-	public void itemRemoved(VideoFile arg0) {
+	public void itemRemoved(VideoTask arg0) {
 		setChanged();
 		notifyObservers();
 	}

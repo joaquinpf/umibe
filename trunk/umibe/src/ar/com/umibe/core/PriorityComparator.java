@@ -2,10 +2,10 @@ package ar.com.umibe.core;
 
 import java.util.Comparator;
 
-public class PriorityComparator implements Comparator<VideoFile> {
+public class PriorityComparator implements Comparator<VideoTask> {
 
 	@Override
-	public int compare(VideoFile o1, VideoFile o2) {
+	public int compare(VideoTask o1, VideoTask o2) {
 		if(o1 == null && o2 != null) {
 			return 1;
 		} else if (o1 != null && o2==null){
