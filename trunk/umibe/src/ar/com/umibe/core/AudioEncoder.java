@@ -28,7 +28,8 @@ public class AudioEncoder extends Encoder {
 			if(audioTracks.size() == 0) {
 				audioTracks = tip.getTracks("audio");
 			}
-			MatroskaUtils.demux(file, tempDir, audioTracks , verbosity);
+			MatroskaUtils mu = new MatroskaUtils();
+			mu.demux(file, tempDir, audioTracks , verbosity);
 			String[] audios = UmibeFileUtils.filterFiles(tempDir, "audio");
 
 			if(keepOriginalTracks == true){
@@ -42,7 +43,7 @@ public class AudioEncoder extends Encoder {
 
 				for(int i=0; i<audios.length; i++){
 					//Generacion de script de audio. Encoding de audio
-					MatroskaUtils.mux(UmibeFileUtils.getFullPath(tempDir + audios[i]),UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka");
+					mu.mux(UmibeFileUtils.getFullPath(tempDir + audios[i]),UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka");
 					String script = AviSynthUtils.generateAudioScript(UmibeFileUtils.getFullPath(tempDir + audios[i]) + ".mka",
 							tempDir, avsProfile);
 					this.encodeTrack(script,tempDir + "encodedaudio_" + i + ".m4a");

@@ -39,7 +39,8 @@ public class MatroskaUtils implements IContainer{
 				files += tracks.get(i).getTrackNumber() + ":" + outFile;
 				MediaTrack m = new MediaTrack();
 				m.setInfoTrack(tracks.get(i));
-				m.setRouteToTrack(outFile);
+				m.setRouteToTrack(UmibeFileUtils.getFullPath(outputFolder + tracks.get(i).getTrackType() + "_" + i));
+				outputTracks.add(m);
 			}
 			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
 					.getFullPath(mkvextract))
@@ -51,7 +52,7 @@ public class MatroskaUtils implements IContainer{
 			
 			return outputTracks;
 		} else {
-			return null;
+			return new ArrayList<MediaTrack>();
 		}
 	}
 
@@ -75,13 +76,12 @@ public class MatroskaUtils implements IContainer{
 		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
 				.getFullPath(mkvextract))
 				+ " chapters ";
-		String output = outputFolder + UmibeFileUtils.getFileName(input) + "_chapters.xml";
-		output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(output));
+		String output = UmibeFileUtils.getFullPath(outputFolder + UmibeFileUtils.getFileName(input) + "_chapters.xml");
 		
 		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
 		
 		IExecutionEnvironment clienv = new WindowsCLIEnvironment();
-		clienv.execute(tool + input + " > " + output, false, false);
+		clienv.execute(tool + input + " > " + UmibeFileUtils.addComillas(output), false, false);
 		
 		return output;
 	}
@@ -109,25 +109,29 @@ public class MatroskaUtils implements IContainer{
 		}
 
 		ArrayList<MediaTrack> audioTracks = outputvideo.getAudioTracks();
-		for(int i=0; i<audioTracks.size(); i++) {
-			String audioOptions = " ";
-			MediaTrack m = audioTracks.get(i);
-			if(m.getInfoTrack()!=null){
-				audioOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
-							" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+		if(audioTracks != null){
+			for(int i=0; i<audioTracks.size(); i++) {
+				String audioOptions = " ";
+				MediaTrack m = audioTracks.get(i);
+				if(m.getInfoTrack()!=null){
+					audioOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
+					" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+				}
+				files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 			}
-			files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 
 		ArrayList<MediaTrack> videoTracks = outputvideo.getVideoTracks();
-		for(int i=0; i<videoTracks.size(); i++) {
-			String videoOptions = " ";
-			MediaTrack m = videoTracks.get(i);
-			if(m.getInfoTrack()!=null){
-				videoOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
-							" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+		if(videoTracks != null){
+			for(int i=0; i<videoTracks.size(); i++) {
+				String videoOptions = " ";
+				MediaTrack m = videoTracks.get(i);
+				if(m.getInfoTrack()!=null){
+					videoOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
+					" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+				}
+				files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 			}
-			files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 		
 		ArrayList<MediaTrack> subtitleTracks = outputvideo.getSubtitleTracks();

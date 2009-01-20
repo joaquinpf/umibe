@@ -20,7 +20,7 @@ public class SimplePolicy extends Policy {
 		try {
 			Class params[] = {};
 			Object paramsObj[] = {};
-			Class thisClass = Class.forName("ar.com.umibe.core.VideoFile");
+			Class thisClass = Class.forName("ar.com.umibe.core.VideoTask");
 			Method thisMethod = thisClass.getDeclaredMethod("get" + key, params);
 
 			if(thisMethod.invoke(vf, paramsObj).toString().equals(expected)) {
