@@ -1,8 +1,8 @@
 package ar.com.umibe.core;
 
 import java.io.File;
-import java.util.ArrayList;
 
+import ar.com.umibe.core.matroska.IContainer;
 import ar.com.umibe.core.matroska.MatroskaUtils;
 import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.core.policies.AndPolicy;
@@ -57,6 +57,8 @@ public class Worker implements Runnable {
 				//Generacion de directorio temporal
 				String tempDirPath = generateTempDir();
 
+				IContainer containerTools = new MatroskaUtils();
+				
 				//Mkvizacion
 				String MKVFile = tempDirPath + UmibeFileUtils.getFileName(fullPath) + ".mkv";
 				int mkvResult = MatroskaUtils.MKVize(fullPath, MKVFile, verbosity);
@@ -83,15 +85,13 @@ public class Worker implements Runnable {
 				aEncoder = null;
 				
 				//Extraccion de chapters
-				currentev.setChapters(MatroskaUtils.extractChapters(MKVFile, tempDirPath));
+				currentev.setChapters(containerTools.extractChapters(MKVFile, tempDirPath));
 				
 				//Demux de tracks de subtitulos
-				currentev.setSubtitleTracks(MatroskaUtils.demux(MKVFile, tempDirPath, tip.getTracks("subtitles"), verbosity));
+				currentev.setSubtitleTracks(containerTools.demux(MKVFile, tempDirPath, tip.getTracks("subtitles"), verbosity));
 				
 				//Merge
-				MatroskaUtils.merge(videoTracks, audioTracks, 
-						filename, tempDirPath, this.current.getOutputFolder(),
-						tip, verbosity);
+				containerTools.merge(currentev, tempDirPath, this.current.getOutputFolder(), verbosity);
 				
 				//Borrado de temporales
 				UmibeFileUtils.cleanUpDirectory(tempDir);
