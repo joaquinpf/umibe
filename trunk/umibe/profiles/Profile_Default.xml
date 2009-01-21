@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Config>
+<Profile>
   <DoneDirectory>./done/</DoneDirectory>
-  <DefaultPriority>3</DefaultPriority>
-  <MoveToAfterDone> </MoveToAfterDone>
+  <MoveToAfterDone></MoveToAfterDone>
   <DefaultAudioProfile>profiles/Audio_NeroAACEnc_CBR_64kbps.xml</DefaultAudioProfile>
-  <DefaultVideoProfile>profiles/Video_X264_AnimeHD_1PassCQ.xml</DefaultVideoProfile>
-  <DefaultAviSynthProfile>profiles/AviSynth_Default.xml</DefaultAviSynthProfile>
-</Config>
+  <DefaultVideoProfile>profiles/Video_X264_Real_1PassCQ.xml</DefaultVideoProfile>
+  <DefaultAviSynthProfile>profiles/AviSynth_Trim.xml</DefaultAviSynthProfile>
+  <DefaultPriority>3</DefaultPriority>
+  <KeepOriginalAudio>false</KeepOriginalAudio>
+</Profile>
 

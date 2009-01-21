@@ -32,10 +32,4 @@ public class SimplePolicy extends Policy {
 			return false;
 		}
 	}
-	
-	public static void main(String args[]) {
-		VideoTask v = new VideoTask("lala");
-		SimplePolicy s = new SimplePolicy("Route","o");
-		s.evaluate(v);
-	}
 }

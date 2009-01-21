@@ -296,7 +296,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-		Element root = new Element("Config");
+		Element root = new Element("Profile");
 		Element el = new Element("DoneDirectory");
 		el.setText(jTextField1.getText());
 		root.addContent(el);

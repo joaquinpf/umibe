@@ -237,27 +237,12 @@ public class DataModel implements Observer {
 		return settings.vProfile;
 	}
 
-	public void setVProfile(String s) {
-		settings.vProfile = s;
-		saveConfig();
-	}
-
 	public String getAProfile() {
 		return settings.aProfile;
 	}
 
-	public void setAProfile(String s) {
-		settings.aProfile = s;
-		saveConfig();
-	}
-
 	public String getAviSynthProfile() {
 		return settings.aviSynthProfile;
-	}
-
-	public void setAviSynthProfile(String s) {
-		settings.aviSynthProfile = s;
-		saveConfig();
 	}
 
 	public String getTempDir() {
@@ -272,29 +257,13 @@ public class DataModel implements Observer {
 	public String getMoveAfterDone() {
 		return settings.moveAfterDone;
 	}
-
-	public void setMoveAfterDone(String s) {
-		settings.moveAfterDone = s;
-		saveConfig();
-	}
-
 	
 	public String getDoneDir() {
 		return settings.doneDir;
 	}
 
-	public void setDoneDir(String s) {
-		settings.doneDir = s;
-		saveConfig();
-	}
-
 	public int getPriority() {
 		return settings.priority;
-	}
-
-	public void setPriority(int priority) {
-		settings.priority = priority;
-		saveConfig();
 	}
 	
 	public String getHostname(){
@@ -323,9 +292,5 @@ public class DataModel implements Observer {
 
 	public boolean getKeepOriginalAudio() {
 		return settings.keepOriginalAudio;
-	}
-	
-	public void setKeepOriginalAudio(boolean value) {
-		settings.keepOriginalAudio = value;
 	}
 }

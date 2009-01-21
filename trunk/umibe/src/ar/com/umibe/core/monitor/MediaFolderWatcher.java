@@ -103,7 +103,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 	public void onDelete(Object deletedResource) {
 		if (deletedResource instanceof String) {
 			String deletedFile = (String) deletedResource;
-			DataModel.INSTANCE.deleteFromQueue(new VideoTask(deletedFile));
+			DataModel.INSTANCE.deleteFromQueue(new VideoTask(deletedFile, "profiles/Profile_Default.xml"));
 			System.out.println("<MediaFolderWatcher> Deleted: " + deletedFile);
 		}
 	}

@@ -36,7 +36,7 @@ public class CommandLineInterface implements UserIterface {
 				if (file.exists() && file.isFile()) {
 					System.out.println("GOT FILE: "
 							+ split[1]);
-					DataModel.INSTANCE.addToQueue(new VideoTask(split[1]));
+					DataModel.INSTANCE.addToQueue(new VideoTask(split[1], "profiles/Profile_Default.xml"));
 				}
 			}
 			if(split[0].equals("addfolder")){

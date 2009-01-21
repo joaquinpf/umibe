@@ -21,6 +21,8 @@ import javax.swing.table.TableColumn;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
+import ar.com.umibe.core.gui.tests.MyComboBoxEditor;
+import ar.com.umibe.core.gui.tests.MyComboBoxRenderer;
 
 public class FileTable extends DragAndDropTable implements Observer {
 
@@ -37,12 +39,24 @@ public class FileTable extends DragAndDropTable implements Observer {
 		model.addColumn("Status");
 		model.addColumn("Filename");
 		model.addColumn("Owner Host");
+		model.addColumn("Selected Profile");
+		model.addColumn("Priority");
+		model.addColumn("Enabled");
+		
+		setCombobox();
+ 
 		TableColumn column = getColumnModel().getColumn(0); 
-		column.setPreferredWidth(5); 
+		column.setPreferredWidth(1); 
 		column = getColumnModel().getColumn(1); 
-		column.setPreferredWidth(300); 
+		column.setPreferredWidth(350); 
 		column = getColumnModel().getColumn(2); 
-		column.setPreferredWidth(5); 
+		column.setPreferredWidth(35); 
+		column = getColumnModel().getColumn(3); 
+		column.setPreferredWidth(100); 
+		column = getColumnModel().getColumn(4); 
+		column.setPreferredWidth(1); 
+		column = getColumnModel().getColumn(5); 
+		column.setPreferredWidth(1); 
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		getTableHeader().setResizingAllowed(false);
@@ -53,6 +67,42 @@ public class FileTable extends DragAndDropTable implements Observer {
 		model.addTableModelListener(new FileTableListener());
 	}
 	
+	private void setCombobox(){
+        String[] profiles = DataModel.INSTANCE.loadProfiles("profile_");
+	    
+	    // Set the combobox editor on the 1st visible column
+	    int vColIndex = 3;
+	    TableColumn col = this.getColumnModel().getColumn(vColIndex);
+	    col.setCellEditor(new MyComboBoxEditor(profiles));
+	    
+	    // If the cell should appear like a combobox in its
+	    // non-editing state, also set the combobox renderer
+	    col.setCellRenderer(new MyComboBoxRenderer(profiles));
+	}
+	
+	public Class getColumnClass (int columna) { 
+		try{ 
+			if (columna == 4) 
+				return Integer.class; 
+			if (columna == 5) 
+				return Boolean.class; 
+			else {
+				return Object.class;
+			}
+		} catch (Exception e) { 
+			e.printStackTrace(); 
+		} 
+		return Object.class; 
+	}
+	
+    public boolean isCellEditable(int rowIndex, int vColIndex) {
+    	if(vColIndex >= 3){
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 	public VideoTask getSelectedItem(){
 		DefaultTableModel model = (DefaultTableModel) this.getModel();
 		return (VideoTask)model.getValueAt(getSelectedRow(), 1);
@@ -89,7 +139,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 									.getCanonicalPath(),profile));
 						} else {
 							DataModel.INSTANCE.addToQueue(new VideoTask(file
-									.getCanonicalPath()));
+									.getCanonicalPath(), "profiles/Profile_Default.xml"));
 						}
 					}
 				}
@@ -122,7 +172,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		for (int i = 0; i < a.size(); i++) {
 			if (a.get(i).getStatus() != Status.DELETED) {
 				VideoTask vf = a.get(i);
-				Object row [] = {vf.getStatus().toString(),vf,vf.getOwnerHost()};
+				Object row [] = {vf.getStatus().toString(),vf,vf.getOwnerHost(),vf.getProfile().replaceAll("profiles/",""),vf.getPriority(),vf.getEnabled()};
 				model.addRow(row);
 			}
 		}

@@ -17,19 +17,9 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 	private boolean keepOriginalAudio;
 	private int priority;
 	private Status status = Status.WAITING;
-
-	public VideoTask(String route) {
-		this.route = route;
-		this.priority = DataModel.INSTANCE.getPriority();
-		this.vProfile = DataModel.INSTANCE.getVProfile();
-		this.aProfile = DataModel.INSTANCE.getAProfile();
-		this.outputFolder = DataModel.INSTANCE.getDoneDir();
-		this.aviSynthProfile = DataModel.INSTANCE.getAviSynthProfile();
-		this.moveAfterDone = DataModel.INSTANCE.getMoveAfterDone();
-		this.ownerHost = DataModel.INSTANCE.getHostname();
-		this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
-	}
-
+	private String profile;
+	private boolean enabled = true;
+	
 	public VideoTask(String route, String profile) {
 		this.route = route;
 		loadProfiles(profile);
@@ -113,7 +103,8 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 		return this.route;
 	}
 	
-	private void loadProfiles(String profile) {
+	public void loadProfiles(String profile) {
+		this.profile = profile;
 		File f = new File(profile);
 		if (f.exists()) {
 			XMLConfigLoader xml = new XMLConfigLoader(profile);
@@ -172,6 +163,22 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 
 	public boolean isKeepOriginalAudio() {
 		return keepOriginalAudio;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	public boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }

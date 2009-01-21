@@ -16,5 +16,4 @@ public class AndPolicy extends Policy {
 	public boolean evaluate(VideoTask vf) {
 		return a.evaluate(vf) && a.evaluate(vf);
 	}
-
 }

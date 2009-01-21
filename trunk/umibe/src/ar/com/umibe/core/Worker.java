@@ -32,9 +32,11 @@ public class Worker implements Runnable {
 		DiskSpacePolicy d = new DiskSpacePolicy();
 		UNCPolicy u = new UNCPolicy();
 		SimplePolicy s = new SimplePolicy("OwnerHost",DataModel.INSTANCE.getHostname());
+		SimplePolicy s2 = new SimplePolicy("Enabled","true");
 		OrPolicy o = new OrPolicy(s,u);
 		AndPolicy a = new AndPolicy(o,d);
-		this.policy = a;
+		AndPolicy a2 = new AndPolicy(a,s2);
+		this.policy = a2;
 	}
 	
 	@Override
