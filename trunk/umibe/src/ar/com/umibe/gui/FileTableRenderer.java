@@ -25,11 +25,18 @@ public class FileTableRenderer extends DefaultTableCellRenderer {
 		if(column == 1 && obj instanceof VideoTask){
 			setText(UmibeFileUtils.getFileName(((VideoTask)obj).getRoute()));
 		}
+	    
+		if (isSelected) {
+            setForeground(table.getSelectionForeground());
+            super.setBackground(table.getSelectionBackground());
+        } 
+		else {
+            setForeground(table.getForeground());
+            setBackground(table.getBackground());
+        }
 		if(obj instanceof String || obj instanceof VideoTask){
 			String evaluate = (String)table.getValueAt(row, 0);
-			if (evaluate.equals(Status.WAITING.toString())) {
-				setBackground(Color.white);
-			} else if (evaluate.equals(Status.ENCODING.toString())) {
+			if (evaluate.equals(Status.ENCODING.toString())) {
 				setBackground(Color.lightGray);
 			} else if (evaluate.equals(Status.DONE.toString())) {
 				setBackground(Color.green);
@@ -39,11 +46,6 @@ public class FileTableRenderer extends DefaultTableCellRenderer {
 				setBackground(Color.yellow);
 			}
 		}
-		else {
-			setBackground(Color.white);
-		}
-		if (isSelected)
-			setBackground(Color.black);
 		return this;
 	}
 }

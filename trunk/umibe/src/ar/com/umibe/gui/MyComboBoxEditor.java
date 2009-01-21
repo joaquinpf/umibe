@@ -1,4 +1,4 @@
-package ar.com.umibe.core.gui.tests;
+package ar.com.umibe.gui;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;

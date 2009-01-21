@@ -14,7 +14,7 @@ public class OrPolicy extends Policy {
 	
 	@Override
 	public boolean evaluate(VideoTask vf) {
-		return a.evaluate(vf) || a.evaluate(vf);
+		return a.evaluate(vf) || b.evaluate(vf);
 	}
 
 }

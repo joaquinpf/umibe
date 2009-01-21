@@ -65,7 +65,10 @@ public class Worker implements Runnable {
 				String MKVFile = tempDirPath + UmibeFileUtils.getFileName(fullPath) + ".mkv";
 				int mkvResult = MatroskaUtils.MKVize(fullPath, MKVFile, verbosity);
 				if(mkvResult == 0) {
-					fullPath = MKVFile;
+					File mkv = new File(MKVFile);
+					if(mkv.exists()){
+						fullPath = MKVFile;
+					}
 				}
 								
 				//Extraccion de informacion de MKV
@@ -75,7 +78,8 @@ public class Worker implements Runnable {
 				
 				//Encoding de video
 				vEncoder = new VideoEncoder(this.current.getVProfile(), 
-						this.current.getAviSynthProfile(), tempDirPath, true); 
+						this.current.getAviSynthProfile(), tempDirPath, 
+						this.current.isKeepOriginalVideo(), true); 
 				currentev.setVideoTracks(vEncoder.encode(fullPath, tip));
 				vEncoder = null;
 				
@@ -109,7 +113,7 @@ public class Worker implements Runnable {
 				
 				//Move after done
 				
-				if(current.getMoveAfterDone().equals(" ") == false) {
+				if(current.getMoveAfterDone().replaceAll(" ","").equals("") == false) {
 					UmibeFileUtils.move(current.getRoute(), current.getMoveAfterDone());
 				}
 				

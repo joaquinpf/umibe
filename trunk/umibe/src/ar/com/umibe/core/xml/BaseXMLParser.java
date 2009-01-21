@@ -1,9 +1,8 @@
-package ar.com.umibe.core;
+package ar.com.umibe.core.xml;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,12 +13,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XMLConfigLoader {
+public class BaseXMLParser {
 
-	private Document dom;
-	private Element docEle;
+	protected Document dom;
+	protected Element docEle;
 
-	public XMLConfigLoader(String route) {
+	public BaseXMLParser(String route) {
 		try {
 			File f = new File(route);
 			this.dom = openDocument(f.toURI().toURL().toString());
@@ -27,20 +26,6 @@ public class XMLConfigLoader {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public ArrayList<String> getOptions(String nodename) {
-		NodeList nlOptions;
-		Element elementOption;
-		ArrayList<String> options = new ArrayList<String>();
-		nlOptions = this.docEle.getElementsByTagName(nodename);
-		if (nlOptions != null && nlOptions.getLength() > 0) {
-			for (int i = 0; i < nlOptions.getLength(); i++) {
-				elementOption = (Element) nlOptions.item(i);
-				options.add(elementOption.getTextContent());
-			}
-		}
-		return options;
 	}
 
 	public String getNodeText(String name) {
@@ -57,7 +42,7 @@ public class XMLConfigLoader {
 		return option;
 	}
 
-	private Document openDocument(final String route) {
+	protected Document openDocument(final String route) {
 		Document doc = null;
 		DocumentBuilderFactory dbf;
 

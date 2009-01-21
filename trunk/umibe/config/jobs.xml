@@ -1,18 +1,1 @@
-<object type="list" elementType="Object" length="1" id="0">
-  <object type="ar.com.umibe.core.VideoTask" id="1">
-    <field name="route" type="string" value="C:\Documents and Settings\Usuario\Escritorio\thewitcher_en_video_trailer_mov.mpg" />
-    <field name="vProfile" type="string" value="profiles/Video_X264_Real_1PassCQ.xml" />
-    <field name="aProfile" type="string" value="profiles/Audio_NeroAACEnc_CBR_64kbps.xml" />
-    <field name="aviSynthProfile" type="string" value="profiles/AviSynth_Trim.xml" />
-    <field name="outputFolder" type="string" value="./done/" />
-    <field name="moveAfterDone" type="string" value="" />
-    <field name="ownerHost" type="string" value="usuario-68514ad" />
-    <field name="keepOriginalAudio" type="boolean" value="false" />
-    <field name="priority" type="int" value="3" />
-    <field name="status">
-      <object type="ar.com.umibe.core.Status" id="2" />
-    </field>
-    <field name="profile" type="string" value="profiles/Profile_Default.xml" />
-    <field name="enabled" type="boolean" value="true" />
-  </object>
-</object>
+<object type="list" elementType="Object" length="0" id="0" />

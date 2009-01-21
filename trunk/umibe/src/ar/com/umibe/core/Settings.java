@@ -14,6 +14,7 @@ public class Settings {
 	public String hostname;
 	public String profilesDir = "./profiles/";
 	public boolean keepOriginalAudio = false;
+	public boolean keepOriginalVideo = false;
 		
 	
 	public Settings(){

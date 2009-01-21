@@ -7,6 +7,7 @@ import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.core.tool.Tool;
 import ar.com.umibe.core.tool.ToolMode;
+import ar.com.umibe.core.xml.XMLConfigLoader;
 import ar.com.umibe.util.UmibeFileUtils;
 
 public abstract class Encoder {

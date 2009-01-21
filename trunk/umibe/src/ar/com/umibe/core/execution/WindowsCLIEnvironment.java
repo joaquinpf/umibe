@@ -31,7 +31,7 @@ public class WindowsCLIEnvironment implements IExecutionEnvironment {
 			// kick them off
 			errorGobbler.start();
 			outputGobbler.start();
-
+		
 			return process.waitFor();
 		} catch (IOException e) {
 			e.printStackTrace();

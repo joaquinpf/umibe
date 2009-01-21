@@ -3,6 +3,8 @@ package ar.com.umibe.core;
 import java.io.File;
 import java.io.Serializable;
 
+import ar.com.umibe.core.xml.XMLConfigLoader;
+
 
 public class VideoTask implements Comparable<VideoTask>, Serializable {
 
@@ -15,6 +17,7 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 	private String moveAfterDone;
 	private String ownerHost;
 	private boolean keepOriginalAudio;
+	private boolean keepOriginalVideo;
 	private int priority;
 	private Status status = Status.WAITING;
 	private String profile;
@@ -150,6 +153,12 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 			} else {
 				this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
 			}
+			s = xml.getNodeText("KeepOriginalVideo");
+			if (s != null) {
+				this.keepOriginalVideo = Boolean.parseBoolean(s);
+			} else {
+				this.keepOriginalVideo = DataModel.INSTANCE.getKeepOriginalVideo();
+			}
 		} else {
 			this.moveAfterDone = DataModel.INSTANCE.getMoveAfterDone();
 			this.priority = DataModel.INSTANCE.getPriority();
@@ -158,6 +167,7 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 			this.aProfile = DataModel.INSTANCE.getAProfile();
 			this.outputFolder = DataModel.INSTANCE.getDoneDir();
 			this.keepOriginalAudio = DataModel.INSTANCE.getKeepOriginalAudio();
+			this.keepOriginalVideo = DataModel.INSTANCE.getKeepOriginalVideo();
 		}
 	}
 
@@ -179,6 +189,10 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public boolean isKeepOriginalVideo() {
+		return keepOriginalVideo;
 	}
 
 }

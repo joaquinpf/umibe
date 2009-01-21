@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import ar.com.umibe.core.XMLConfigLoader;
+import ar.com.umibe.core.xml.XMLConfigLoader;
 
 public class AviSynthUtils {
 	public static String generateVideoScript(String input, String tempDir,

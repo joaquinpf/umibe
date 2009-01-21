@@ -65,7 +65,6 @@
               <Component id="jButton7" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="424" max="32767" attributes="0"/>
           </Group>
           <Group type="103" groupAlignment="1" max="-2" attributes="0">
               <Component id="encodingStatus" alignment="0" max="32767" attributes="1"/>
@@ -170,7 +169,7 @@
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTable1KeyReleased"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new FileTable(){&#xd;&#xa;        public boolean isCellEditable(int rowIndex, int vColIndex) {&#xd;&#xa;            return false;&#xd;&#xa;        }&#xd;&#xa;    };"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new FileTable();"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
@@ -509,6 +508,7 @@
                     <Component class="javax.swing.JButton" name="jButton8">
                       <Properties>
                         <Property name="text" type="java.lang.String" resourceKey="jButton8.text"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton8.toolTipText"/>
                         <Property name="name" type="java.lang.String" value="jButton8" noResource="true"/>
                       </Properties>
                       <Events>
@@ -814,8 +814,11 @@
                                           <Component id="jComboBox2" pref="311" max="32767" attributes="1"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                           <Component id="jComboBox3" alignment="0" pref="311" max="32767" attributes="1"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace pref="65" max="32767" attributes="0"/>
                                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -872,21 +875,28 @@
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="168" max="32767" attributes="0"/>
+                              <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -933,15 +943,13 @@
                     <Component class="javax.swing.JSlider" name="jSlider1">
                       <Properties>
                         <Property name="maximum" type="int" value="10"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jSlider1.toolTipText"/>
                         <Property name="value" type="int" value="3"/>
                         <Property name="name" type="java.lang.String" value="jSlider1" noResource="true"/>
                       </Properties>
                       <Events>
                         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider1StateChanged"/>
                       </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="this.jSlider1.setValue(DataModel.INSTANCE.getPriority());"/>
-                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton3">
                       <Properties>
@@ -1020,6 +1028,7 @@
                     <Component class="javax.swing.JCheckBox" name="jCheckBox4">
                       <Properties>
                         <Property name="text" type="java.lang.String" resourceKey="jCheckBox4.text"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jCheckBox4.toolTipText"/>
                         <Property name="name" type="java.lang.String" value="jCheckBox4" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1055,6 +1064,16 @@
                         <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
                         <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox5.text"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jCheckBox5.toolTipText"/>
+                        <Property name="name" type="java.lang.String" value="jCheckBox5" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1107,6 +1126,7 @@
                     <Component class="javax.swing.JCheckBox" name="jCheckBox1">
                       <Properties>
                         <Property name="text" type="java.lang.String" resourceKey="jCheckBox1.text"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jCheckBox1.toolTipText"/>
                         <Property name="name" type="java.lang.String" value="jCheckBox1" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1116,6 +1136,7 @@
                     <Component class="javax.swing.JCheckBox" name="jCheckBox2">
                       <Properties>
                         <Property name="text" type="java.lang.String" resourceKey="jCheckBox2.text"/>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="jCheckBox2.toolTipText"/>
                         <Property name="name" type="java.lang.String" value="jCheckBox2" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1142,6 +1163,7 @@
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="jButton5.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton5.toolTipText"/>
         <Property name="name" type="java.lang.String" value="jButton5" noResource="true"/>
       </Properties>
       <Events>
@@ -1151,6 +1173,7 @@
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="jButton7.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton7.toolTipText"/>
         <Property name="name" type="java.lang.String" value="jButton7" noResource="true"/>
       </Properties>
       <Events>
@@ -1160,6 +1183,7 @@
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="jButton6.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="jButton6.toolTipText"/>
         <Property name="name" type="java.lang.String" value="jButton6" noResource="true"/>
       </Properties>
       <Events>

@@ -3,6 +3,8 @@ package ar.com.umibe.core.tool;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import ar.com.umibe.core.xml.ToolXMLParser;
+
 
 public class Tool {
 	private Hashtable<String,ToolOption> options;

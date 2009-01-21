@@ -1,15 +1,14 @@
-package ar.com.umibe.core.gui.tests;
+package ar.com.umibe.gui;
 
 import java.awt.Component;
 
 import javax.swing.JComboBox;
-import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-public class JSliderRenderer extends JSlider implements TableCellRenderer {
-    public JSliderRenderer(String[] items) {
-        super();
+public class MyComboBoxRenderer extends JComboBox implements TableCellRenderer {
+    public MyComboBoxRenderer(String[] items) {
+        super(items);
     }
 
     public Component getTableCellRendererComponent(JTable table, Object value,
@@ -23,7 +22,7 @@ public class JSliderRenderer extends JSlider implements TableCellRenderer {
         }
 
         // Select the current value
-        setValue((Integer)value);
+        setSelectedItem(value);
         return this;
     }
 }

@@ -12,7 +12,7 @@ public class AudioEncoder extends Encoder {
 	
 	protected boolean keepOriginalTracks = false;
 
-	public AudioEncoder(String config, String avsProfile, String tempdir, boolean keepOrignialTracks, 
+	public AudioEncoder(String config, String avsProfile, String tempdir, boolean keepOriginalTracks, 
 			boolean verbosity) {
 		super(config, avsProfile, tempdir, verbosity);
 		this.keepOriginalTracks = keepOriginalTracks;
@@ -25,7 +25,7 @@ public class AudioEncoder extends Encoder {
 
 			//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
 			ArrayList<InfoTrack> audioTracks = tip.getTracks("audio","jpn");
-			if(audioTracks.size() == 0) {
+			if(audioTracks == null) {
 				audioTracks = tip.getTracks("audio");
 			}
 			MatroskaUtils mu = new MatroskaUtils();
@@ -36,7 +36,9 @@ public class AudioEncoder extends Encoder {
 				for(int i=0; i<audios.length; i++){
 					MediaTrack m = new MediaTrack();
 					m.setRouteToTrack(tempDir + audios[i]);
-					m.setInfoTrack(audioTracks.get(i));
+					if(audioTracks!=null && audioTracks.size() >= i){
+						m.setInfoTrack(audioTracks.get(i));
+					}
 					ret.add(m);
 				}
 			} else {
@@ -49,7 +51,9 @@ public class AudioEncoder extends Encoder {
 					this.encodeTrack(script,tempDir + "encodedaudio_" + i + ".m4a");
 					MediaTrack m = new MediaTrack();
 					m.setRouteToTrack(tempDir + "encodedaudio_" + i + ".m4a");
-					m.setInfoTrack(audioTracks.get(i));
+					if(audioTracks!=null && audioTracks.size() >= i){
+						m.setInfoTrack(audioTracks.get(i));
+					}
 					ret.add(m);
 				}
 			}

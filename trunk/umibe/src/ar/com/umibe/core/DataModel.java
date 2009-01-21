@@ -293,4 +293,8 @@ public class DataModel implements Observer {
 	public boolean getKeepOriginalAudio() {
 		return settings.keepOriginalAudio;
 	}
+
+	public boolean getKeepOriginalVideo() {
+		return settings.keepOriginalVideo;
+	}
 }

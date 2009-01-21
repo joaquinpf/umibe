@@ -21,8 +21,6 @@ import javax.swing.table.TableColumn;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
-import ar.com.umibe.core.gui.tests.MyComboBoxEditor;
-import ar.com.umibe.core.gui.tests.MyComboBoxRenderer;
 
 public class FileTable extends DragAndDropTable implements Observer {
 

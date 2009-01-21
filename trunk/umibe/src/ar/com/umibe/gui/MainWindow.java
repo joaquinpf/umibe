@@ -33,11 +33,11 @@ import org.psafix.folderchooser.JFolderChooser;
 
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.VideoTask;
-import ar.com.umibe.core.XMLConfigLoader;
 import ar.com.umibe.core.execution.StreamGobbler;
 import ar.com.umibe.core.stats.GlobalStats;
 import ar.com.umibe.core.stats.SingleFileStat;
 import ar.com.umibe.core.stats.StatGenerator;
+import ar.com.umibe.core.xml.XMLConfigLoader;
 import ar.com.umibe.util.GuiUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 
@@ -140,6 +140,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jCheckBox5 = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -293,6 +294,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jLabel23.setName("jLabel18"); // NOI18N
 
         jButton8.setText(resourceMap.getString("jButton8.text")); // NOI18N
+        jButton8.setToolTipText(resourceMap.getString("jButton8.toolTipText")); // NOI18N
         jButton8.setName("jButton8"); // NOI18N
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -526,6 +528,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jSlider1.setMaximum(10);
+        jSlider1.setToolTipText(resourceMap.getString("jSlider1.toolTipText")); // NOI18N
         jSlider1.setValue(3);
         jSlider1.setName("jSlider1"); // NOI18N
         jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -570,10 +573,12 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jTextField1.setEditable(false);
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.setText(DataModel.INSTANCE.getDoneDir());
 
         jTextField6.setBackground(resourceMap.getColor("jTextField6.background")); // NOI18N
         jTextField6.setEditable(false);
         jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.setText(DataModel.INSTANCE.getMoveAfterDone());
 
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
@@ -586,6 +591,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jCheckBox4.setText(resourceMap.getString("jCheckBox4.text")); // NOI18N
+        jCheckBox4.setToolTipText(resourceMap.getString("jCheckBox4.toolTipText")); // NOI18N
         jCheckBox4.setName("jCheckBox4"); // NOI18N
         jCheckBox4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -607,6 +613,15 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
+
+        jCheckBox5.setText(resourceMap.getString("jCheckBox5.text")); // NOI18N
+        jCheckBox5.setToolTipText(resourceMap.getString("jCheckBox5.toolTipText")); // NOI18N
+        jCheckBox5.setName("jCheckBox5"); // NOI18N
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -644,8 +659,10 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                             .addComponent(jComboBox2, 0, 311, Short.MAX_VALUE)
                             .addComponent(jLabel5)
                             .addComponent(jComboBox3, 0, 311, Short.MAX_VALUE)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jCheckBox4)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox4)
+                                    .addComponent(jCheckBox5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                 .addComponent(jButton3))))
                     .addComponent(jLabel6))
@@ -686,23 +703,29 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jButton3)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel6)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jCheckBox4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addComponent(jCheckBox5)
+                .addContainerGap())
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jPanel9.border.title"))); // NOI18N
         jPanel9.setName("jPanel9"); // NOI18N
 
         jCheckBox1.setText(resourceMap.getString("jCheckBox1.text")); // NOI18N
+        jCheckBox1.setToolTipText(resourceMap.getString("jCheckBox1.toolTipText")); // NOI18N
         jCheckBox1.setName("jCheckBox1"); // NOI18N
         jCheckBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -711,6 +734,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jCheckBox2.setText(resourceMap.getString("jCheckBox2.text")); // NOI18N
+        jCheckBox2.setToolTipText(resourceMap.getString("jCheckBox2.toolTipText")); // NOI18N
         jCheckBox2.setName("jCheckBox2"); // NOI18N
         jCheckBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -795,6 +819,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jTabbedPane1.getAccessibleContext().setAccessibleName(resourceMap.getString("jTabbedPane1.AccessibleContext.accessibleName")); // NOI18N
 
         jButton5.setText(resourceMap.getString("jButton5.text")); // NOI18N
+        jButton5.setToolTipText(resourceMap.getString("jButton5.toolTipText")); // NOI18N
         jButton5.setName("jButton5"); // NOI18N
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -803,6 +828,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jButton7.setText(resourceMap.getString("jButton7.text")); // NOI18N
+        jButton7.setToolTipText(resourceMap.getString("jButton7.toolTipText")); // NOI18N
         jButton7.setName("jButton7"); // NOI18N
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -811,6 +837,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
 
         jButton6.setText(resourceMap.getString("jButton6.text")); // NOI18N
+        jButton6.setToolTipText(resourceMap.getString("jButton6.toolTipText")); // NOI18N
         jButton6.setName("jButton6"); // NOI18N
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -856,8 +883,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7)
                 .addGap(10, 10, 10)
-                .addComponent(jButton6)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addComponent(jButton6))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                 .addComponent(encodingStatus, javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -940,11 +966,14 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            int index = this.jTable1.getSelectedRow();
-            DefaultTableModel d = (DefaultTableModel) this.jTable1.getModel();
-            VideoTask v = (VideoTask)d.getValueAt(index, 1);
-            d.removeRow(index);
-            DataModel.INSTANCE.deleteFromQueue(v);
+            int[] indexes = jTable1.getSelectedRows();
+        	DefaultTableModel model = (DefaultTableModel) this.jTable1.getModel();
+            for(int i=indexes.length - 1; i >= 0 ; i--){
+            	int index = indexes[i];
+            	VideoTask v = (VideoTask)model.getValueAt(index, 1);
+            	model.removeRow(index);
+            	DataModel.INSTANCE.deleteFromQueue(v);
+            }
         }
 }//GEN-LAST:event_jTable1KeyReleased
 
@@ -994,6 +1023,9 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jButton2.setEnabled(!jCheckBox2.isSelected());
         jButton10.setEnabled(!jCheckBox2.isSelected());
         jSlider1.setEnabled(!jCheckBox2.isSelected());
+        jCheckBox4.setEnabled(!jCheckBox2.isSelected());
+        jCheckBox5.setEnabled(!jCheckBox2.isSelected());
+
         saveGuiConfig();
     }//GEN-LAST:event_jCheckBox2ItemStateChanged
 
@@ -1082,6 +1114,10 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         encodingStatus.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    	saveProfile();
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void loadComboBoxes() {
     	XMLConfigLoader loader = new XMLConfigLoader("profiles/Profile_Default.xml");
@@ -1273,6 +1309,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		jTextField6.setText(loader.getNodeText("MoveToAfterDone"));
 		jSlider1.setValue(Integer.parseInt(loader.getNodeText("DefaultPriority")));
 		jCheckBox4.setSelected(Boolean.parseBoolean(loader.getNodeText("KeepOriginalAudio")));
+		jCheckBox5.setSelected(Boolean.parseBoolean(loader.getNodeText("KeepOriginalVideo")));
 	}
 
 	private void saveProfile(){
@@ -1298,6 +1335,9 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 			root.addContent(el);
 			el = new Element("KeepOriginalAudio"); 
 			el.setText(Boolean.toString(jCheckBox4.isSelected()));
+			root.addContent(el);
+			el = new Element("KeepOriginalVideo"); 
+			el.setText(Boolean.toString(jCheckBox5.isSelected()));
 			root.addContent(el);
 
 			Document doc = new Document(root);
@@ -1355,6 +1395,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -1408,6 +1449,4 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private javax.swing.JTextField timeElapsed;
     private javax.swing.JTextField transcoded;
     // End of variables declaration//GEN-END:variables
-
-
 }
