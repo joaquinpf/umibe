@@ -121,8 +121,9 @@ public class DataModel implements Observer {
 		}
 	}
 
-	public boolean addToQueue(VideoTask vf) {
-		if (UmibeFileUtils.isMediaFile(vf.getRoute()) && !this.queue.exists(vf)) {
+	public boolean addToQueue(String file, String profile) {
+		VideoTask vf = new VideoTask(file, profile);
+		if (UmibeFileUtils.isMediaFile(file) && !this.queue.exists(vf)) {
 			this.queue.put(vf);
 			saveQueue();
 			return true;
@@ -130,8 +131,8 @@ public class DataModel implements Observer {
 		return false;
 	}
 
-	public void deleteFromQueue(VideoTask vf) {
-		this.queue.delete(vf);
+	public void deleteFromQueue(VideoTask vt) {
+		this.queue.delete(vt);
 		saveQueue();
 	}
 
@@ -248,6 +249,10 @@ public class DataModel implements Observer {
 	public String getTempDir() {
 		return settings.tempDir;
 	}
+	
+	public String getProfilesDir() {
+		return settings.profilesDir;
+	}
 
 	public void setTempDir(String s) {
 		settings.tempDir = s;
@@ -296,5 +301,9 @@ public class DataModel implements Observer {
 
 	public boolean getKeepOriginalVideo() {
 		return settings.keepOriginalVideo;
+	}
+
+	public String getBuildID() {
+		return settings.buildID;
 	}
 }

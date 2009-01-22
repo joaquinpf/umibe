@@ -8,40 +8,30 @@ import ar.com.umibe.core.xml.XMLConfigLoader;
 
 public class VideoTask implements Comparable<VideoTask>, Serializable {
 
-	private static final long serialVersionUID = 8723856021264116783L;
-	private String route = " ";
-	private String vProfile;
-	private String aProfile;
-	private String aviSynthProfile;
-	private String outputFolder;
-	private String moveAfterDone;
-	private String ownerHost;
-	private boolean keepOriginalAudio;
-	private boolean keepOriginalVideo;
-	private int priority;
-	private Status status = Status.WAITING;
-	private String profile;
-	private boolean enabled = true;
+	protected static final long serialVersionUID = 8723856021264116783L;
+	protected String route = " ";
+	protected String vProfile;
+	protected String aProfile;
+	protected String aviSynthProfile;
+	protected String outputFolder;
+	protected String moveAfterDone;
+	protected String ownerHost;
+	protected boolean keepOriginalAudio;
+	protected boolean keepOriginalVideo;
+	protected int priority;
+	protected Status status = Status.WAITING;
+	protected String profile;
+	protected boolean enabled = true;
+	protected int filesize = 0;
 	
 	public VideoTask(String route, String profile) {
 		this.route = route;
+		File f = new File(route);
+		this.filesize = (int) (f.length() / 1024 / 1024);
 		loadProfiles(profile);
 		this.ownerHost = DataModel.INSTANCE.getHostname();
 	}
 	
-	/*public VideoFile(String route, String vProfile, String aProfile,
-			String aviSynthProfile, String outputFolder, String moveAfterDone, int priority,
-			String ownerHost) {
-		this.route = route;
-		this.vProfile = vProfile;
-		this.aProfile = aProfile;
-		this.aviSynthProfile = aviSynthProfile;
-		this.outputFolder = outputFolder;
-		this.moveAfterDone = moveAfterDone;
-		this.priority = priority;
-		this.ownerHost = ownerHost;
-	}*/
-
 	public Status getStatus() {
 		return this.status;
 	}
@@ -195,4 +185,7 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 		return keepOriginalVideo;
 	}
 
+	public int getFilesize() {
+		return filesize;
+	}
 }

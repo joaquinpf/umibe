@@ -17,7 +17,7 @@ public class CommandLineInterface implements UserIterface {
 		DataModel.INSTANCE.setUi(this);
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		while (usingCli) {
-			System.out.print("KireNcoder[" + DataModel.INSTANCE.getHostname() + "] > ");
+			System.out.print(DataModel.INSTANCE.getBuildID() + DataModel.INSTANCE.getHostname() + "] > ");
 			try {
 				final String command = in.readLine();
 				handleCommand(command);
@@ -36,7 +36,7 @@ public class CommandLineInterface implements UserIterface {
 				if (file.exists() && file.isFile()) {
 					System.out.println("GOT FILE: "
 							+ split[1]);
-					DataModel.INSTANCE.addToQueue(new VideoTask(split[1], "profiles/Profile_Default.xml"));
+					DataModel.INSTANCE.addToQueue(split[1], DataModel.INSTANCE.getProfilesDir() + "Profile_Default.xml");
 				}
 			}
 			if(split[0].equals("addfolder")){

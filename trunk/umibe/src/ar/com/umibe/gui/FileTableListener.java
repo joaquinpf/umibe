@@ -1,6 +1,5 @@
 package ar.com.umibe.gui;
 
-import javax.swing.JComboBox;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +22,7 @@ public class FileTableListener implements TableModelListener {
 			vt.setPriority((Integer)model.getValueAt(row, column));
 		} else if(column == 3) {
 			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
-			vt.loadProfiles("profiles/" + ((String)model.getValueAt(row, column)));
+			vt.loadProfiles(DataModel.INSTANCE.getProfilesDir() + ((String)model.getValueAt(row, column)));
 		}
 	}
 }

@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.hazelcast.impl.Main.Data;
+
+import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.EncodingVideo;
 import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
@@ -141,6 +144,7 @@ public class MatroskaUtils implements IContainer{
 			if(m.getInfoTrack()!=null){
 				String name;
 				if(m.getInfoTrack().getName() == null){
+					//FIXME locale no funca como quisiera
 					Locale l = new Locale(m.getInfoTrack().getLanguage());
 					name = l.getDisplayName(new Locale("eng"));
 				} else {
@@ -151,28 +155,10 @@ public class MatroskaUtils implements IContainer{
 			}
 			files += subOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
-		
-		/*for (int i = 0; i < subs.length; i++) {
-				String subOptions = " ";
-				if(subtitleTracks!=null && subtitleTracks.size()>0){
-					//FIXME locale no funca como quisiera
-					String name;
-					if(subtitleTracks.get(i).getName() == null){
-						Locale l = new Locale(subtitleTracks.get(i).getLanguage());
-						name = l.getDisplayName(new Locale("eng"));
-					} else {
-						name = UmibeFileUtils.addComillas(subtitleTracks.get(i).getName());
-					}
-					subOptions = " --language 0:" + subtitleTracks.get(i).getLanguage() +
-					" --track-name 0:" + name + " ";
-				}
-				files += subOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(dirToMux
-						+ subs[i]));
-		}*/
 
-		String title = " --title " + UmibeFileUtils.addComillas(outputvideo.getFilename() + ": Encoded with KireNcoder");
+		String title = " --title " + UmibeFileUtils.addComillas(outputvideo.getFilename() + ": Encoded with " + DataModel.INSTANCE.getBuildID());
 		
-		if (files.equals(" ")) {
+		if (files.replaceAll(" ","").equals("")) {
 			// No files to mux
 		} else {
 			String tool = UmibeFileUtils

@@ -13,22 +13,19 @@ package ar.com.umibe.gui;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import com.golden.gamedev.util.ImageUtil;
 
 import ar.com.umibe.util.GuiUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 import ar.com.umibe.util.VideoUtils;
-import org.apache.commons.io.FileUtils;
+
+import com.golden.gamedev.util.ImageUtil;
 
 /**
  *

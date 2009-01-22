@@ -15,16 +15,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JFrame;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 import ar.com.umibe.core.DataModel;
-import ar.com.umibe.core.tool.Tool;
 import ar.com.umibe.core.tool.ToolConfigDialog;
 import ar.com.umibe.util.GuiUtils;
-import javax.swing.JFrame;
 
 /**
  *
@@ -326,13 +326,13 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 		el.setText(jTextField6.getText());
 		root.addContent(el);
 		el = new Element("DefaultAudioProfile");
-		el.setText("profiles/" + (String)jComboBox2.getSelectedItem());
+		el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox2.getSelectedItem());
 		root.addContent(el);
 		el = new Element("DefaultVideoProfile");
-		el.setText("profiles/" + (String)jComboBox1.getSelectedItem());
+		el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox1.getSelectedItem());
 		root.addContent(el);
 		el = new Element("DefaultAviSynthProfile");
-		el.setText("profiles/" + (String)jComboBox3.getSelectedItem());
+		el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox3.getSelectedItem());
 		root.addContent(el);
 		el = new Element("DefaultPriority");
 		el.setText(Integer.toString(jSlider1.getValue()));
@@ -355,10 +355,10 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 			if(name.equals("")){
 				name = "Default";
 			}
-			File file = new File("./profiles/Profile_" + name + ".xml");
+			File file = new File(DataModel.INSTANCE.getProfilesDir() + "Profile_" + name + ".xml");
 			if (file.exists())
 				name += this.hashCode();
-			FileWriter fileWriter = new FileWriter("./profiles/Profile_" + name + ".xml");
+			FileWriter fileWriter = new FileWriter(DataModel.INSTANCE.getProfilesDir() + "Profile_" + name + ".xml");
 			serializer.output(doc, fileWriter);
 			fileWriter.flush();
 			fileWriter.close();
@@ -391,7 +391,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 			for(int i = 0; i < profiles.length; i++){
 				if(GuiUtils.contains(jComboBox1, profiles[i]) == false){
 					jComboBox1.addItem(profiles[i]);
-					if(DataModel.INSTANCE.getVProfile().equals("profiles/" + profiles[i])){
+					if(DataModel.INSTANCE.getVProfile().equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
 						jComboBox1.setSelectedIndex(i);
 					}
 				}
@@ -403,7 +403,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 			for(int i = 0; i < profiles.length; i++){
 				if(GuiUtils.contains(jComboBox2, profiles[i]) == false){
 					jComboBox2.addItem(profiles[i]);
-					if(DataModel.INSTANCE.getAProfile().equals("profiles/" + profiles[i])){
+					if(DataModel.INSTANCE.getAProfile().equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
 						jComboBox2.setSelectedIndex(i);
 					}
 				}
@@ -415,7 +415,7 @@ public class ProfileMakerDialog extends javax.swing.JDialog {
 			for(int i = 0; i < profiles.length; i++){
 				if(GuiUtils.contains(jComboBox3, profiles[i]) == false){
 					jComboBox3.addItem(profiles[i]);
-					if(DataModel.INSTANCE.getAviSynthProfile().equals("profiles/" + profiles[i])){
+					if(DataModel.INSTANCE.getAviSynthProfile().equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
 						jComboBox3.setSelectedIndex(i);
 					}
 				}

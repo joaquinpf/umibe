@@ -54,9 +54,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 				for (int i = 0; i < files.length; i++) {
 					if (files[i].isFile()) {
 						try {
-							VideoTask f = new VideoTask(files[i]
-									.getCanonicalPath(), profile);
-							DataModel.INSTANCE.addToQueue(f);
+							DataModel.INSTANCE.addToQueue(files[i].getCanonicalPath(), profile);
 							System.out.println("<MediaFolderWatcher> Added: "
 									+ files[i].getAbsolutePath());
 						} catch (IOException e) {
@@ -79,8 +77,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 			File file = (File) newResource;
 			if (file.isFile()) {
 				try {
-					DataModel.INSTANCE.addToQueue(new VideoTask(file
-							.getCanonicalPath(), profile));
+					DataModel.INSTANCE.addToQueue(file.getCanonicalPath(), profile);
 					System.out.println("<MediaFolderWatcher> Added: "
 							+ file.getAbsolutePath());
 				} catch (IOException e) {
@@ -103,7 +100,7 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 	public void onDelete(Object deletedResource) {
 		if (deletedResource instanceof String) {
 			String deletedFile = (String) deletedResource;
-			DataModel.INSTANCE.deleteFromQueue(new VideoTask(deletedFile, "profiles/Profile_Default.xml"));
+			DataModel.INSTANCE.deleteFromQueue(new VideoTask(deletedFile, DataModel.INSTANCE.getProfilesDir() + "Profile_Default.xml"));
 			System.out.println("<MediaFolderWatcher> Deleted: " + deletedFile);
 		}
 	}

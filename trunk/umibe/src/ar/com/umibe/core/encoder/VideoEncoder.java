@@ -1,7 +1,8 @@
-package ar.com.umibe.core;
+package ar.com.umibe.core.encoder;
 
 import java.util.ArrayList;
 
+import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.matroska.InfoTrack;
 import ar.com.umibe.core.matroska.MatroskaUtils;
 import ar.com.umibe.core.matroska.TracksInfoParser;
@@ -39,9 +40,13 @@ public class VideoEncoder extends Encoder {
 			}
 		} else {
 			String output = tempDir + "video.mkv";
-
-			String script = AviSynthUtils.generateVideoScript(file,
-					tempDir, avsProfile);
+			String script;
+			if(file.endsWith("avs") == false){
+				script = AviSynthUtils.generateVideoScript(file,
+						tempDir, avsProfile);
+			} else {
+				script = file;
+			}
 			this.encodeTrack(script,output);
 
 			MediaTrack m = new MediaTrack();

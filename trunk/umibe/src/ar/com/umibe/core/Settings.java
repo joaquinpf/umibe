@@ -12,7 +12,8 @@ public class Settings {
 	public String aviSynthProfile = "profiles/AviSynth_Default.xml";
 	public int priority = 3;
 	public String hostname;
-	public String profilesDir = "./profiles/";
+	public String buildID = "Umibe v0.4";
+	public String profilesDir = "profiles/";
 	public boolean keepOriginalAudio = false;
 	public boolean keepOriginalVideo = false;
 		

@@ -28,7 +28,8 @@ public class FileTable extends DragAndDropTable implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = -293303729609358987L;
-
+	
+	private boolean filled = false;	
 	private boolean profileable = false;
 	
 	public FileTable() {
@@ -36,6 +37,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		DefaultTableModel model = (DefaultTableModel) this.getModel();
 		model.addColumn("Status");
 		model.addColumn("Filename");
+		model.addColumn("Filesize");
 		model.addColumn("Owner Host");
 		model.addColumn("Selected Profile");
 		model.addColumn("Priority");
@@ -48,12 +50,14 @@ public class FileTable extends DragAndDropTable implements Observer {
 		column = getColumnModel().getColumn(1); 
 		column.setPreferredWidth(350); 
 		column = getColumnModel().getColumn(2); 
-		column.setPreferredWidth(35); 
+		column.setPreferredWidth(4); 
 		column = getColumnModel().getColumn(3); 
-		column.setPreferredWidth(100); 
+		column.setPreferredWidth(35); 
 		column = getColumnModel().getColumn(4); 
-		column.setPreferredWidth(1); 
+		column.setPreferredWidth(100); 
 		column = getColumnModel().getColumn(5); 
+		column.setPreferredWidth(1); 
+		column = getColumnModel().getColumn(6); 
 		column.setPreferredWidth(1); 
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -69,7 +73,7 @@ public class FileTable extends DragAndDropTable implements Observer {
         String[] profiles = DataModel.INSTANCE.loadProfiles("profile_");
 	    
 	    // Set the combobox editor on the 1st visible column
-	    int vColIndex = 3;
+	    int vColIndex = 4;
 	    TableColumn col = this.getColumnModel().getColumn(vColIndex);
 	    col.setCellEditor(new MyComboBoxEditor(profiles));
 	    
@@ -80,17 +84,16 @@ public class FileTable extends DragAndDropTable implements Observer {
 	
 	public Class getColumnClass (int columna) { 
 		try{ 
-			if (columna == 4) 
-				return Integer.class; 
 			if (columna == 5) 
+				return Integer.class; 
+			if (columna == 6) 
 				return Boolean.class; 
 			else {
 				return Object.class;
 			}
 		} catch (Exception e) { 
-			e.printStackTrace(); 
+			return Object.class; 
 		} 
-		return Object.class; 
 	}
 	
     public boolean isCellEditable(int rowIndex, int vColIndex) {
@@ -133,11 +136,10 @@ public class FileTable extends DragAndDropTable implements Observer {
 						System.out.println("GOT FILE: "
 								+ file.getCanonicalPath());
 						if(profileable == true) {
-							DataModel.INSTANCE.addToQueue(new VideoTask(file
-									.getCanonicalPath(),profile));
+							DataModel.INSTANCE.addToQueue(file.getCanonicalPath(),profile);
 						} else {
-							DataModel.INSTANCE.addToQueue(new VideoTask(file
-									.getCanonicalPath(), "profiles/Profile_Default.xml"));
+							DataModel.INSTANCE.addToQueue(file
+									.getCanonicalPath(), DataModel.INSTANCE.getProfilesDir() + "Profile_Default.xml");
 						}
 					}
 				}
@@ -168,11 +170,17 @@ public class FileTable extends DragAndDropTable implements Observer {
 			model.removeRow(i);
 		}
 		for (int i = 0; i < a.size(); i++) {
+			filled = true;
 			if (a.get(i).getStatus() != Status.DELETED) {
 				VideoTask vf = a.get(i);
-				Object row [] = {vf.getStatus().toString(),vf,vf.getOwnerHost(),vf.getProfile().replaceAll("profiles/",""),vf.getPriority(),vf.getEnabled()};
+				Object row [] = {vf.getStatus().toString(),vf,vf.getFilesize() + "MB",vf.getOwnerHost(),
+						vf.getProfile().replaceAll(DataModel.INSTANCE.getProfilesDir(),""),vf.getPriority(),
+						vf.getEnabled()};
 				model.addRow(row);
 			}
+		}
+		if(a.size() == 0){
+			filled = false;
 		}
 		padding(model);
 		this.setModel(model);
@@ -193,5 +201,9 @@ public class FileTable extends DragAndDropTable implements Observer {
 
 	public boolean isProfileable() {
 		return profileable;
+	}
+
+	public boolean isFilled() {
+		return filled;
 	}
 }

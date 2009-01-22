@@ -2,6 +2,9 @@ package ar.com.umibe.core;
 
 import java.io.File;
 
+import ar.com.umibe.core.encoder.AudioEncoder;
+import ar.com.umibe.core.encoder.Encoder;
+import ar.com.umibe.core.encoder.VideoEncoder;
 import ar.com.umibe.core.matroska.IContainer;
 import ar.com.umibe.core.matroska.MatroskaUtils;
 import ar.com.umibe.core.matroska.TracksInfoParser;

@@ -1,7 +1,8 @@
-package ar.com.umibe.core;
+package ar.com.umibe.core.encoder;
 
 import java.util.ArrayList;
 
+import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.matroska.InfoTrack;
 import ar.com.umibe.core.matroska.MatroskaUtils;
 import ar.com.umibe.core.matroska.TracksInfoParser;
@@ -60,8 +61,13 @@ public class AudioEncoder extends Encoder {
 		} else {
 			if(keepOriginalTracks == false){
 				//Generacion de script de audio. Encoding de audio
-				String script = AviSynthUtils.generateAudioScript(file,
-						tempDir, avsProfile);
+				String script;
+				if(file.endsWith("avs") == false){
+					script = AviSynthUtils.generateAudioScript(file,
+							tempDir, avsProfile);
+				} else {
+					script = file;
+				}
 				this.encodeTrack(script,tempDir + "encodedaudio_" + 0 + ".m4a");
 				MediaTrack m = new MediaTrack();
 				m.setRouteToTrack(tempDir + "encodedaudio_" + 0 + ".m4a");

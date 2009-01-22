@@ -1,7 +1,9 @@
-package ar.com.umibe.core;
+package ar.com.umibe.core.encoder;
 
 import java.util.ArrayList;
 
+import ar.com.umibe.core.DataModel;
+import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 import ar.com.umibe.core.matroska.TracksInfoParser;

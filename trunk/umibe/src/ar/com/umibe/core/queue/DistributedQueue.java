@@ -1,11 +1,7 @@
 package ar.com.umibe.core.queue;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.locks.Lock;
 
-import ar.com.umibe.core.PriorityComparator;
 import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
@@ -20,8 +16,8 @@ public class DistributedQueue extends GenericQueue implements ItemListener<Video
 	
 	@SuppressWarnings("unchecked")
 	public DistributedQueue() {
-		enqueued = Hazelcast.getList("KireNcoder");
-		lock = Hazelcast.getLock("KireNcoder");
+		enqueued = Hazelcast.getList("Umibe");
+		lock = Hazelcast.getLock("Umibe");
 		((IList)enqueued).addItemListener(this, true);
 	}
 	

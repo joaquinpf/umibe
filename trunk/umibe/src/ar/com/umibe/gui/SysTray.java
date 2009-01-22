@@ -47,7 +47,7 @@ public class SysTray {
 
 	public SysTray() {
 		icon = new TrayIcon(getImage(),
-				"KireNcoder v0.3", createPopupMenu());
+				DataModel.INSTANCE.getBuildID(), createPopupMenu());
 		icon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				((MainWindow)DataModel.INSTANCE.getUi()).setVisible(true);

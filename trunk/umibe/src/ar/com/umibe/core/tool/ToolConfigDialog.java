@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import org.jdom.Document;
@@ -17,6 +16,7 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
+import ar.com.umibe.core.DataModel;
 import ar.com.umibe.util.GuiUtils;
 
 /*
@@ -272,7 +272,7 @@ public class ToolConfigDialog extends javax.swing.JDialog {
     		String name = ((Tool)jComboBox2.getSelectedItem()).getType() + "_" +
     			((Tool)jComboBox2.getSelectedItem()).getName() + "_" + 
     			jTextField1.getText() + ".xml";
-    		FileWriter fileWriter = new FileWriter("./profiles/" + name);
+    		FileWriter fileWriter = new FileWriter(DataModel.INSTANCE.getProfilesDir() + name);
     		serializer.output(doc, fileWriter);
     		fileWriter.flush();
     		fileWriter.close();

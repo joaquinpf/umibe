@@ -8,7 +8,7 @@ import org.jvnet.winp.WinProcess;
 
 public class WindowsCLIEnvironment implements IExecutionEnvironment {
 
-	private final String CONSOLE_ENV = "cmd /c start \"KireNcoder\" /LOW /B /WAIT ";
+	private final String CONSOLE_ENV = "cmd /c start \"Umibe\" /LOW /B /WAIT ";
 	private final Runtime runtime = Runtime.getRuntime();
 	private final SimpleLogger log = new SimpleLogger(WindowsCLIEnvironment.class);
 	private Process process = null;

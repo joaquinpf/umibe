@@ -984,21 +984,18 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         if (evt.getStateChange() == evt.SELECTED) {
         	saveProfile();
-  //          DataModel.INSTANCE.setVProfile("profiles/" + (String)evt.getItem());
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
         if (evt.getStateChange() == evt.SELECTED) {
         	saveProfile();
-//            DataModel.INSTANCE.setAProfile("profiles/" + (String)evt.getItem());
         }
     }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
         if (evt.getStateChange() == evt.SELECTED) {
         	saveProfile();
-          //  DataModel.INSTANCE.setAviSynthProfile("profiles/" + (String)evt.getItem());
         }
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
@@ -1120,7 +1117,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void loadComboBoxes() {
-    	XMLConfigLoader loader = new XMLConfigLoader("profiles/Profile_Default.xml");
+    	XMLConfigLoader loader = new XMLConfigLoader(DataModel.INSTANCE.getProfilesDir() + "Profile_Default.xml");
     	String node = loader.getNodeText("DefaultVideoProfile");
 
     	String[] profiles = DataModel.INSTANCE.loadProfiles("video_");
@@ -1128,7 +1125,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     		for(int i = 0; i < profiles.length; i++){
     			if(GuiUtils.contains(jComboBox1, profiles[i]) == false){
     				jComboBox1.addItem(profiles[i]);
-    				if(node.equals("profiles/" + profiles[i])){
+    				if(node.equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
     					jComboBox1.setSelectedIndex(i);
     				}
     			}
@@ -1141,7 +1138,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     		for(int i = 0; i < profiles.length; i++){
     			if(GuiUtils.contains(jComboBox2, profiles[i]) == false){
     				jComboBox2.addItem(profiles[i]);
-    				if(node.equals("profiles/" + profiles[i])){
+    				if(node.equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
     					jComboBox2.setSelectedIndex(i);
     				}
     			}
@@ -1154,7 +1151,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
     		for(int i = 0; i < profiles.length; i++){
     			if(GuiUtils.contains(jComboBox3, profiles[i]) == false){
     				jComboBox3.addItem(profiles[i]);
-    				if(node.equals("profiles/" + profiles[i])){
+    				if(node.equals(DataModel.INSTANCE.getProfilesDir() + profiles[i])){
     					jComboBox3.setSelectedIndex(i);
     				}
     			}
@@ -1235,24 +1232,26 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 	}
 	
 	public void turnDndFileSign(){
-		if(jTable1.getModel().getRowCount() == 1){
+		if(((FileTable)jTable1).isFilled() == false){
 			this.jLabel11.setEnabled(true);
 			this.jLabel11.setVisible(true);
 			repaint();
 		} else {
 			this.jLabel11.setEnabled(false);
-			this.jLabel11.setVisible(false);			
+			this.jLabel11.setVisible(false);
+			repaint();			
 		}
 	}
 	
 	public void turnDndFolderSign(){
-		if(jList2.getModel().getSize()>0){
+		if(jList2.getModel().getSize() < 1){
 			this.jLabel10.setEnabled(true);
 			this.jLabel10.setVisible(true);
 			repaint();
 		} else {
 			this.jLabel10.setEnabled(false);
-			this.jLabel10.setVisible(false);			
+			this.jLabel10.setVisible(false);
+			repaint();			
 		}
 	}
 	
@@ -1304,7 +1303,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 	}
 	
 	private void loadProfile(){
-    	XMLConfigLoader loader = new XMLConfigLoader("profiles/Profile_Default.xml");
+    	XMLConfigLoader loader = new XMLConfigLoader(DataModel.INSTANCE.getProfilesDir() + "Profile_Default.xml");
 		jTextField1.setText(loader.getNodeText("DoneDirectory"));
 		jTextField6.setText(loader.getNodeText("MoveToAfterDone"));
 		jSlider1.setValue(Integer.parseInt(loader.getNodeText("DefaultPriority")));
@@ -1322,13 +1321,13 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 			el.setText(jTextField6.getText());
 			root.addContent(el);
 			el = new Element("DefaultAudioProfile");
-			el.setText("profiles/" + (String)jComboBox2.getSelectedItem());
+			el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox2.getSelectedItem());
 			root.addContent(el);
 			el = new Element("DefaultVideoProfile");
-			el.setText("profiles/" + (String)jComboBox1.getSelectedItem());
+			el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox1.getSelectedItem());
 			root.addContent(el);
 			el = new Element("DefaultAviSynthProfile");
-			el.setText("profiles/" + (String)jComboBox3.getSelectedItem());
+			el.setText(DataModel.INSTANCE.getProfilesDir() + (String)jComboBox3.getSelectedItem());
 			root.addContent(el);
 			el = new Element("DefaultPriority");
 			el.setText(Integer.toString(jSlider1.getValue()));
@@ -1348,11 +1347,11 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 				f.setIndent("  ");
 				serializer.setFormat(f);
 				String name = "Default";
-				File fi = new File ("./profiles/Profile_" + name + ".xml");
+				File fi = new File (DataModel.INSTANCE.getProfilesDir() + "Profile_" + name + ".xml");
 				if(fi.exists()){
 					fi.delete();
 				}
-				FileWriter fileWriter = new FileWriter("./profiles/Profile_" + name + ".xml");
+				FileWriter fileWriter = new FileWriter(DataModel.INSTANCE.getProfilesDir() + "Profile_" + name + ".xml");
 				serializer.output(doc, fileWriter);
 				fileWriter.flush();
 				fileWriter.close();

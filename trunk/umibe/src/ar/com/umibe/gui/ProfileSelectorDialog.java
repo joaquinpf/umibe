@@ -139,7 +139,7 @@ public class ProfileSelectorDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public String getSelectedProfile(){
-    	return "./profiles/" + (String)this.jComboBox1.getSelectedItem();	
+    	return DataModel.INSTANCE.getProfilesDir() + (String)this.jComboBox1.getSelectedItem();	
     }
     
     private void updateUI(){
