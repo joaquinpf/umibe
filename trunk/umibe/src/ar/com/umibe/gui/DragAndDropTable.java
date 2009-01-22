@@ -1,17 +1,5 @@
 package ar.com.umibe.gui;
 
-/**
- * This is an example of a component, which serves as a DragSource as 
- * well as Drop Target.
- * To illustrate the concept, JList has been used as a droppable target
- * and a draggable source.
- * Any component can be used instead of a JList.
- * The code also contains debugging messages which can be used for 
- * diagnostics and understanding the flow of events.
- * 
- * @version 1.0
- */
-
 import java.awt.datatransfer.StringSelection;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragGestureEvent;
@@ -31,6 +19,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public abstract class DragAndDropTable extends JTable implements
 		DragAndDropComponentInterface, DropTargetListener, DragSourceListener,
 		DragGestureListener {

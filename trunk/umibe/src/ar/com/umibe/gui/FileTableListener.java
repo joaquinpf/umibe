@@ -7,6 +7,9 @@ import javax.swing.table.DefaultTableModel;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.VideoTask;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class FileTableListener implements TableModelListener {
 
 	public void tableChanged(TableModelEvent e) {

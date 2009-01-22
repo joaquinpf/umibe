@@ -10,6 +10,9 @@ import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public abstract class GenericQueue extends Observable {	
 	
 	protected List<VideoTask> enqueued;

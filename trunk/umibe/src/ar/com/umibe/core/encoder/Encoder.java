@@ -12,6 +12,9 @@ import ar.com.umibe.core.tool.ToolMode;
 import ar.com.umibe.core.xml.XMLConfigLoader;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public abstract class Encoder {
 
 	protected Tool executable;

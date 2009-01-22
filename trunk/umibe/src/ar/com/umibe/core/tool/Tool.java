@@ -6,6 +6,9 @@ import java.util.Hashtable;
 import ar.com.umibe.core.xml.ToolXMLParser;
 
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class Tool {
 	private Hashtable<String,ToolOption> options;
 	private ArrayList<ToolMode> modes;

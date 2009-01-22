@@ -6,6 +6,9 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class UmibeFileUtils {
 
 	public static boolean exists(String input){

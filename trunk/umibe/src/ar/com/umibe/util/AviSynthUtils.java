@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import ar.com.umibe.core.xml.XMLConfigLoader;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class AviSynthUtils {
 	public static String generateVideoScript(String input, String tempDir,
 			String profile) {

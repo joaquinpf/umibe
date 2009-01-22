@@ -8,6 +8,9 @@ import java.util.Observable;
 
 import ar.com.umibe.core.DataModel;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class StreamGobbler extends Observable implements Runnable{
 	private InputStream is;
 	private String type;

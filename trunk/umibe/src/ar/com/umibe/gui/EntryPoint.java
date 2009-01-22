@@ -2,6 +2,9 @@ package ar.com.umibe.gui;
 
 import ar.com.umibe.core.DataModel;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class EntryPoint {
 	public static void main(String args[]) {
 		String flatArgs = " ";

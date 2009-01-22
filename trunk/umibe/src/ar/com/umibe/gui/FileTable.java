@@ -22,6 +22,9 @@ import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class FileTable extends DragAndDropTable implements Observer {
 
 	/**

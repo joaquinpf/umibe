@@ -9,6 +9,9 @@ import java.util.Observable;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.VideoTask;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class CommandLineInterface implements UserIterface {
 	
 	private boolean usingCli = true;

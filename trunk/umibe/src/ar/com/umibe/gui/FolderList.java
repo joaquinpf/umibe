@@ -16,6 +16,9 @@ import javax.swing.JFrame;
 
 import ar.com.umibe.core.DataModel;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class FolderList extends DragAndDropList {
 
 	private boolean profileable = false;

@@ -21,6 +21,9 @@ import ar.com.umibe.gui.UserIterface;
 import ar.com.umibe.util.UmibeFileUtils;
 import ar.com.umibe.util.VideoUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class DataModel implements Observer {
 
 	public final static DataModel INSTANCE = new DataModel();

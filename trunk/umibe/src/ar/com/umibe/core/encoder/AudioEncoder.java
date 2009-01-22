@@ -9,6 +9,9 @@ import ar.com.umibe.core.matroska.TracksInfoParser;
 import ar.com.umibe.util.AviSynthUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class AudioEncoder extends Encoder {
 	
 	protected boolean keepOriginalTracks = false;

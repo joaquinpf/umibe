@@ -2,6 +2,9 @@ package ar.com.umibe.core.tool;
 
 import javax.swing.JTable;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class ToolOptionsTable extends JTable {
 
 	private static final long serialVersionUID = -8849771725724293423L;

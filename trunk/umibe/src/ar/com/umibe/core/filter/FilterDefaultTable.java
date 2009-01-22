@@ -2,6 +2,9 @@ package ar.com.umibe.core.filter;
 import javax.swing.JTable;
 
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class FilterDefaultTable extends JTable {
 	/**
 	 * 

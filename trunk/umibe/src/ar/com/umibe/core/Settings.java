@@ -3,6 +3,9 @@ package ar.com.umibe.core;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class Settings {
 	public String tempDir = "./temp/";
 	public String doneDir = "./done/";

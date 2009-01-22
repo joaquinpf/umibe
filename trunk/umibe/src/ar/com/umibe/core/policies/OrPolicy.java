@@ -2,6 +2,9 @@ package ar.com.umibe.core.policies;
 
 import ar.com.umibe.core.VideoTask;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class OrPolicy extends Policy {
 
 	Policy a;

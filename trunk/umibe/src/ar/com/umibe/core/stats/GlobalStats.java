@@ -1,5 +1,8 @@
 package ar.com.umibe.core.stats;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class GlobalStats {
 	private double originalSize = 0;
 	private double encodedSize = 0;

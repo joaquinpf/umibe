@@ -17,9 +17,9 @@ import wox.serial.Easy;
  * Created on 19/01/2009, 11:00:01
  */
 
+
 /**
- *
- * @author Usuario
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class DefaultFilterWindow extends javax.swing.JDialog implements IFilterWindow {
 

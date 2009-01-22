@@ -16,6 +16,9 @@ import ar.com.umibe.core.policies.SimplePolicy;
 import ar.com.umibe.core.policies.UNCPolicy;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class Worker implements Runnable {
 
 	private Thread workerThread;

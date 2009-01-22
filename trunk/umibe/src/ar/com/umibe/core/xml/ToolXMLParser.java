@@ -10,7 +10,9 @@ import org.w3c.dom.NodeList;
 import ar.com.umibe.core.tool.ToolMode;
 import ar.com.umibe.core.tool.ToolOption;
 
-
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class ToolXMLParser extends BaseXMLParser {
 
 

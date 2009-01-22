@@ -11,7 +11,9 @@ import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
 
-
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class StatGenerator extends Observable {
 	
 	private ArrayList<SingleFileStat> sessionStats;

@@ -2,6 +2,9 @@ package ar.com.umibe.core;
 
 import java.util.Comparator;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class PriorityComparator implements Comparator<VideoTask> {
 
 	@Override

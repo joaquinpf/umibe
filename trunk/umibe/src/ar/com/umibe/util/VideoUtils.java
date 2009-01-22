@@ -7,6 +7,9 @@ import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class VideoUtils {
 	
 	private static String mplayer = "./resorces/mencoder/mplayer.exe";

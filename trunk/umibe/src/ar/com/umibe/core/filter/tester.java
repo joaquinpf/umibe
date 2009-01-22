@@ -2,6 +2,9 @@ package ar.com.umibe.core.filter;
 import java.awt.Frame;
 
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class tester {
 
 	/**

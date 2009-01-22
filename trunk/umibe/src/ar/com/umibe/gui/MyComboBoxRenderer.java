@@ -6,6 +6,9 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class MyComboBoxRenderer extends JComboBox implements TableCellRenderer {
 
 	private static final long serialVersionUID = 3091128878163608292L;

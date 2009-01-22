@@ -5,7 +5,9 @@ import java.io.Serializable;
 
 import ar.com.umibe.core.xml.XMLConfigLoader;
 
-
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class VideoTask implements Comparable<VideoTask>, Serializable {
 
 	protected static final long serialVersionUID = 8723856021264116783L;

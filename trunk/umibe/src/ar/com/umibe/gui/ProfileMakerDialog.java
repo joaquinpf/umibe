@@ -26,9 +26,9 @@ import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.tool.ToolConfigDialog;
 import ar.com.umibe.util.GuiUtils;
 
+
 /**
- *
- * @author Kireta
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class ProfileMakerDialog extends javax.swing.JDialog {
 

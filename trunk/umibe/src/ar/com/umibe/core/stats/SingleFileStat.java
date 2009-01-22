@@ -6,6 +6,9 @@ import java.util.Date;
 
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class SingleFileStat {
 	private double originalSize = 0;
 	private double encodedSize = 0;

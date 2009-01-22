@@ -10,6 +10,9 @@ import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class FileTableRenderer extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = -7957223427596792537L;

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import ar.com.umibe.core.EncodingVideo;
 import ar.com.umibe.core.MediaTrack;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public interface IContainer {
 
 	public ArrayList<MediaTrack> demux(String input, String outputFolder, ArrayList<InfoTrack> tracks, boolean verbosity);

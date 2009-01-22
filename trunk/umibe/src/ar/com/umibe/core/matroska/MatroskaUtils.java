@@ -13,6 +13,9 @@ import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.WindowsCLIEnvironment;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class MatroskaUtils implements IContainer{
 
 	private static String mkvmerge = "./resources/mkvtools/mkvmerge.exe";

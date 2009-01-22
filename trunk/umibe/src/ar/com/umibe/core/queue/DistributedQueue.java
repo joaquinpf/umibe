@@ -10,6 +10,9 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.IList;
 import com.hazelcast.core.ItemListener;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class DistributedQueue extends GenericQueue implements ItemListener<VideoTask> {
 
 	private Lock lock;

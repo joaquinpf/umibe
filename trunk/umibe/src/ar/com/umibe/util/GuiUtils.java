@@ -10,6 +10,9 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class GuiUtils {
 	public static void centerOnScreen(final Component target) {
 		if (target != null) {

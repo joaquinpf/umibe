@@ -6,6 +6,9 @@ import java.io.IOException;
 import org.grlea.log.SimpleLogger;
 import org.jvnet.winp.WinProcess;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class WindowsCLIEnvironment implements IExecutionEnvironment {
 
 	private final String CONSOLE_ENV = "cmd /c start \"Umibe\" /LOW /B /WAIT ";

@@ -1,5 +1,8 @@
 package ar.com.umibe.core.matroska;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class InfoTrack {
 	private int trackNumber;
 	private String trackType;

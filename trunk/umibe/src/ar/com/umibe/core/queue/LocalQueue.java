@@ -8,6 +8,9 @@ import ar.com.umibe.core.Status;
 import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.core.policies.Policy;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class LocalQueue extends GenericQueue {
 
 	public LocalQueue(){

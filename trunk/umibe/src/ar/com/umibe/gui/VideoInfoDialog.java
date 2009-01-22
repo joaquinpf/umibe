@@ -27,9 +27,9 @@ import ar.com.umibe.util.VideoUtils;
 
 import com.golden.gamedev.util.ImageUtil;
 
+
 /**
- *
- * @author Kireta
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class VideoInfoDialog extends javax.swing.JDialog {
 

@@ -41,9 +41,9 @@ import ar.com.umibe.core.xml.XMLConfigLoader;
 import ar.com.umibe.util.GuiUtils;
 import ar.com.umibe.util.UmibeFileUtils;
 
+
 /**
- * 
- * @author Kireta
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class MainWindow extends javax.swing.JFrame implements UserIterface {
 

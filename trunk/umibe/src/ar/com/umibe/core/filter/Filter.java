@@ -3,6 +3,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class Filter {
 	private String name;
 	private String window;

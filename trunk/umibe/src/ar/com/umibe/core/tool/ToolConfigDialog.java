@@ -30,9 +30,9 @@ import ar.com.umibe.util.GuiUtils;
  * Created on 16/01/2009, 14:41:00
  */
 
+
 /**
- *
- * @author Usuario
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class ToolConfigDialog extends javax.swing.JDialog {
 

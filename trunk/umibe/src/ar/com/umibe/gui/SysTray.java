@@ -17,6 +17,9 @@ import javax.swing.plaf.metal.MetalIconFactory;
 import ar.com.umibe.core.DataModel;
 
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class SysTray {
 
 	private static TrayIcon icon = null;

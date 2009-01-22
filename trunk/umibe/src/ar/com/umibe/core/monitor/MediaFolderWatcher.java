@@ -7,6 +7,9 @@ import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.VideoTask;
 import ar.com.umibe.util.UmibeFileUtils;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class MediaFolderWatcher extends BaseListener implements IFileListener {
 
 	private String directory;

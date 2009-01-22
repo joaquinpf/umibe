@@ -4,6 +4,9 @@ import java.lang.reflect.Method;
 
 import ar.com.umibe.core.VideoTask;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class SimplePolicy extends Policy {
 
 	private String key;

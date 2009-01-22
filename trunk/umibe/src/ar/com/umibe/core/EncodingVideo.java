@@ -2,6 +2,9 @@ package ar.com.umibe.core;
 
 import java.util.ArrayList;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class EncodingVideo {
 	private ArrayList<MediaTrack> videoTracks;
 	private ArrayList<MediaTrack> audioTracks;

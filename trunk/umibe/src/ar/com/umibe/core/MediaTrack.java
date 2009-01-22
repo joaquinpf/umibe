@@ -2,6 +2,9 @@ package ar.com.umibe.core;
 
 import ar.com.umibe.core.matroska.InfoTrack;
 
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class MediaTrack {
 	private String routeToTrack = null;
 	private InfoTrack infoTrack = null;

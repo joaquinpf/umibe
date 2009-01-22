@@ -17,8 +17,9 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-
-
+/**
+ * @author Joaquín Alejandro Pérez Fuentes
+ */
 public class TracksInfoParser {
 	
 	public ArrayList<InfoTrack> tracks = null;

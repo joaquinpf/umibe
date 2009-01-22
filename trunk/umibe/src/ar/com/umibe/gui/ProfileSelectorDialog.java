@@ -14,9 +14,9 @@ package ar.com.umibe.gui;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.util.GuiUtils;
 
+
 /**
- *
- * @author Kireta
+ * @author Joaquín Alejandro Pérez Fuentes
  */
 public class ProfileSelectorDialog extends javax.swing.JDialog {
 
