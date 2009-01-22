@@ -26,11 +26,6 @@ public class Tool {
 		return name;		
 	}
 	
-    public static void main(String[] args)
-    {
-    	Tool t = new Tool("x264.xml");
-    }
-	
 	public Hashtable<String, ToolOption> getOptions() {
 		return options;
 	}

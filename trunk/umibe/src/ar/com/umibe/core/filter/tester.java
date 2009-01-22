@@ -1,6 +1,5 @@
 package ar.com.umibe.core.filter;
 import java.awt.Frame;
-import java.lang.reflect.InvocationTargetException;
 
 
 public class tester {
@@ -8,6 +7,7 @@ public class tester {
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
 			Object[] params = { new Frame(), true };
@@ -19,6 +19,7 @@ public class tester {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Filter configFilter(Filter filter) {
 		try {
 			Object[] params = { this, true };

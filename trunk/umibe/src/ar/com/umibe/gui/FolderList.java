@@ -31,6 +31,7 @@ public class FolderList extends DragAndDropList {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void drop(DropTargetDropEvent event) {
 

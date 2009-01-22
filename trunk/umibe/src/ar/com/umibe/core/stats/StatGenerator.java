@@ -75,6 +75,7 @@ public class StatGenerator extends Observable {
 		Easy.save(sessionStats, "./config/filestats.xml");
 	}
 
+	@SuppressWarnings("unchecked")
 	private void loadStats(){
 		File f = new File(globalRoute);
 		if (f.exists()) {

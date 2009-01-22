@@ -23,7 +23,8 @@ import wox.serial.Easy;
  */
 public class DefaultFilterWindow extends javax.swing.JDialog implements IFilterWindow {
 
-    /** Creates new form DefaultFilterWindow */
+	private static final long serialVersionUID = -3762405095883290337L;
+	/** Creates new form DefaultFilterWindow */
     public DefaultFilterWindow(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

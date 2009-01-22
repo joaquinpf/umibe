@@ -82,6 +82,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 	    col.setCellRenderer(new MyComboBoxRenderer(profiles));
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Class getColumnClass (int columna) { 
 		try{ 
 			if (columna == 5) 
@@ -109,6 +110,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		return (VideoTask)model.getValueAt(getSelectedRow(), 1);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void drop(DropTargetDropEvent event) {
 

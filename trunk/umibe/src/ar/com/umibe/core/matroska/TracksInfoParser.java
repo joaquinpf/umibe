@@ -33,6 +33,7 @@ public class TracksInfoParser {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void loadXMLTracks(String xmlinput) {
 		tracks = new ArrayList<InfoTrack>();
 		File f = new File(xmlinput);

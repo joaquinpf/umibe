@@ -7,7 +7,10 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 public class MyComboBoxRenderer extends JComboBox implements TableCellRenderer {
-    public MyComboBoxRenderer(String[] items) {
+
+	private static final long serialVersionUID = 3091128878163608292L;
+
+	public MyComboBoxRenderer(String[] items) {
         super(items);
     }
 

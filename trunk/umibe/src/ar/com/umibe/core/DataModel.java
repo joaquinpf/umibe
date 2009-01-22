@@ -167,6 +167,7 @@ public class DataModel implements Observer {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadQueue(boolean localMode) {
 		if(!localMode) {
 			this.queue = new DistributedQueue();
@@ -186,6 +187,7 @@ public class DataModel implements Observer {
 		Easy.save(a,"./config/jobs.xml");
 	}
 
+	@SuppressWarnings("unchecked")
 	public void loadWatchedFolders() {
 		
 		this.watchedFolders = new ArrayList<MediaFolderWatcher>();

@@ -17,7 +17,7 @@ public class CommandLineInterface implements UserIterface {
 		DataModel.INSTANCE.setUi(this);
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		while (usingCli) {
-			System.out.print(DataModel.INSTANCE.getBuildID() + DataModel.INSTANCE.getHostname() + "] > ");
+			System.out.print(DataModel.INSTANCE.getBuildID() + " " + DataModel.INSTANCE.getHostname() + "] > ");
 			try {
 				final String command = in.readLine();
 				handleCommand(command);
