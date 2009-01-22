@@ -190,4 +190,12 @@ public class VideoTask implements Comparable<VideoTask>, Serializable {
 	public int getFilesize() {
 		return filesize;
 	}
+
+	public void setKeepOriginalAudio(boolean keepOriginalAudio) {
+		this.keepOriginalAudio = keepOriginalAudio;
+	}
+
+	public void setKeepOriginalVideo(boolean keepOriginalVideo) {
+		this.keepOriginalVideo = keepOriginalVideo;
+	}
 }

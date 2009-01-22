@@ -45,11 +45,13 @@ public class FileTable extends DragAndDropTable implements Observer {
 		model.addColumn("Selected Profile");
 		model.addColumn("Priority");
 		model.addColumn("Enabled");
+		model.addColumn("Video");
+		model.addColumn("Audio");
 		
 		setCombobox();
  
 		TableColumn column = getColumnModel().getColumn(0); 
-		column.setPreferredWidth(1); 
+		column.setPreferredWidth(20); 
 		column = getColumnModel().getColumn(1); 
 		column.setPreferredWidth(350); 
 		column = getColumnModel().getColumn(2); 
@@ -61,6 +63,10 @@ public class FileTable extends DragAndDropTable implements Observer {
 		column = getColumnModel().getColumn(5); 
 		column.setPreferredWidth(1); 
 		column = getColumnModel().getColumn(6); 
+		column.setPreferredWidth(1); 
+		column = getColumnModel().getColumn(7); 
+		column.setPreferredWidth(1); 
+		column = getColumnModel().getColumn(8); 
 		column.setPreferredWidth(1); 
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -90,7 +96,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 		try{ 
 			if (columna == 5) 
 				return Integer.class; 
-			if (columna == 6) 
+			if (columna == 6 || columna == 7 || columna == 8) 
 				return Boolean.class; 
 			else {
 				return Object.class;
@@ -180,7 +186,7 @@ public class FileTable extends DragAndDropTable implements Observer {
 				VideoTask vf = a.get(i);
 				Object row [] = {vf.getStatus().toString(),vf,vf.getFilesize() + "MB",vf.getOwnerHost(),
 						vf.getProfile().replaceAll(DataModel.INSTANCE.getProfilesDir(),""),vf.getPriority(),
-						vf.getEnabled()};
+						vf.getEnabled(),!vf.isKeepOriginalVideo(),!vf.isKeepOriginalAudio()};
 				model.addRow(row);
 			}
 		}

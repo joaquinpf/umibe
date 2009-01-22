@@ -26,6 +26,12 @@ public class FileTableListener implements TableModelListener {
 		} else if(column == 4) {
 			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
 			vt.loadProfiles(DataModel.INSTANCE.getProfilesDir() + ((String)model.getValueAt(row, column)));
+		} else if(column == 7) {
+			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
+			vt.setKeepOriginalVideo(!((Boolean)model.getValueAt(row, column)));	
+		} else if(column == 8) {
+			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
+			vt.setKeepOriginalAudio(!((Boolean)model.getValueAt(row, column)));	
 		}
 	}
 }

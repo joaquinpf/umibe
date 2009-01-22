@@ -6,7 +6,7 @@
   <DefaultVideoProfile>profiles/Video_X264_DEBUG.xml</DefaultVideoProfile>
   <DefaultAviSynthProfile>profiles/AviSynth_Fast.xml</DefaultAviSynthProfile>
   <DefaultPriority>3</DefaultPriority>
-  <KeepOriginalAudio>true</KeepOriginalAudio>
-  <KeepOriginalVideo>true</KeepOriginalVideo>
+  <KeepOriginalAudio>false</KeepOriginalAudio>
+  <KeepOriginalVideo>false</KeepOriginalVideo>
 </Profile>
 

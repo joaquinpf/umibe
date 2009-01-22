@@ -43,7 +43,7 @@ import ar.com.umibe.util.UmibeFileUtils;
 
 
 /**
- * @author Joaquín Alejandro Pérez Fuentes
+ * @author Joaquï¿½n Alejandro Pï¿½rez Fuentes
  */
 public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
@@ -71,6 +71,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 		loadComboBoxes();
 		loadProfile();
 		initialized = true;
+		turnDndFileSign();
+		turnDndFolderSign();
 	}
 
 	/**
@@ -185,7 +187,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
 
         jLabel11.setIcon(resourceMap.getIcon("jLabel11.icon")); // NOI18N
         jLabel11.setName("jLabel11"); // NOI18N
-        jLabel11.setBounds(190, 170, 360, 40);
+        jLabel11.setBounds(280, 170, 360, 40);
         jLayeredPane2.add(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane3.setName("jScrollPane3"); // NOI18N
@@ -203,7 +205,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
         jScrollPane3.setViewportView(jTable1);
 
-        jScrollPane3.setBounds(0, 0, 740, 410);
+        jScrollPane3.setBounds(0, 0, 870, 410);
         jLayeredPane2.add(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTabbedPane1.addTab(resourceMap.getString("jLayeredPane2.TabConstraints.tabTitle"), jLayeredPane2); // NOI18N
@@ -213,7 +215,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jLabel10.setIcon(resourceMap.getIcon("jLabel10.icon")); // NOI18N
         jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
         jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setBounds(180, 170, 410, 40);
+        jLabel10.setBounds(240, 170, 410, 40);
         jLayeredPane1.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
@@ -226,7 +228,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         });
         jScrollPane2.setViewportView(jList2);
 
-        jScrollPane2.setBounds(0, 0, 740, 410);
+        jScrollPane2.setBounds(0, 0, 870, 410);
         jLayeredPane1.add(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTabbedPane1.addTab(resourceMap.getString("jLayeredPane1.TabConstraints.tabTitle"), jLayeredPane1); // NOI18N
@@ -336,7 +338,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                         .addComponent(compRatio)
                         .addComponent(gbSaved, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(remoteJobsDone, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(105, 105, 105))
         );
@@ -398,7 +400,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -445,9 +447,9 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(237, Short.MAX_VALUE)
+                .addContainerGap(353, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(187, 187, 187))
+                .addGap(204, 204, 204))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,7 +792,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -809,7 +811,7 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -884,9 +886,8 @@ public class MainWindow extends javax.swing.JFrame implements UserIterface {
                 .addComponent(jButton7)
                 .addGap(10, 10, 10)
                 .addComponent(jButton6))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(encodingStatus, javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(encodingStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

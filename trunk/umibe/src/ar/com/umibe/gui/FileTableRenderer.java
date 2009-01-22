@@ -3,6 +3,7 @@ package ar.com.umibe.gui;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -27,8 +28,10 @@ public class FileTableRenderer extends DefaultTableCellRenderer {
 				table, obj, isSelected, hasFocus, row, column);
 		if(column == 1 && obj instanceof VideoTask){
 			setText(UmibeFileUtils.getFileName(((VideoTask)obj).getRoute()));
+			setHorizontalAlignment( LEFT );
+		} else {
+			setHorizontalAlignment( CENTER );
 		}
-	    
 		if (isSelected) {
             setForeground(table.getSelectionForeground());
             super.setBackground(table.getSelectionBackground());
@@ -37,7 +40,8 @@ public class FileTableRenderer extends DefaultTableCellRenderer {
             setForeground(table.getForeground());
             setBackground(table.getBackground());
         }
-		if(obj instanceof String || obj instanceof VideoTask){
+		if(obj instanceof String || obj instanceof VideoTask || obj instanceof Boolean ||
+				obj instanceof Integer || obj instanceof JComboBox){
 			String evaluate = (String)table.getValueAt(row, 0);
 			if (evaluate.equals(Status.ENCODING.toString())) {
 				setBackground(Color.lightGray);
