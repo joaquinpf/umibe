@@ -19,12 +19,12 @@ public class MediaFolderWatcher extends BaseListener implements IFileListener {
 	/**
 	 * Connstructor
 	 */
-	public MediaFolderWatcher(String directory, int pollInterval) {
+	/*public MediaFolderWatcher(String directory, int pollInterval) {
 		super();
 		this.directory = directory;
 		this.profile = this.directory + "/config/config.xml";
 		this.pollInterval = pollInterval;
-	}
+	}*/
 
 	public MediaFolderWatcher(String directory, int pollInterval, String profile) {
 		super();

@@ -17,13 +17,13 @@ public class FileTableListener implements TableModelListener {
         int row = e.getFirstRow();
         int column = e.getColumn();
         DefaultTableModel model = (DefaultTableModel)e.getSource();
-		if(column == 5) {
+		if(column == 6) {
 			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
 			vt.setEnabled(((Boolean)model.getValueAt(row, column)));			
-		} else if(column == 4) {
+		} else if(column == 5) {
 			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
 			vt.setPriority((Integer)model.getValueAt(row, column));
-		} else if(column == 3) {
+		} else if(column == 4) {
 			VideoTask vt = (VideoTask)model.getValueAt(row, 1);
 			vt.loadProfiles(DataModel.INSTANCE.getProfilesDir() + ((String)model.getValueAt(row, column)));
 		}

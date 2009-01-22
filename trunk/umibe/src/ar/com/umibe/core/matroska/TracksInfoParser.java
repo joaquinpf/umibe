@@ -148,7 +148,7 @@ public class TracksInfoParser {
 			return a;
 		}
 		else {
-			return null;
+			return new ArrayList<InfoTrack>();
 		}
 	}
 }

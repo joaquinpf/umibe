@@ -29,7 +29,7 @@ public class AudioEncoder extends Encoder {
 
 			//Audio, encodea cada track del idioma JPN o todas si no hay ninguna JPN
 			ArrayList<InfoTrack> audioTracks = tip.getTracks("audio","jpn");
-			if(audioTracks == null) {
+			if(audioTracks.size() < 1) {
 				audioTracks = tip.getTracks("audio");
 			}
 			MatroskaUtils mu = new MatroskaUtils();
