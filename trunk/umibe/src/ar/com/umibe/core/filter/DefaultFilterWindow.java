@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import javax.swing.table.DefaultTableModel;
 
-import wox.serial.Easy;
+import ar.com.umibe.util.GuiUtils;
 
 /*
  * To change this template, choose Tools | Templates
@@ -28,13 +28,8 @@ public class DefaultFilterWindow extends javax.swing.JDialog implements IFilterW
     public DefaultFilterWindow(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Filter f = new Filter();
-        f.setCommand("DirectShowSource(\"REPLACEINPUT\",video=Video,audio=Audio)");
-        f.setName("DirectShowSource");
-        f.setWindow("DefaultFilterWindow");
-        f.setParameter("Video", "true", "Enable video");
-        f.setParameter("Audio", "true", "Enable audio");
-        Easy.save(f, "DirectShowSource.xml");
+		GuiUtils.centerOnScreen(this);
+		GuiUtils.setIcon(this);
     }
 
     /** This method is called from within the constructor to

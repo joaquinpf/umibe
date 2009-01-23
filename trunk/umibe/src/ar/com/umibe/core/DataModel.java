@@ -208,6 +208,10 @@ public class DataModel implements Observer {
 	public String[] loadProfiles(String type){
 		return UmibeFileUtils.filterFiles(settings.profilesDir, type);
 	}
+
+	public String[] loadFilters(){
+		return UmibeFileUtils.filterFiles(settings.filtersDir, "");
+	}
 	
 	public void saveWatchedFolders() {
 		Easy.save(watchedFolders, "./config/folders.xml");

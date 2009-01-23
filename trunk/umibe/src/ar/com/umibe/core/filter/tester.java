@@ -3,7 +3,7 @@ import java.awt.Frame;
 
 
 /**
- * @author Joaquín Alejandro Pérez Fuentes
+ * @author Joaquï¿½n Alejandro Pï¿½rez Fuentes
  */
 public class tester {
 
@@ -16,7 +16,8 @@ public class tester {
 			Object[] params = { new Frame(), true };
 			Class[] paramsClass = {Frame.class, boolean.class};
 			IFilterWindow i = (IFilterWindow) Class.forName("DefaultFilterWindow").getConstructor(paramsClass).newInstance(params);
-			i.setVisible(true);
+
+            i.setVisible(true);
 		} catch (Exception e) {
 
 		}

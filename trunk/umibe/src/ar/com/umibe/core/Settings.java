@@ -19,6 +19,7 @@ public class Settings {
 	public String profilesDir = "profiles/";
 	public boolean keepOriginalAudio = false;
 	public boolean keepOriginalVideo = false;
+	public String filtersDir = "./filters/";
 		
 	
 	public Settings(){

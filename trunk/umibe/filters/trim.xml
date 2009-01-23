@@ -1,0 +1,29 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="trim" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="trim(StartFrame, EndFrame)" />
+  <field name="parameters">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="StartFrame" id="2" />
+        <object type="string" value="0" id="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="EndFrame" id="4" />
+        <object idref="3" />
+      </object>
+    </object>
+  </field>
+  <field name="parameterDescriptions">
+    <object type="map" id="5">
+      <object type="entry">
+        <object idref="2" />
+        <object type="string" value="The starting frame" id="6" />
+      </object>
+      <object type="entry">
+        <object idref="4" />
+        <object type="string" value="The final frame" id="7" />
+      </object>
+    </object>
+  </field>
+</object>

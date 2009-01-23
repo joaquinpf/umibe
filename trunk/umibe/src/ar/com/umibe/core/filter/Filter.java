@@ -17,6 +17,9 @@ public class Filter {
 		parameters = new HashMap<String, String>();
 		parameterDescriptions = new HashMap<String, String>();
 	}	
+	public String toString(){
+		return getCompletedCommand();
+	}
 	public String getName() {
 		return name;
 	}
@@ -56,7 +59,7 @@ public class Filter {
 		String completedCommand = new String(command);
 		while(it.hasNext()){
 			String key = it.next();
-			completedCommand.replaceAll(key, parameters.get(key));
+			completedCommand = completedCommand.replaceAll(key, parameters.get(key));
 		}
 		return completedCommand;
 	}
