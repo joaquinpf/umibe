@@ -1,0 +1,226 @@
+<object type="java.util.HashSet" id="0">
+  <field name="map">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="[SafetyDance] Dragon Ball Kai - 001 (1280x720).mkv" id="2" />
+        <object type="java.lang.Object" id="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Ayako]_Minami-ke_Okaeri_-_10_[1024x576-H264+AAC][6EACD846].mkv" id="4" />
+        <object type="java.lang.Object" id="5" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Underwater-Mahjong] Saki - 01 [v2][CB375B6F].mkv" id="6" />
+        <object type="java.lang.Object" id="7" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[umai]_Basquash!_-_02_[FFB5BFFB].mkv" id="8" />
+        <object type="java.lang.Object" id="9" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Ayako]_Minami-ke_Okaeri_-_11_[1024x576-H264+AAC][67184676].mkv" id="10" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Desire-Himmel-Inmeliora] 07 Ghost 02 [1280x720][AAC-x264][5D34F881].mkv" id="11" />
+        <object type="java.lang.Object" id="12" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Gattai]_Shin_Mazinger_Shougeki!_Z-Hen_02_[C04A5E62].mkv" id="13" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Jade]_Cross_Game_-_01_[720p][h264][7937AEDE].mkv" id="14" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Saitei] Asura Cryin' - 01 (1024x576 H264 24fps).avi" id="15" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Saitei] Asura Cryin' - 03 (1024x576 H264 24fps).avi" id="16" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Frostii]_Sengoku_Basara_-_01_[720p][D9705E7D].mkv" id="17" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[CoalGuys] K-ON! - 02 [25E5517B].mkv" id="18" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Frostii]_Eden_of_the_East_-_01_[720p][03B976E4].mkv" id="19" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[AQS-Anime]_Negima_Ala_Alba_OAD_03_[H264-AAC][8D44D010].mkv" id="20" />
+        <object idref="7" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Desire] Shangri-la Episode 01 [h.264][1280x720][x264-AAC].mkv" id="21" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Saitei] Asura Cryin' - 02v2 (1024x576 H264 24fps).avi" id="22" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SS-Eclipse] Hayate no Gotoku - 2nd Season - 01 (1280x720 h264) [0B6E7B72].mkv" id="23" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[CoalGuys] Tears to Tiara - 02 [FBB6BB64].mkv" id="24" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SZN &amp; I-O] Hajime no Ippo New Challenger - 13[720p][E197A028] v2.mkv" id="25" />
+        <object type="java.lang.Object" id="26" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[P-Z SUBS]_Queen's_Blade_03_[02DAF2DF].mkv" id="27" />
+        <object idref="26" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[CoalGuys] K-ON! - PV [580421C4].mkv" id="28" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[AQS-Anime]_Negima_Ala_Alba_OAD_02_[H264-AAC][F7D0A1D6].mkv" id="29" />
+        <object idref="7" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[B2E].One_Outs.01.x264.Collectors.Edition.[109C0CF3].mkv" id="30" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[P-Z SUBS]Queens_Blade_02[F6ACDB8B].mkv" id="31" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SafetyDance] Dragon Ball Kai - 001 (v2) (1280x720).mkv" id="32" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[anime-rg] Ichigo Mashimaro encore - 1 [v2][B157EB60].mkv" id="33" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SZN &amp; I-O] Hajime no Ippo New Challenger - 14[720p][436E02A4].mkv" id="34" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Eclipse] Full Metal Alchemist Brotherhood - 01 (1280x720) [70C1405D].mkv" id="35" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[CoalGuys] K-ON! - 03 [ADB7C123].mkv" id="36" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Yuurisan-Subs]_Higepiyo_-_01_[h264][3909AA36].mkv" id="37" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Ayako]_Minami-ke_Okaeri_-_09_[1024x576-H264+AAC][4FEDE151].mkv" id="38" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[umai]_Basquash!_-_01_[7BF0059D].mkv" id="39" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Shiki-Subs]_Cross_Game_-01(1280x720_H264-AAC).mkv" id="40" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SZN &amp; I-O] Hajime no Ippo New Challenger - 13[720p][A07DDCC5].mkv" id="41" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[m.3.3.w] Hanasakeru Seishounen 02 (H.264) [E8E940FD].mkv" id="42" />
+        <object type="java.lang.Object" id="43" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Shiki-Subs]_Cross_Game_-02(1280x720_H264-AAC).mkv" id="44" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Underwater-Mahjong] Saki - 01 [E324DC62].mkv" id="45" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[AniYoshi]_Guin_Saga_-_01_[BB05818B].mkv" id="46" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Gattai]_Shin_Mazinger_Shougeki!_Z-Hen_01_[23941873].mkv" id="47" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[SS-Eclipse] Hayate no Gotoku - 2nd Season - 03 (1280x720 h264) [ED8CFAD7].mkv" id="48" />
+        <object type="java.lang.Object" id="49" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Yuurisan-Subs]_Higepiyo_-_02_[h264][283F9831].mkv" id="50" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Saitei] Asura Cryin' - 02 (1024x576 H264 24fps).avi" id="51" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[m.3.3.w] Hanasakeru Seishounen 01 (XviD) [218606CF].avi" id="52" />
+        <object idref="7" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[twrev-Doremi].Valkyria.Chronicles.02.HDTV.[728D27DA].mkv" id="53" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[WinD]_Higurashi_no_Naku_Koro_ni_Rei_-_01_[DVD][31CA5550].mkv" id="54" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[anime-rg] Ichigo Mashimaro encore - 2 [End][039402F8].mkv" id="55" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Hatsu-Aasa]_Pandora_Hearts_01[1024x768][9042B99C].mkv" id="56" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Hatsu-Aasa]_Pandora_Hearts_02[960x720][78D4E583].mkv" id="57" />
+        <object type="java.lang.Object" id="58" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[m.3.3.w] Hanasakeru Seishounen 02 (XviD) [7ED19EFF].avi" id="59" />
+        <object idref="9" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Yuurisan-Subs]_Higepiyo_-_01_[Xvid][B81A88EA].avi" id="60" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Chihiro-Coalguys]_K-ON!_-_Preview_01_[640x480_H.264_AAC][A7697782].mkv" id="61" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Ayako]_Phantom_-_01_[H264+AAC_1280x720][839E76FE].mkv" id="62" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[CoalGuys] Tears to Tiara - 01 [50C739FB].mkv" id="63" />
+        <object idref="6" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[Yuurisan-Subs]_Higepiyo_-_02_[Xvid][740112A7].avi" id="64" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="[twrev-Doremi].Valkyria.Chronicles.01.HDTV.[7A74C488].mkv" id="65" />
+        <object idref="3" />
+      </object>
+    </object>
+  </field>
+</object>

@@ -1,0 +1,106 @@
+<!-- Creator     : groff version 1.18.1 -->
+<!-- CreationDate: Sat Oct 11 21:25:48 2008 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title>MMG</title>
+</head>
+<body>
+
+<h1 align=center>MMG</h1>
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#WWW">WWW</a><br>
+
+<hr>
+<a name="NAME"></a>
+<h2>NAME</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>mmg - a GUI for mkvmerge including a chapter
+editor</p>
+</td>
+</table>
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>mmg</b> [<i>preferences.mmg</i>]</p>
+</td>
+</table>
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>mmg</b> is a wxWindows based GUI for <b>mkvmerge</b>.
+It offers easy access to all of <b>mkvmerge</b>&rsquo;s
+options. All settings (e.g. source files, track options etc)
+can be saved and restored. Included is a chapter editor that
+can read OGM style and XML style chapter files, write XML
+style chapter files and even read chapters from Matroska
+files and write chapters directly to Matroska files.</p>
+<!-- INDENTATION -->
+<p>The only argument is an optional name of a preferences
+file that will be loaded directly after startup. This way
+<b>mmg</b> preferences files can be associated with
+<b>mmg</b> itself.</p>
+<!-- INDENTATION -->
+<p>The full documentation is available in HTML form
+(doc/mkvmerge-gui.html).</p>
+</td>
+</table>
+<a name="AUTHOR"></a>
+<h2>AUTHOR</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><i>mmg</i> was written by Moritz Bunkus
+&lt;moritz@bunkus.org&gt;.</p>
+</td>
+</table>
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>mkvmerge</b>(1), <b>mkvinfo</b>(1),
+<b>mkvextract</b>(1)</p>
+</td>
+</table>
+<a name="WWW"></a>
+<h2>WWW</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>The newest version can always be found at
+&lt;http://www.bunkus.org/videotools/mkvtoolnix/&gt;</p>
+</td>
+</table>
+<hr>
+</body>
+</html>

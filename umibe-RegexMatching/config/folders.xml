@@ -1,0 +1,68 @@
+<folders>
+	<folder route="i:/Downloads/" pollinterval="10">
+		<rules>
+			<rule regexp=".*07.*ghost.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\07 Ghost"/>
+			<rule regexp=".*asura.*cryin.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Asura Cryin"/>
+			<rule regexp=".*basquash.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Basquash!"/>
+			<rule regexp=".*cross.*game.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Cross Game"/>
+			<rule regexp=".*dragon.*ball.*kai.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Dragon Ball Kai"/>
+			<rule regexp=".*eden.*of.*the.*east.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Eden of the East"/>
+			<rule regexp=".*full.*metal.*brotherhood.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Fullmetal Alchemist Brotherhood"/>
+			<rule regexp=".*guin.*saga.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Guin Saga"/>
+			<rule regexp=".*hatsukoi.*limited.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Hatsukoi Limited"/>
+			<rule regexp=".*hayate.*gotoku.*2nd.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Hayate no Gotoku! S2"/>
+			<rule regexp=".*higepiyo.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Higepiyo"/>
+			<rule regexp=".*higurashi.*rei.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Higurashi no Naku Koro ni Rei"/>
+			<rule regexp=".*k-on.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\K-ON!"/>
+			<rule regexp=".*one.*outs.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\One Outs Collectors Edition"/>
+			<rule regexp=".*pandora.*hearts.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Pandora Hearts"/>
+			<rule regexp=".*phantom.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Phantom Requiem for the Phantom"/>
+			<rule regexp=".*queen.*blade.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Queen's Blade"/>
+			<rule regexp=".*saki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Saki"/>
+			<rule regexp=".*sengoku.*basara.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Sengoku Basara"/>
+			<rule regexp=".*shangri.*la.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shangri-la"/>
+			<rule regexp=".*shibawanko.*japanese.*spirit.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shibawanko's Japanese Spirit"/>
+			<rule regexp=".*shin.*mazinger.*shougeki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shin Mazinger Shougeki! Z-Hen"/>
+			<rule regexp=".*slap.*up.*party.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Slap-Up Party - Arad Senki"/>
+			<rule regexp=".*tayutama.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tayutama"/>
+			<rule regexp=".*tears.*Tiara.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tears to Tiara"/>
+			<rule regexp=".*tsubasa.*shunraiki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tsubasa Shunraiki"/>
+			<rule regexp=".*valkyria.*chronicles.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Valkyria Chronicles"/>
+			<rule regexp=".*code.*geas.*thora.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Code Geass (Blue Ray)"/>
+		</rules>
+	</folder>
+	<folder route="i:/Downloads/HRX8" pollinterval="10">
+		<rules>
+			<rule regexp=".*07.*ghost.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\07 Ghost"/>
+			<rule regexp=".*asura.*cryin.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Asura Cryin"/>
+			<rule regexp=".*basquash.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Basquash!"/>
+			<rule regexp=".*cross.*game.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Cross Game"/>
+			<rule regexp=".*dragon.*ball.*kai.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Dragon Ball Kai"/>
+			<rule regexp=".*eden.*of.*the.*east.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Eden of the East"/>
+			<rule regexp=".*full.*metal.*brotherhood.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Fullmetal Alchemist Brotherhood"/>
+			<rule regexp=".*guin.*saga.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Guin Saga"/>
+			<rule regexp=".*hatsukoi.*limited.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Hatsukoi Limited"/>
+			<rule regexp=".*hayate.*gotoku.*2nd.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Hayate no Gotoku! S2"/>
+			<rule regexp=".*higepiyo.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Higepiyo"/>
+			<rule regexp=".*higurashi.*rei.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Higurashi no Naku Koro ni Rei"/>
+			<rule regexp=".*k-on.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\K-ON!"/>
+			<rule regexp=".*one.*outs.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\One Outs Collectors Edition"/>
+			<rule regexp=".*pandora.*hearts.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Pandora Hearts"/>
+			<rule regexp=".*phantom.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Phantom Requiem for the Phantom"/>
+			<rule regexp=".*queen.*blade.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Queen's Blade"/>
+			<rule regexp=".*saki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Saki"/>
+			<rule regexp=".*sengoku.*basara.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Sengoku Basara"/>
+			<rule regexp=".*shangri.*la.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shangri-la"/>
+			<rule regexp=".*shibawanko.*japanese.*spirit.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shibawanko's Japanese Spirit"/>
+			<rule regexp=".*shin.*mazinger.*shougeki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Shin Mazinger Shougeki! Z-Hen"/>
+			<rule regexp=".*slap.*up.*party.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Slap-Up Party - Arad Senki"/>
+			<rule regexp=".*tayutama.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tayutama"/>
+			<rule regexp=".*tears.*Tiara.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tears to Tiara"/>
+			<rule regexp=".*tsubasa.*shunraiki.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Tsubasa Shunraiki"/>
+			<rule regexp=".*valkyria.*chronicles.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Temporada Abril 09\Valkyria Chronicles"/>
+			<rule regexp=".*code.*geas.*thora.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Code Geass (Blue Ray)"/>
+			<rule regexp=".*Melancholy.*Haruhi.*chan.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Suzumiya Haruhi-chan noYuutsu"/>
+			<rule regexp=".*Shikabane.*Hime.*Kuro.*((mkv)|(avi)|(mp4))$" reaction="I:\Downloads\HRX9\Shikabane Hime Kuro"/>
+		</rules>
+	</folder>
+</folders>

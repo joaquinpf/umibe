@@ -1,0 +1,29 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="DirectShowSource" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="DirectShowSource(&quot;REPLACEINPUT&quot;,video=Video,audio=Audio)" />
+  <field name="parameters">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="Audio" id="2" />
+        <object type="string" value="true" id="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="Video" id="4" />
+        <object idref="3" />
+      </object>
+    </object>
+  </field>
+  <field name="parameterDescriptions">
+    <object type="map" id="5">
+      <object type="entry">
+        <object idref="2" />
+        <object type="string" value="Enable audio" id="6" />
+      </object>
+      <object type="entry">
+        <object idref="4" />
+        <object type="string" value="Enable video" id="7" />
+      </object>
+    </object>
+  </field>
+</object>

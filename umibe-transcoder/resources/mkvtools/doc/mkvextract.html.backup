@@ -1,0 +1,840 @@
+<!-- Creator     : groff version 1.18.1 -->
+<!-- CreationDate: Sat Oct 11 21:25:45 2008 -->
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta name="Content-Style" content="text/css">
+<title>MKVEXTRACT</title>
+</head>
+<body>
+
+<h1 align=center>MKVEXTRACT</h1>
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#NOTES">NOTES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHOR">AUTHOR</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+<a href="#WWW">WWW</a><br>
+
+<hr>
+<a name="NAME"></a>
+<h2>NAME</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>mkvextract - extract tracks from Matroska files
+into other files</p>
+</td>
+</table>
+<a name="SYNOPSIS"></a>
+<h2>SYNOPSIS</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>mkvextract</b> tracks &lt;<i>inname</i>&gt;
+[<i>options</i>] [<i>TID1</i>:<i>out1</i>
+[<i>TID2</i>:<i>out2</i> ...]]<b><br>
+mkvextract</b> tags &lt;<i>inname</i>&gt;
+[<i>options</i>]<b><br>
+mkvextract</b> attachments &lt;<i>inname</i>&gt;
+[<i>options</i>] [<i>AID1</i>:<i>[out1]</i>
+[<i>AID2</i>:<i>[out2]</i> ...]]<b><br>
+mkvextract</b> chapters &lt;<i>inname</i>&gt;
+[<i>options</i>]<b><br>
+mkvextract</b> cuesheet &lt;<i>inname</i>&gt;
+[<i>options</i>]<b><br>
+mkvextract</b> timecodes_v2 &lt;<i>inname</i>&gt;
+[<i>TID1</i>:<i>out1</i> [<i>TID2</i>:<i>out2</i>
+...]]<b><br>
+mkvextract</b> &lt;-h|-V&gt;</p>
+</td>
+</table>
+<a name="DESCRIPTION"></a>
+<h2>DESCRIPTION</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>This program extracts specific parts from a Matroska file
+to other useful formats. The first argument tells
+<b>mkvextract</b> what to extract. Currently supported is
+the extraction of <b>tracks</b>, <b>tags</b>,
+<b>attachments</b>, <b>chapters</b>, <b>CUE sheets</b> and
+<b>timecodes</b>. The second argument is the name of the
+source file. It must be a Matroska file.</p>
+<!-- INDENTATION -->
+<p>The following command line options are available for each
+track in the <b>tracks</b> extraction mode. They have to
+appear in front of the track specification (see below) they
+should be applied to.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-c</b> <i>charset</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Sets the charset to convert the next text subtitle track
+to. Only valid if the next track ID targets a text subtitle
+track. It defaults to UTF-8.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>--blockadd</b> <i>level</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Keep only the BlockAdditions up to this level. The
+default is to keep all levels. This option only affects
+certain kinds of codecs like WAVPACK4.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>--cuesheet</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Causes <b>mkvextract</b> to extract a CUE sheet from the
+chapter information and tag data for the following track
+into a file whose name is the track&rsquo;s output name with
+&quot;.cue&quot; appended to it.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>--fullraw</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Extracts the raw data into a file without any container
+data around it. The contents of the CodecPrivate element
+will be written to the file first if the track contains such
+a header element. This mode works with all CodecIDs, even
+the ones that <b>mkvextract</b> doesn&rsquo;t support
+otherwise, but the resulting files might not be usable.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>--no-ogg</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Only valid for FLAC tracks. Normally FLAC tracks are
+embedded in an Ogg transport stream. With this switch they
+are extracted to raw FLAC files instead.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+<p><b>--raw</b></p>
+</td>
+<td width="2%"></td>
+<td width="77%">
+
+<p>Extracts the raw data into a file without any container
+data around it. Unlike the <b>--fullraw</b> flag
+this flag does not cause the contents of the CodecPrivate
+element to be written to the file. This mode works with all
+CodecIDs, even the ones that <b>mkvextract</b> doesn&rsquo;t
+support otherwise, but the resulting files might not be
+usable.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><i>TID</i>:<i>outname</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Causes extraction of the track with the ID <i>TID</i>
+into the file <i>outname</i> if such a track exists in the
+source file. This option can be given multiple times. The
+track IDs are the same as the ones output by
+<b>mkvmerge</b>&rsquo;s <b>--identify</b> option.<br>
+Each output name should be used only once. The exception are
+RealAudio and RealVideo tracks. If you use the same name for
+different tracks then those tracks will be saved in the same
+file. Example:<b><br>
+mkvextract tracks input.mkv 1:output-two-tracks.rm
+2:output-two-tracks.rm</b></p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Command line syntax for the <b>tags</b> extraction
+mode:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Command line syntax for the <b>attachments</b> extraction
+mode:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><i>AID</i>:<i>outname</i></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Causes extraction of the attachment with the ID
+<i>AID</i> into the file <i>outname</i> if such an
+attachment exists in the source file. If the <i>outname</i>
+is left empty then the name of the attachment inside the
+Matroska file is used instead. This option can be given
+multiple times. The attachment IDs are the same as the ones
+output by <b>mkvmerge</b>&rsquo;s <b>--identify</b>
+option.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Command line syntax for the <b>chapters</b> extraction
+mode:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-s</b>, <b>--simple</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Exports the chapter information in the simple format used
+in the OGM tools (CHAPTER01=..., CHAPTER01NAME=...). In this
+mode some information has to be discarded. Default is to
+output the chapters in XML format.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Command line syntax for the <b>cuesheet</b> extraction
+mode:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Command line syntax for the <b>timecodes_v2</b>
+extraction mode:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-v</b>, <b>--verbose</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Be verbose and show all the important Matroska elements
+as they&rsquo;re read.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>If one of the following options is used as the only
+command line argument additional information about
+<b>mkvextract</b> is output.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-h</b>, <b>--help</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Show usage information.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>-V</b>, <b>--version</b></p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Show version information.</p>
+</td>
+</table>
+<a name="NOTES"></a>
+<h2>NOTES</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>The decision about the output format is based on the
+track type, not on the extension used for the output file
+name. The following track types are supported at the
+moment:</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>V_MPEG4/ISO/AVC</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>H.264 / AVC video tracks are written to H.264 elementary
+streams which can be processed further with e.g. MP4Box from
+the GPAC package.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>V_MS/VFW/FOURCC</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Fixed FPS video tracks with this CodecID are written to
+AVI files.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>V_REAL/*</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>RealVideo tracks are written to RealMedia files.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_MPEG/L3, A_AC3</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>These will be extracted to raw MP3 and AC3 files.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_PCM/INT/LIT</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Raw PCM data will be written to a WAV file.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_AAC/MPEG2/*</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>All MPEG2 AAC files will be written into an AAC file with
+ADTS headers before each packet.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_AAC/MPEG4/*</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>All MPEG4 AAC files will be written into an AAC file with
+ADTS headers before each packet. The ADTS headers will not
+contain the deprecated emphasis field.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_VORBIS</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Vorbis audio will be written into an Ogg/Vorbis file.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>A_REAL/*</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>RealAudio tracks are written to RealMedia files.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="3" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="13%"></td>
+<td width="8%">
+
+<p>A_TTA1</p>
+</td>
+<td width="77%">
+
+<p>TrueAudio tracks are written to TTA files. Please note
+that due to Matroska&rsquo;s limited timecode precision the
+extracted file&rsquo;s header will be different regarding
+two fields: data_length (the total number of samples in the
+file) and the CRC.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>S_TEXT/UTF8</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>Simple text subtitles will be written as SRT files.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>S_TEXT/SSA, S_TEXT/ASS</p></td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="21%"></td>
+<td width="77%">
+<p>SSA and ASS text subtitles will be written as SSA/ASS
+files respectively.</p>
+</td>
+</table>
+<!-- TABS -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="4" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="8%">
+
+<p>S_KATE</p>
+</td>
+<td width="13%"></td>
+<td width="66%">
+
+<p>Kate streams will be written within an Ogg
+container.</p>
+</td>
+</table>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>Tags</b> are converted to a XML format. This format is
+the same that <b>mkvmerge</b> supports for reading tags.</p>
+<!-- INDENTATION -->
+<p><b>Attachments</b> are written to they output file as
+they are. No conversion whatsoever is done.</p>
+<!-- INDENTATION -->
+<p><b>Chapters</b> are converted to a XML format. This
+format is the same that <b>mkvmerge</b> supports for reading
+chapters. Alternatively a stripped-down version can be
+output in the simple OGM style format.</p>
+<!-- INDENTATION -->
+<p><b>Timecodes</b> are first sorted and then output as a
+timecode v2 format compliant file ready to be fed to
+mkvmerge. The extraction to other formats (v1 and v3) is not
+supported.</p>
+</td>
+</table>
+<a name="EXAMPLES"></a>
+<h2>EXAMPLES</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>Let&rsquo;s assume you&rsquo;ve made a Matroska file with
+one video track, two audio tracks and two subtitle tracks,
+and you need the second audio track and the first subtitle
+track. So first fire up <b>mkvmerge</b> with the
+<b>--identify</b> option:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvmerge -i movie.mkv</b><br>
+File &rsquo;movie.mkv&rsquo;: container: Matroska<br>
+Track ID 1: video (V_MS/VFW/FOURCC, DIV3)<br>
+Track ID 2: audio (A_MPEG/L3)<br>
+Track ID 3: audio (A_VORBIS)<br>
+Track ID 4: subtitles (S_TEXT/UTF8)<br>
+Track ID 5: subtitles (S_TEXT/UTF8)</p>
+<!-- INDENTATION -->
+<p>Now you can call <b>mkvextract</b> like this:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvextract tracks movie.mkv 3:audio.ogg
+4:subtitles.srt</b></p>
+<!-- INDENTATION -->
+<p>Another example. Let&rsquo;s assume you have a Matroska
+file with one RealVideo v10 track, one Vorbis audio track
+and one RealAudio (COOK) track. The identification output
+might look like this:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvmerge -i movie2.mkv</b><br>
+File &rsquo;movie2.mkv&rsquo;: container: Matroska<br>
+Track ID 1: video (V_REAL/RV40)<br>
+Track ID 2: audio (A_VORBIS)<br>
+Track ID 3: audio (A_REAL/COOK)</p>
+<!-- INDENTATION -->
+<p>Let&rsquo;s further assume you want only need the video
+and the RealAudio track but both in the same output file.
+This is possible for RealMedia files by using the same
+output name for those tracks that you want to end up in the
+same file:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvextract tracks movie2.mkv 1:extracted.rm
+3:extracted.rm</b></p>
+<!-- INDENTATION -->
+<p>Sometimes you the raw data of a track might even be
+useful, e.g. for MPEG-1 tracks. In this case you can use a
+track flag like this:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvextract tracks movie3.mkv --fullraw
+1:extracted.mpeg</b></p>
+<!-- INDENTATION -->
+<p>If you need the timecodes for all the blocks of track 2
+from a file then you can let mkvextract create a timecode v2
+format file like this:</p>
+<!-- INDENTATION -->
+<p>$ <b>mkvextract timecodes_v2 input.mkv
+2:timecodes-track2.txt</b></p>
+</td>
+</table>
+<a name="AUTHOR"></a>
+<h2>AUTHOR</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><i>mkvextract</i> was written by Moritz Bunkus
+&lt;moritz@bunkus.org&gt;.</p>
+</td>
+</table>
+<a name="SEE ALSO"></a>
+<h2>SEE ALSO</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p><b>mkvmerge</b>(1), <b>mkvinfo</b>(1)</p>
+</td>
+</table>
+<a name="WWW"></a>
+<h2>WWW</h2>
+<!-- INDENTATION -->
+<table width="100%" border=0 rules="none" frame="void"
+       cols="2" cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="10%"></td>
+<td width="89%">
+<p>The newest version can always be found at
+&lt;http://www.bunkus.org/videotools/mkvtoolnix/&gt;</p>
+</td>
+</table>
+<hr>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GuiConfig>
+  <EnableFolderProfiling>true</EnableFolderProfiling>
+  <EnableFileProfiling>true</EnableFileProfiling>
+  <SelectedSkin>BusinessSkin</SelectedSkin>
+</GuiConfig>
+
