@@ -32,7 +32,7 @@ public class XMLFeedLoader extends BaseXMLParser {
 						elementOption.getAttribute("route"),
 						Integer.parseInt(elementOption.getAttribute("pollinterval")));
 				
-				parseRules(elementOption, feed);
+				parseRules(elementOption, feed, elementOption.getAttribute("targetapp"));
 								
 				feeds.add(feed);
 			}
@@ -40,13 +40,13 @@ public class XMLFeedLoader extends BaseXMLParser {
 		return feeds;
 	}
 
-	private void parseRules(Element elementOption, GenericFeedActionizer feed) {
+	private void parseRules(Element elementOption, GenericFeedActionizer feed, String targetapp) {
 		NodeList nlOptions = elementOption.getElementsByTagName("rule");
 		if (nlOptions != null && nlOptions.getLength() > 0) {
 			for (int i = 0; i < nlOptions.getLength(); i++) {
 				elementOption = (Element) nlOptions.item(i);				
 				
-				DownloadReaction reaction = new DownloadReaction(elementOption.getAttribute("targetapp"));
+				DownloadReaction reaction = new DownloadReaction(targetapp);
 				MatchingRule rule = new MatchingURLRule(elementOption.getAttribute("regexp"),reaction);
 
 				feed.addRule(rule);

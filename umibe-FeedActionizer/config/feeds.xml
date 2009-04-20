@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feeds>
-	<feed route="http://www.dapper.net/services/chauthanh" 
-	pollinterval="600" implementation="rome"> <!-- implementation="jakarta" -->
+	<feed 
+	route="http://www.dapper.net/services/chauthanh" 
+	pollinterval="600" 
+	implementation="rome" 
+	targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "> 
 		<rules>
-			<rule regexp=".*anime.*rg.*Ichigo.*Mashimaro.*encore.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*CoalGuys.*K.*ON!.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Saitei.*Asura.*Cryin.*1024x576.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*P.*Z SUBS.*Queen.*Blade.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*SZN.*I.*O.*Hajime.*no.*Ippo.*New.*Challenger.*720p.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*CoalGuys.*Tears.*to.*Tiara.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Ayako.*Minami.*ke.*Okaeri.*1024x576.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Jade.*Cross.*Game.*720p.*h264.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Shiki.*subs.*Cross.*Game.*1280x720.*h264.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*B2E.*One.*Outs.*x264.*Collectors.*Edition.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*AniYoshi.*Guin.*Saga.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Underwater.*Mahjong.*Saki.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Eclipse.*Full.*Metal.*Alchemist.*Brotherhood.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*SS.*Eclipse.*Hayate.*Gotoku.*2nd.*Season.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Doremi.*Valkyria.*Chronicles.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Ayako.*Tayutama.*1024x576.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Ayako.*Phantom.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Gattai.*shin.*mazinger.*shougeki.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Desire.*shangri.*la.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Frostii.*sengoku.*basara.*720p.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Frostii.*eden.*east.*720p.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*umai.*basquash.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*SafetyDance.*dragon.*ball.*kai.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Yuurisan.*higepiyo.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*WinD.*higurashi.*rei.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Hatsu.*Aasa.*pandora.*hearts.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*m.3.3.w.*Hanasakeru.*Seishounen.*" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*AQS.*Negima.*Ala.*Alba.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
-			<rule regexp=".*Desire.*07.*Ghost.*1280x720.*.mkv" targetapp="&quot;C:/Program Files/Free Download Manager/fdm.exe\&quot; -fs "/>
+			<rule regexp=".*anime.*rg.*Ichigo.*Mashimaro.*encore.*"/>
+			<rule regexp=".*CoalGuys.*K.*ON!.*.mkv"/>
+			<rule regexp=".*Saitei.*Asura.*Cryin.*1024x576.*"/>
+			<rule regexp=".*P.*Z SUBS.*Queen.*Blade.*.mkv"/>
+			<rule regexp=".*SZN.*I.*O.*Hajime.*no.*Ippo.*New.*Challenger.*720p.*.mkv"/>
+			<rule regexp=".*CoalGuys.*Tears.*to.*Tiara.*.mkv"/>
+			<rule regexp=".*Ayako.*Minami.*ke.*Okaeri.*1024x576.*"/>
+			<rule regexp=".*Jade.*Cross.*Game.*720p.*h264.*"/>
+			<rule regexp=".*Shiki.*subs.*Cross.*Game.*1280x720.*h264.*"/>
+			<rule regexp=".*B2E.*One.*Outs.*x264.*Collectors.*Edition.*"/>
+			<rule regexp=".*AniYoshi.*Guin.*Saga.*.mkv"/>
+			<rule regexp=".*Underwater.*Mahjong.*Saki.*.mkv"/>
+			<rule regexp=".*Eclipse.*Full.*Metal.*Alchemist.*Brotherhood.*1280x720.*.mkv"/>
+			<rule regexp=".*SS.*Eclipse.*Hayate.*Gotoku.*2nd.*Season.*1280x720.*.mkv"/>
+			<rule regexp=".*Doremi.*Valkyria.*Chronicles.*.mkv"/>
+			<rule regexp=".*Ayako.*Tayutama.*1024x576.*.mkv"/>
+			<rule regexp=".*Ayako.*Phantom.*1280x720.*.mkv"/>
+			<rule regexp=".*Gattai.*shin.*mazinger.*shougeki.*.mkv"/>
+			<rule regexp=".*Desire.*shangri.*la.*1280x720.*.mkv"/>
+			<rule regexp=".*Frostii.*sengoku.*basara.*720p.*.mkv"/>
+			<rule regexp=".*Frostii.*eden.*east.*720p.*.mkv"/>
+			<rule regexp=".*umai.*basquash.*.mkv"/>
+			<rule regexp=".*SafetyDance.*dragon.*ball.*kai.*1280x720.*.mkv"/>
+			<rule regexp=".*Yuurisan.*higepiyo.*"/>
+			<rule regexp=".*WinD.*higurashi.*rei.*.mkv"/>
+			<rule regexp=".*Hatsu.*Aasa.*pandora.*hearts.*.mkv"/>
+			<rule regexp=".*m.3.3.w.*Hanasakeru.*Seishounen.*"/>
+			<rule regexp=".*AQS.*Negima.*Ala.*Alba.*.mkv"/>
+			<rule regexp=".*Desire.*07.*Ghost.*1280x720.*.mkv"/>
 			<!-- 		
 			07.*ghost
 			hatsukoi.*limited
