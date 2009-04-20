@@ -7,7 +7,10 @@ import org.w3c.dom.NodeList;
 
 import ar.com.umibe.commons.regex.matching.MatchingFileRule;
 import ar.com.umibe.commons.regex.matching.MatchingRule;
+import ar.com.umibe.commons.regex.reaction.AnimeAutomaticReaction;
 import ar.com.umibe.commons.regex.reaction.MoveReaction;
+import ar.com.umibe.commons.regex.reaction.Reaction;
+import ar.com.umibe.commons.regex.reaction.ReactionConstants;
 import ar.com.umibe.commons.xml.BaseXMLParser;
 
 /**
@@ -29,11 +32,11 @@ public class XMLFolderLoader extends BaseXMLParser {
 				elementOption = (Element) nlOptions.item(i);				
 				RuledFolderWatcher folder = new RuledFolderWatcher(elementOption.getAttribute("route"),
 						Integer.parseInt(elementOption.getAttribute("pollinterval")));
-				
+
 				parseRules(elementOption, folder);
-				
+
 				folder.start();
-				
+
 				folders.add(folder);
 			}
 		}
@@ -45,8 +48,19 @@ public class XMLFolderLoader extends BaseXMLParser {
 		if (nlOptions != null && nlOptions.getLength() > 0) {
 			for (int i = 0; i < nlOptions.getLength(); i++) {
 				elementOption = (Element) nlOptions.item(i);				
-				
-				MoveReaction reaction = new MoveReaction(elementOption.getAttribute("reaction"));
+
+				String reactionclass = elementOption.getAttribute("class");
+
+				Reaction reaction;
+
+				if(reactionclass.equals(ReactionConstants.AUTOMATIC_ANIME_REACTION)){
+					reaction = new AnimeAutomaticReaction(elementOption.getAttribute("reaction"), 
+							elementOption.getAttribute("reactionRegexp"), 
+							Integer.parseInt(elementOption.getAttribute("reactionGroup")));
+				} else {				
+					reaction = new MoveReaction(elementOption.getAttribute("reaction"));
+				}
+
 				MatchingRule rule = new MatchingFileRule(elementOption.getAttribute("regexp"),reaction);
 
 				folder.addRule(rule);
