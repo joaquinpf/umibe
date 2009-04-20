@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<Tool>
-    <Name>mkvinfo.exe</Name>
-	<Type>other</Type>
-    <Path>./resources/mkvtools/mkvinfo.exe</Path>
-</Tool>

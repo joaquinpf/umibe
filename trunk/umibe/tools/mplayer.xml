@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<Tool>
-    <Name>mplayer.exe</Name>
-	<Type>other</Type>
-    <Path>./resources/mencoder/mplayer.exe</Path>
-</Tool>

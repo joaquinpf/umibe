@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<Tool>
-    <Name>mencoder.exe</Name>
-	<Type>other</Type>
-    <Path>./resources/mencoder/mencoder.exe</Path>
-</Tool>
