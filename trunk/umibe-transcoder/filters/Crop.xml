@@ -1,0 +1,45 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="Crop" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="Crop(left,top,right,bottom)" />
+  <field name="parameters">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="bottom" id="2" />
+        <object type="string" value="0" id="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="left" id="4" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="right" id="5" />
+        <object idref="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="top" id="6" />
+        <object idref="3" />
+      </object>
+    </object>
+  </field>
+  <field name="parameterDescriptions">
+    <object type="map" id="7">
+      <object type="entry">
+        <object idref="2" />
+        <object type="string" value="The bottom crop constant" id="8" />
+      </object>
+      <object type="entry">
+        <object idref="4" />
+        <object type="string" value="The left crop constant" id="9" />
+      </object>
+      <object type="entry">
+        <object idref="5" />
+        <object type="string" value="The right crop constant" id="10" />
+      </object>
+      <object type="entry">
+        <object idref="6" />
+        <object type="string" value="The top crop constant" id="11" />
+      </object>
+    </object>
+  </field>
+</object>

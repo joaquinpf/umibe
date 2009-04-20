@@ -1,0 +1,409 @@
+<object type="list" elementType="Object" length="37" id="0">
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="1">
+    <field name="originalSize" type="double" value="0.16594643890857697" />
+    <field name="encodedSize" type="double" value="0.011074629612267017" />
+    <field name="gbSaved" type="double" value="0.15487180929630995" />
+    <field name="compRatio" type="double" value="14.984378233721094" />
+    <field name="elapsedTime" type="double" value="0.9523333311080933" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_05[6CD6C9A0].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="2">
+    <field name="originalSize" type="double" value="0.16595575492829084" />
+    <field name="encodedSize" type="double" value="0.08848658483475447" />
+    <field name="gbSaved" type="double" value="0.07746917009353638" />
+    <field name="compRatio" type="double" value="1.8754905643404283" />
+    <field name="elapsedTime" type="double" value="31.114334106445312" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_07[2B8522D1].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="3">
+    <field name="originalSize" type="double" value="0.16002215631306171" />
+    <field name="encodedSize" type="double" value="0.08852054830640554" />
+    <field name="gbSaved" type="double" value="0.07150160800665617" />
+    <field name="compRatio" type="double" value="1.8077402295245628" />
+    <field name="elapsedTime" type="double" value="32.78048324584961" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_08[C656902B].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="4">
+    <field name="originalSize" type="double" value="0.16585897281765938" />
+    <field name="encodedSize" type="double" value="0.08847850747406483" />
+    <field name="gbSaved" type="double" value="0.07738046534359455" />
+    <field name="compRatio" type="double" value="1.8745679324018505" />
+    <field name="elapsedTime" type="double" value="36.158599853515625" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_09[DFD68455].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="5">
+    <field name="originalSize" type="double" value="0.16585912089794874" />
+    <field name="encodedSize" type="double" value="0.08849404286593199" />
+    <field name="gbSaved" type="double" value="0.07736507803201675" />
+    <field name="compRatio" type="double" value="1.8742405197740197" />
+    <field name="elapsedTime" type="double" value="30.660417556762695" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_10[E81173FA].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="6">
+    <field name="originalSize" type="double" value="0.16585378535091877" />
+    <field name="encodedSize" type="double" value="0.08850241731852293" />
+    <field name="gbSaved" type="double" value="0.07735136803239584" />
+    <field name="compRatio" type="double" value="1.8740028846218502" />
+    <field name="elapsedTime" type="double" value="32.69166564941406" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_11[2FB2724F].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="7">
+    <field name="originalSize" type="double" value="0.1659090919420123" />
+    <field name="encodedSize" type="double" value="0.0885132597759366" />
+    <field name="gbSaved" type="double" value="0.0773958321660757" />
+    <field name="compRatio" type="double" value="1.8743981677095198" />
+    <field name="elapsedTime" type="double" value="36.90729904174805" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_13[D54D242A].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="8">
+    <field name="originalSize" type="double" value="0.16596196312457323" />
+    <field name="encodedSize" type="double" value="0.08848091401159763" />
+    <field name="gbSaved" type="double" value="0.0774810491129756" />
+    <field name="compRatio" type="double" value="1.8756809304978446" />
+    <field name="elapsedTime" type="double" value="33.003116607666016" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_01[306EB51F].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="9">
+    <field name="originalSize" type="double" value="0.16591443121433258" />
+    <field name="encodedSize" type="double" value="0.08852464146912098" />
+    <field name="gbSaved" type="double" value="0.0773897897452116" />
+    <field name="compRatio" type="double" value="1.874217488609729" />
+    <field name="elapsedTime" type="double" value="27.537233352661133" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_02[4CFC47F8].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="10">
+    <field name="originalSize" type="double" value="0.1658319579437375" />
+    <field name="encodedSize" type="double" value="0.08844992332160473" />
+    <field name="gbSaved" type="double" value="0.07738203462213278" />
+    <field name="compRatio" type="double" value="1.8748683064514482" />
+    <field name="elapsedTime" type="double" value="28.694799423217773" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_03[31FF7D43].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="11">
+    <field name="originalSize" type="double" value="0.16588145028799772" />
+    <field name="encodedSize" type="double" value="0.08851026277989149" />
+    <field name="gbSaved" type="double" value="0.07737118750810623" />
+    <field name="compRatio" type="double" value="1.8741493367894968" />
+    <field name="elapsedTime" type="double" value="27.97344970703125" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_04[57992BFF].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="12">
+    <field name="originalSize" type="double" value="0.16594643890857697" />
+    <field name="encodedSize" type="double" value="0.08849299512803555" />
+    <field name="gbSaved" type="double" value="0.07745344378054142" />
+    <field name="compRatio" type="double" value="1.875249432663889" />
+    <field name="elapsedTime" type="double" value="29.62161636352539" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_05[6CD6C9A0].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="13">
+    <field name="originalSize" type="double" value="0.1658870279788971" />
+    <field name="encodedSize" type="double" value="0.08851537201553583" />
+    <field name="gbSaved" type="double" value="0.07737165596336126" />
+    <field name="compRatio" type="double" value="1.8741041719824816" />
+    <field name="elapsedTime" type="double" value="31.583084106445312" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_06[D3033598].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="14">
+    <field name="originalSize" type="double" value="0.1658518947660923" />
+    <field name="encodedSize" type="double" value="0.08852106798440218" />
+    <field name="gbSaved" type="double" value="0.07733082678169012" />
+    <field name="compRatio" type="double" value="1.8735866900670037" />
+    <field name="elapsedTime" type="double" value="31.003650665283203" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_15[60E7C8D1].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="15">
+    <field name="originalSize" type="double" value="0.16588836908340454" />
+    <field name="encodedSize" type="double" value="0.08851708006113768" />
+    <field name="gbSaved" type="double" value="0.07737128902226686" />
+    <field name="compRatio" type="double" value="1.8740831596436243" />
+    <field name="elapsedTime" type="double" value="30.27578353881836" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_16[49975690].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="16">
+    <field name="originalSize" type="double" value="0.1658602524548769" />
+    <field name="encodedSize" type="double" value="0.08850211650133133" />
+    <field name="gbSaved" type="double" value="0.07735813595354557" />
+    <field name="compRatio" type="double" value="1.874082327199281" />
+    <field name="elapsedTime" type="double" value="31.75313377380371" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_14[F16D105B].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="17">
+    <field name="originalSize" type="double" value="0.16591024491935968" />
+    <field name="encodedSize" type="double" value="0.08852451853454113" />
+    <field name="gbSaved" type="double" value="0.07738572638481855" />
+    <field name="compRatio" type="double" value="1.8741728016811934" />
+    <field name="elapsedTime" type="double" value="33.684635162353516" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_17[0385B381].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="18">
+    <field name="originalSize" type="double" value="0.16587519273161888" />
+    <field name="encodedSize" type="double" value="0.08849810343235731" />
+    <field name="gbSaved" type="double" value="0.07737708929926157" />
+    <field name="compRatio" type="double" value="1.8743361303601722" />
+    <field name="elapsedTime" type="double" value="33.32811737060547" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_18[5943DE86].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="19">
+    <field name="originalSize" type="double" value="0.16589175816625357" />
+    <field name="encodedSize" type="double" value="0.08850538358092308" />
+    <field name="gbSaved" type="double" value="0.07738637458533049" />
+    <field name="compRatio" type="double" value="1.8743691225808183" />
+    <field name="elapsedTime" type="double" value="30.361183166503906" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_20[9F0348CB].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="20">
+    <field name="originalSize" type="double" value="0.1658951947465539" />
+    <field name="encodedSize" type="double" value="0.08851620648056269" />
+    <field name="gbSaved" type="double" value="0.07737898826599121" />
+    <field name="compRatio" type="double" value="1.8741787672857726" />
+    <field name="elapsedTime" type="double" value="28.789066314697266" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_19[560F77BC].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="21">
+    <field name="originalSize" type="double" value="0.16589410789310932" />
+    <field name="encodedSize" type="double" value="0.08848886843770742" />
+    <field name="gbSaved" type="double" value="0.0774052394554019" />
+    <field name="compRatio" type="double" value="1.8747454998804969" />
+    <field name="elapsedTime" type="double" value="36.06534957885742" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_21[9EB087B5].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="22">
+    <field name="originalSize" type="double" value="0.16586490627378225" />
+    <field name="encodedSize" type="double" value="0.08853094186633825" />
+    <field name="gbSaved" type="double" value="0.077333964407444" />
+    <field name="compRatio" type="double" value="1.87352469969427" />
+    <field name="elapsedTime" type="double" value="28.361717224121094" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_22[D9FBCB52].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="23">
+    <field name="originalSize" type="double" value="0.16590565349906683" />
+    <field name="encodedSize" type="double" value="0.08843496534973383" />
+    <field name="gbSaved" type="double" value="0.077470688149333" />
+    <field name="compRatio" type="double" value="1.8760187539279245" />
+    <field name="elapsedTime" type="double" value="37.00703430175781" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_25[F346D2E0].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="24">
+    <field name="originalSize" type="double" value="0.16594906989485025" />
+    <field name="encodedSize" type="double" value="0.0875666756182909" />
+    <field name="gbSaved" type="double" value="0.07838239427655935" />
+    <field name="compRatio" type="double" value="1.8951167064767143" />
+    <field name="elapsedTime" type="double" value="32.944000244140625" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_26[44F4E21E].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="25">
+    <field name="originalSize" type="double" value="0.16585831809788942" />
+    <field name="encodedSize" type="double" value="0.08851944841444492" />
+    <field name="gbSaved" type="double" value="0.0773388696834445" />
+    <field name="compRatio" type="double" value="1.8736935336667107" />
+    <field name="elapsedTime" type="double" value="29.875" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_23[09A2496D].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="26">
+    <field name="originalSize" type="double" value="0.1659064209088683" />
+    <field name="encodedSize" type="double" value="0.08845308795571327" />
+    <field name="gbSaved" type="double" value="0.07745333295315504" />
+    <field name="compRatio" type="double" value="1.875643063947461" />
+    <field name="elapsedTime" type="double" value="30.002349853515625" />
+    <field name="routeToOwner" type="string" value="G:\Sky Girls TV\[Froth-Bite]Sky_Girls_TV_-_24[2A224AC3].mp4" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="27">
+    <field name="originalSize" type="double" value="0.3416607193648815" />
+    <field name="encodedSize" type="double" value="0.13854939211159945" />
+    <field name="gbSaved" type="double" value="0.20311132725328207" />
+    <field name="compRatio" type="double" value="2.4659849758826726" />
+    <field name="elapsedTime" type="double" value="442.19140625" />
+    <field name="routeToOwner" type="string" value="G:\[A-Kraze]_Vampire_Knight_-_01-13_[H264_1280x720_AAC]\[A-Kraze]_Vampire_Knight_-_04_[H264_1280x720_AAC][E94F1A91].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="28">
+    <field name="originalSize" type="double" value="0.34161082934588194" />
+    <field name="encodedSize" type="double" value="0.1254304526373744" />
+    <field name="gbSaved" type="double" value="0.21618037670850754" />
+    <field name="compRatio" type="double" value="2.7235079054804627" />
+    <field name="elapsedTime" type="double" value="78.19453430175781" />
+    <field name="routeToOwner" type="string" value="G:\[A-Kraze]_Vampire_Knight_-_01-13_[H264_1280x720_AAC]\[A-Kraze]_Vampire_Knight_-_05_[H264_1280x720_AAC][DF0A4325].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="29">
+    <field name="originalSize" type="double" value="0.34168752282857895" />
+    <field name="encodedSize" type="double" value="0.12745993956923485" />
+    <field name="gbSaved" type="double" value="0.2142275832593441" />
+    <field name="compRatio" type="double" value="2.6807444282756623" />
+    <field name="elapsedTime" type="double" value="71.613037109375" />
+    <field name="routeToOwner" type="string" value="G:\[A-Kraze]_Vampire_Knight_-_01-13_[H264_1280x720_AAC]\[A-Kraze]_Vampire_Knight_-_07_[H264_1280x720_AAC][A11AAF3D].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="30">
+    <field name="originalSize" type="double" value="0.3005250012502074" />
+    <field name="encodedSize" type="double" value="0.116411954164505" />
+    <field name="gbSaved" type="double" value="0.18411304708570242" />
+    <field name="compRatio" type="double" value="2.581564783506057" />
+    <field name="elapsedTime" type="double" value="42.00519943237305" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\Suzumiya Haruhi no Yuuutsu\[Hitsuji].The.Melancholy.of.Haruhi.Suzumiya.03.-.The.Melancholy.of.Haruhi.Suzumiya.III.h264.vorbis.mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="31">
+    <field name="originalSize" type="double" value="0.28338376339524984" />
+    <field name="encodedSize" type="double" value="0.10020895674824715" />
+    <field name="gbSaved" type="double" value="0.1831748066470027" />
+    <field name="compRatio" type="double" value="2.827928486544261" />
+    <field name="elapsedTime" type="double" value="41.09791564941406" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\(G_P) Escaflowne (Remastered)\(G_P) Escaflowne (Remastered) 09(x264)(9340756F).mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="32">
+    <field name="originalSize" type="double" value="0.3340779850259423" />
+    <field name="encodedSize" type="double" value="0.11769535392522812" />
+    <field name="gbSaved" type="double" value="0.2163826311007142" />
+    <field name="compRatio" type="double" value="2.838497645694512" />
+    <field name="elapsedTime" type="double" value="45.015098571777344" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\Sisters of Wellber Zwei 1-13 (Complete)\[Yoroshiku]_Sisters_of_Wellber_Zwei_-_07_[AFF7C6D1].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="33">
+    <field name="originalSize" type="double" value="0.33282376173883677" />
+    <field name="encodedSize" type="double" value="0.11774212401360273" />
+    <field name="gbSaved" type="double" value="0.21508163772523403" />
+    <field name="compRatio" type="double" value="2.8267178338008043" />
+    <field name="elapsedTime" type="double" value="46.24661636352539" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\Sisters of Wellber Zwei 1-13 (Complete)\[Yoroshiku]_Sisters_of_Wellber_Zwei_-_08_[16EDC7EB].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="34">
+    <field name="originalSize" type="double" value="0.2833024859428406" />
+    <field name="encodedSize" type="double" value="0.10821368265897036" />
+    <field name="gbSaved" type="double" value="0.17508880328387022" />
+    <field name="compRatio" type="double" value="2.617991357300474" />
+    <field name="elapsedTime" type="double" value="43.98749923706055" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\(G_P) Escaflowne (Remastered)\(G_P) Escaflowne (Remastered) 05(x264)(86D04C97).mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="35">
+    <field name="originalSize" type="double" value="0.33192924316972494" />
+    <field name="encodedSize" type="double" value="0.13084566220641136" />
+    <field name="gbSaved" type="double" value="0.20108358096331358" />
+    <field name="compRatio" type="double" value="2.5367997499687887" />
+    <field name="elapsedTime" type="double" value="47.86223220825195" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\Sisters of Wellber Zwei 1-13 (Complete)\[Yoroshiku]_Sisters_of_Wellber_Zwei_-_09_[495B4000].mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="36">
+    <field name="originalSize" type="double" value="0.30848327558487654" />
+    <field name="encodedSize" type="double" value="0.11785701382905245" />
+    <field name="gbSaved" type="double" value="0.1906262617558241" />
+    <field name="compRatio" type="double" value="2.617436718974748" />
+    <field name="elapsedTime" type="double" value="39.94816589355469" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX8\(G_P) Escaflowne (Remastered)\(G_P) Escaflowne (Remastered) 06(x264)(BCB4883E).mkv" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+  <object type="ar.com.umibe.core.stats.SingleFileStat" id="37">
+    <field name="originalSize" type="double" value="0.16796875" />
+    <field name="encodedSize" type="double" value="0.02490740828216076" />
+    <field name="gbSaved" type="double" value="0.14306134171783924" />
+    <field name="compRatio" type="double" value="6.743726528958172" />
+    <field name="elapsedTime" type="double" value="2.602083444595337" />
+    <field name="routeToOwner" type="string" value="I:\Downloads\HRX9\Detective Conan\Detective Conan - 472 [DCTP][A2CC7396].avi" />
+    <field name="finishedDate">
+      <object />
+    </field>
+  </object>
+</object>

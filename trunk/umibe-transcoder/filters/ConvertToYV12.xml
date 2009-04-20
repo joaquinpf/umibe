@@ -1,0 +1,11 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="ConvertToYV12" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="ConvertToYV12()" />
+  <field name="parameters">
+    <object type="map" id="1" />
+  </field>
+  <field name="parameterDescriptions">
+    <object idref="1" />
+  </field>
+</object>

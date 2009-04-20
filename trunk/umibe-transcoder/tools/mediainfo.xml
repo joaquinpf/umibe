@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Tool>
+    <Name>MediaInfo.exe</Name>
+	<Type>other</Type>
+    <Path>./resources/MediaInfo/MediaInfo.exe</Path>
+</Tool>

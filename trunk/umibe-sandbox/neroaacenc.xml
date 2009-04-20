@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Tool>
+    <Name>Nero AAC</Name>
+    <Path>neroaacenc.exe</Path>
+	<Modes> 
+		<Mode name="CBR" steps="1">
+			<ExecutionChain> 
+				<ExecutionStep1>REPLACEOPTIONS -if REPLACEINPUT -of REPLACEOUTPUT</ExecutionStep1>
+			</ExecutionChain>
+		</Mode>
+	</Modes>
+	<Options>
+		<Option name="Ignore Legth" key="-ignorelength" value="null" modes="ALL" mandatory="false" advanced="false"/>
+		<Option name="High Efficiency" key="-he" value="null" modes="ALL" mandatory="false" advanced="false"/>
+		<Option name="CBR Bitrate" key="-cbr" value="64000" modes="CBR" mandatory="true" advanced="false"/>
+	</Options>
+</Tool>

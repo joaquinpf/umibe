@@ -1,0 +1,21 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="TDecimate" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="TDecimate(cycleR=CycleNumber)" />
+  <field name="parameters">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="CycleNumber" id="2" />
+        <object type="string" value="1" id="3" />
+      </object>
+    </object>
+  </field>
+  <field name="parameterDescriptions">
+    <object type="map" id="4">
+      <object type="entry">
+        <object idref="2" />
+        <object type="string" value="The decired cycle" id="5" />
+      </object>
+    </object>
+  </field>
+</object>

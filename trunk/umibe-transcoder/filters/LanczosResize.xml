@@ -1,0 +1,29 @@
+<object type="ar.com.umibe.core.filter.Filter" id="0">
+  <field name="name" type="string" value="LanczosResize" />
+  <field name="window" type="string" value="ar.com.umibe.core.filter.DefaultFilterWindow" />
+  <field name="command" type="string" value="LanczosResize(Width,Height)" />
+  <field name="parameters">
+    <object type="map" id="1">
+      <object type="entry">
+        <object type="string" value="Height" id="2" />
+        <object type="string" value="576" id="3" />
+      </object>
+      <object type="entry">
+        <object type="string" value="Width" id="4" />
+        <object type="string" value="1024" id="5" />
+      </object>
+    </object>
+  </field>
+  <field name="parameterDescriptions">
+    <object type="map" id="6">
+      <object type="entry">
+        <object idref="2" />
+        <object type="string" value="The desired height output" id="7" />
+      </object>
+      <object type="entry">
+        <object idref="4" />
+        <object type="string" value="The desired width output" id="8" />
+      </object>
+    </object>
+  </field>
+</object>

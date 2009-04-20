@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile>
+  <DoneDirectory>./done/</DoneDirectory>
+  <MoveToAfterDone></MoveToAfterDone>
+  <DefaultAudioProfile>profiles/Audio_NeroAACEnc_CBR_64kbps.xml</DefaultAudioProfile>
+  <DefaultVideoProfile>profiles/Video_X264_DEBUG.xml</DefaultVideoProfile>
+  <DefaultAviSynthProfile>profiles/AviSynth_Fast.xml</DefaultAviSynthProfile>
+  <DefaultPriority>3</DefaultPriority>
+  <KeepOriginalAudio>false</KeepOriginalAudio>
+  <KeepOriginalVideo>false</KeepOriginalVideo>
+</Profile>
+
