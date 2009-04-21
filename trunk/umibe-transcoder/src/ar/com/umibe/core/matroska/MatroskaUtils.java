@@ -6,13 +6,13 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import ar.com.umibe.commons.util.StringUtils;
 import ar.com.umibe.commons.util.UmibeFileUtils;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.EncodingVideo;
 import ar.com.umibe.core.MediaTrack;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
 import ar.com.umibe.core.execution.UmibeWindowsCLIEnvironment;
-import ar.com.umibe.util.AviSynthUtils;
 
 /**
  * @author Joaquín Alejandro Pérez Fuentes
@@ -24,11 +24,11 @@ public class MatroskaUtils implements IContainer{
 	private static String mkvextract = "./resources/mkvtools/mkvextract.exe";
 	
 	public static int MKVize(String input, String output, boolean verbosity) {
-		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+		String tool = StringUtils.addComillas(UmibeFileUtils
 				.getFullPath(mkvmerge))
 				+ " -o ";
-		output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(output));
-		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+		output = StringUtils.addComillas(UmibeFileUtils.getFullPath(output));
+		input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 
 		IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
 		return clienv.execute(tool + output + input, verbosity, false);		
@@ -39,7 +39,7 @@ public class MatroskaUtils implements IContainer{
 			String files = " ";
 			ArrayList<MediaTrack> outputTracks = new ArrayList<MediaTrack>();
 			for(int i=0; i<tracks.size(); i++) {
-				String outFile = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(outputFolder 
+				String outFile = StringUtils.addComillas(UmibeFileUtils.getFullPath(outputFolder 
 						+ tracks.get(i).getTrackType() + "_" + i)) + " ";
 				files += tracks.get(i).getTrackNumber() + ":" + outFile;
 				MediaTrack m = new MediaTrack();
@@ -47,10 +47,10 @@ public class MatroskaUtils implements IContainer{
 				m.setRouteToTrack(UmibeFileUtils.getFullPath(outputFolder + tracks.get(i).getTrackType() + "_" + i));
 				outputTracks.add(m);
 			}
-			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+			String tool = StringUtils.addComillas(UmibeFileUtils
 					.getFullPath(mkvextract))
 					+ " tracks ";
-			input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+			input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 			
 			IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
 			clienv.execute(tool + input + files, verbosity, false);
@@ -64,13 +64,13 @@ public class MatroskaUtils implements IContainer{
 	public static void generateInfo(String input, String infoFile) {
 		File f = new File(input);
 		if(f.exists()){
-			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+			String tool = StringUtils.addComillas(UmibeFileUtils
 					.getFullPath(mkvinfo))
 					+ " ";
 
-			infoFile = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(infoFile));
+			infoFile = StringUtils.addComillas(UmibeFileUtils.getFullPath(infoFile));
 
-			input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+			input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 
 			IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
 			clienv.execute(tool + input + " > " + infoFile, true, false);
@@ -78,15 +78,15 @@ public class MatroskaUtils implements IContainer{
 	}
 	
 	public String extractChapters(String input, String outputFolder) {
-		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+		String tool = StringUtils.addComillas(UmibeFileUtils
 				.getFullPath(mkvextract))
 				+ " chapters ";
 		String output = UmibeFileUtils.getFullPath(outputFolder + UmibeFileUtils.getFileName(input) + "_chapters.xml");
 		
-		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+		input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 		
 		IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
-		clienv.execute(tool + input + " > " + UmibeFileUtils.addComillas(output), false, false);
+		clienv.execute(tool + input + " > " + StringUtils.addComillas(output), false, false);
 		
 		return output;
 	}
@@ -102,7 +102,7 @@ public class MatroskaUtils implements IContainer{
 
 		if(outputvideo.getRoute().endsWith("mkv")){
 			files = "--noaudio --novideo --nosubs --nobuttons " + 
-				UmibeFileUtils.addComillas(outputvideo.getRoute());
+			StringUtils.addComillas(outputvideo.getRoute());
 		} else {
 			if (chapters != null) {
 				try {
@@ -110,7 +110,7 @@ public class MatroskaUtils implements IContainer{
 
 					String str = in.readLine();
 					if(str != null && !str.contains("(mkvextract) The file "))
-						chaps += " --chapters " + UmibeFileUtils.addComillas(chapters);
+						chaps += " --chapters " + StringUtils.addComillas(chapters);
 					in.close();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -125,9 +125,9 @@ public class MatroskaUtils implements IContainer{
 				MediaTrack m = audioTracks.get(i);
 				if(m.getInfoTrack()!=null){
 					audioOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
-					" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+					" --track-name 1:" + StringUtils.addComillas(m.getInfoTrack().getName()) + " ";
 				}
-				files += audioOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
+				files += audioOptions + StringUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 			}
 		}
 		
@@ -138,13 +138,13 @@ public class MatroskaUtils implements IContainer{
 				MediaTrack m = videoTracks.get(i);
 				if(m.getInfoTrack()!=null){
 					videoOptions = " --language 1:" + m.getInfoTrack().getLanguage() +
-					" --track-name 1:" + UmibeFileUtils.addComillas(m.getInfoTrack().getName()) + " ";
+					" --track-name 1:" + StringUtils.addComillas(m.getInfoTrack().getName()) + " ";
 					if(m.getInfoTrack().getDisplayH() != 0 && m.getInfoTrack().getDisplayW() != 0){
 						videoOptions += "--aspect-ratio 1:" + Integer.toString(m.getInfoTrack().getDisplayW()) + 
 						"/" + Integer.toString(m.getInfoTrack().getDisplayH()) + " ";
 					}					
 				}
-				files += videoOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
+				files += videoOptions + StringUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 			}
 		}
 		
@@ -159,24 +159,24 @@ public class MatroskaUtils implements IContainer{
 					Locale l = new Locale(m.getInfoTrack().getLanguage());
 					name = l.getDisplayName(new Locale("eng"));
 				} else {
-					name = UmibeFileUtils.addComillas(m.getInfoTrack().getName());
+					name = StringUtils.addComillas(m.getInfoTrack().getName());
 				}
 				subOptions = " --language 0:" + m.getInfoTrack().getLanguage() +
 							" --track-name 0:" + name + " ";
 			}
-			files += subOptions + UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
+			files += subOptions + StringUtils.addComillas(UmibeFileUtils.getFullPath(m.getRouteToTrack()));
 		}
 
-		String title = " --title " + UmibeFileUtils.addComillas(outputvideo.getFilename() + ": Encoded with " + DataModel.INSTANCE.getBuildID());
+		String title = " --title " + StringUtils.addComillas(outputvideo.getFilename() + ": Encoded with " + DataModel.INSTANCE.getBuildID());
 		
 		if (files.replaceAll(" ","").equals("")) {
 			// No files to mux
 		} else {
-			String tool = UmibeFileUtils
+			String tool = StringUtils
 					.addComillas(UmibeFileUtils
 							.getFullPath(mkvmerge))
 					+ " -o ";
-			String output = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(doneDir
+			String output = StringUtils.addComillas(UmibeFileUtils.getFullPath(doneDir
 					+ outputvideo.getFilename() + ".mkv"));
 
 			IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
@@ -185,13 +185,13 @@ public class MatroskaUtils implements IContainer{
 	}
 	
 	public void mux(String fullPath, String output) {
-		String tool = UmibeFileUtils
+		String tool = StringUtils
 				.addComillas(UmibeFileUtils
 						.getFullPath(mkvmerge))
 				+ " -o ";
 
 		IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
-		clienv.execute(tool + UmibeFileUtils.addComillas(output) + UmibeFileUtils.addComillas(fullPath), true, false);
+		clienv.execute(tool + StringUtils.addComillas(output) + StringUtils.addComillas(fullPath), true, false);
 	}
 
 	public static void setMkvmerge(String mkvmerge) {

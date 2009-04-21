@@ -1,6 +1,7 @@
 package ar.com.umibe.commons.util;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
@@ -39,10 +40,6 @@ public class UmibeFileUtils {
 		return f.getName();
 	}
 
-	public static String addComillas(String s) {
-		return "\"" + s + "\" ";
-	}
-
 	public static String getFullPath(String route) {
 		try {
 			File f = new File(route);
@@ -63,7 +60,18 @@ public class UmibeFileUtils {
 		};
 		return directory.list(filter);
 	}
+    
+	public static File[] getSubDirectories(String dir){
+		File directory = new File(dir);
 
+	    FileFilter filter = new FileFilter() {
+	        public boolean accept(File file) {
+	            return file.isDirectory();
+	        }
+	    };
+		return directory.listFiles(filter);
+	}
+    
 	public static String[] filterFiles(String dir, final String filterContains, final String filterNotEnds){
 		File directory = new File(dir);
 

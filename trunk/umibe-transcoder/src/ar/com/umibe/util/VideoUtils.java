@@ -3,6 +3,7 @@ package ar.com.umibe.util;
 import java.io.File;
 import java.io.IOException;
 
+import ar.com.umibe.commons.util.StringUtils;
 import ar.com.umibe.commons.util.UmibeFileUtils;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.execution.IExecutionEnvironment;
@@ -18,10 +19,10 @@ public class VideoUtils {
 	
 	public static String takeScreenshot(String input){	
 		//mplayer input-file -ss <position in seconds> -frames 1 -vo jpeg
-		String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+		String tool = StringUtils.addComillas(UmibeFileUtils
 				.getFullPath(mplayer));
 		
-		input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+		input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 		String tempDir = DataModel.INSTANCE.getTempDir();
 		
 		IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
@@ -37,15 +38,15 @@ public class VideoUtils {
 	
 	public static String getMediaInfo(String input){
 		try {
-			String tool = UmibeFileUtils.addComillas(UmibeFileUtils
+			String tool = StringUtils.addComillas(UmibeFileUtils
 					.getFullPath(mediainfo));
 
 			String inputFilename = UmibeFileUtils.getFileName(input);
-			input = UmibeFileUtils.addComillas(UmibeFileUtils.getFullPath(input));
+			input = StringUtils.addComillas(UmibeFileUtils.getFullPath(input));
 			File f = new File(DataModel.INSTANCE.getTempDir());
 			String output;
 
-			output = " > " + UmibeFileUtils.addComillas(f.getCanonicalPath() + "/" + inputFilename + "_mediainfo.txt");
+			output = " > " + StringUtils.addComillas(f.getCanonicalPath() + "/" + inputFilename + "_mediainfo.txt");
 
 			IExecutionEnvironment clienv = new UmibeWindowsCLIEnvironment();
 			clienv.execute(tool + input + output, true, false);
