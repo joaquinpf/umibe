@@ -2,6 +2,7 @@ package ar.com.umibe.core.encoder;
 
 import java.util.ArrayList;
 
+import ar.com.umibe.commons.util.StringUtils;
 import ar.com.umibe.commons.util.UmibeFileUtils;
 import ar.com.umibe.core.DataModel;
 import ar.com.umibe.core.MediaTrack;
@@ -77,12 +78,12 @@ public abstract class Encoder {
 			command = replace(command, "REPLACEOUTPUT", "\""
 					+ UmibeFileUtils.getFullPath(output) + "\"");
 			
-			String pipe = UmibeFileUtils.addComillas(this.BePipe) + " --script \"import(^"
+			String pipe = StringUtils.addComillas(this.BePipe) + " --script \"import(^"
 			+ UmibeFileUtils.getFullPath(input) + "^)\" | ";
 
 			command = replace(command, "REPLACEBEPIPE", pipe);	
 
-			String exectubale = UmibeFileUtils
+			String exectubale = StringUtils
 				.addComillas(UmibeFileUtils.getFullPath(this.executable.getPath()));
 
 			command = replace(command, "REPLACEEXECUTABLE", exectubale);	

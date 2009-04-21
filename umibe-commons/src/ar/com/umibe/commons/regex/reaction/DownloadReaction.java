@@ -1,7 +1,7 @@
 package ar.com.umibe.commons.regex.reaction;
 
 import ar.com.umibe.commons.execution.WindowsCLIEnvironment;
-import ar.com.umibe.commons.util.UmibeFileUtils;
+import ar.com.umibe.commons.util.StringUtils;
 
 public class DownloadReaction implements Reaction {
 	
@@ -13,6 +13,6 @@ public class DownloadReaction implements Reaction {
 	
 	@Override
 	public void react(String file) {
-		new WindowsCLIEnvironment().execute(target + UmibeFileUtils.addComillas(file));
+		new WindowsCLIEnvironment().execute(target + StringUtils.addComillas(file));
 	}
 }
