@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
+import org.apache.commons.io.FileSystemUtils;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -131,5 +132,12 @@ public class UmibeFileUtils {
 			System.out.println("UmibeFileUtils: Could not clean directory");
 		}
 	}
-
+	
+	public static long getFreeSpace(String directory){
+		try {
+			return FileSystemUtils.freeSpaceKb(directory);
+		} catch (IOException e) {
+			return -1;
+		}
+	}
 }
